@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sonld36/tutor-config-repository
+          username: sonld36
+          password: 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
+          default-label: master
+        bootstrap: true
+  security:
+    user:
+      name: sonld36
+      password: allIAO27

@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  keycloak-authorization-server:
+    image: keycloak-image
+    hostname: keycloak-server
+    container_name: keycloak-server
+    ports:
+      - "8081:8081"
+    command:
+      - "start-dev"

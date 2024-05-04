@@ -1,0 +1,1084 @@
+2024-05-04 19:46:21 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 19:46:22 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 19:46:23 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=504b8b85ee688c25ccb011286675db1819186367, state=null
+2024-05-04 19:46:23 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 19:46:23 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 19:46:23 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 19:46:23 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 114 ms. Found 1 JPA repository interface.
+2024-05-04 19:46:24 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 19:46:24 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 19:46:24 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 19:46:24 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 19:46:24 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 19:46:24 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 19:46:24 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 19:46:24 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 19:46:24 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 19:46:24 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 19:46:24 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 19:46:24 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1379 ms
+2024-05-04 19:46:24 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 19:46:24 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 19:46:24 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 19:46:25 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 19:46:25 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 19:46:25 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2b82018
+2024-05-04 19:46:25 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 19:46:25 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 19:46:26 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 19:46:26 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 19:46:26 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 19:46:26 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 19:46:27 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 19:46:27 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 19:46:27 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 63505 (http) with context path '/course'
+2024-05-04 19:46:27 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 63505
+2024-05-04 19:46:27 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 19:46:27 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 19:46:27 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714826787483 with initial instances count: 1
+2024-05-04 19:46:27 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 19:46:27 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714826787487, current=UP, previous=STARTING]
+2024-05-04 19:46:27 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 19:46:27 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 19:46:27 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.572 seconds (process running for 7.617)
+2024-05-04 19:48:13 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 19:48:13 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 19:48:13 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 19:51:27 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 19:56:27 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:01:27 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:05:10 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 20:05:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714827910741, current=DOWN, previous=UP]
+2024-05-04 20:05:10 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:05:10 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:05:12 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:05:12 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 20:05:12 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 20:05:12 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 20:05:15 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 20:05:15 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 20:05:15 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 20:05:19 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 20:05:19 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 20:05:21 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=504b8b85ee688c25ccb011286675db1819186367, state=null
+2024-05-04 20:05:21 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 20:05:21 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 20:05:21 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 20:05:21 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 91 ms. Found 1 JPA repository interface.
+2024-05-04 20:05:21 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 20:05:21 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:05:21 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:05:21 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:05:21 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:05:21 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:05:22 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 20:05:22 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:05:22 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 20:05:22 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 20:05:22 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 20:05:22 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1043 ms
+2024-05-04 20:05:22 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 20:05:22 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 20:05:22 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 20:05:22 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 20:05:22 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 20:05:22 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2b82018
+2024-05-04 20:05:22 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 20:05:22 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 20:05:23 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 20:05:23 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:05:23 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 20:05:24 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 20:05:24 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 20:05:24 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:05:24 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 64323 (http) with context path '/course'
+2024-05-04 20:05:24 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 64323
+2024-05-04 20:05:24 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 20:05:24 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 20:05:24 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714827924862 with initial instances count: 3
+2024-05-04 20:05:24 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 20:05:24 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714827924865, current=UP, previous=STARTING]
+2024-05-04 20:05:24 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:05:24 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:05:25 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.151 seconds (process running for 6.823)
+2024-05-04 20:05:38 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 20:05:38 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 20:05:38 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 20:05:38 [http-nio-auto-1-exec-1] [,] WARN   o.s.c.l.core.RoundRobinLoadBalancer - No servers available for service: localhost
+2024-05-04 20:05:38 [http-nio-auto-1-exec-1] [,] WARN   o.s.c.c.l.r.ReactorLoadBalancerExchangeFilterFunction - LoadBalancer does not contain an instance for the service localhost
+2024-05-04 20:05:38 [http-nio-auto-1-exec-1] [,] ERROR  o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/course] threw exception [Request processing failed: java.lang.RuntimeException: LoadBalancer does not contain an instance for the service localhost] with root cause
+java.lang.RuntimeException: LoadBalancer does not contain an instance for the service localhost
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:113)
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Assembly trace from producer [reactor.core.publisher.MonoIgnoreThen] :
+	reactor.core.publisher.Mono.then(Mono.java:4872)
+	org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+Error has been observed at the following site(s):
+	*___________Mono.then ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+	*________Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:687)
+	|_ Mono.onErrorResume ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:688)
+	|_       Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:693)
+	|_         checkpoint ⇢ 503 SERVICE_UNAVAILABLE from GET http://localhost:8080/accounting/tutor [DefaultWebClient]
+	|_ Mono.switchIfEmpty ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.handleBodyMono(DefaultWebClient.java:656)
+	*___________Mono.then ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+	*________Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.bodyToMono(DefaultWebClient.java:572)
+Original Stack Trace:
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:113)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.onNext(FluxMapFuseable.java:299)
+		at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.onNext(FluxFilterFuseable.java:337)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+		at reactor.core.publisher.MonoCollect$CollectSubscriber.onComplete(MonoCollect.java:145)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onComplete(FluxMapFuseable.java:152)
+		at reactor.core.publisher.Operators$ScalarSubscription.request(Operators.java:2573)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.request(FluxMapFuseable.java:171)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.request(Operators.java:2067)
+		at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.request(FluxFilterFuseable.java:411)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.request(FluxMapFuseable.java:360)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.request(FluxContextWrite.java:136)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.request(FluxMapFuseable.java:171)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.request(FluxMapFuseable.java:171)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.request(MonoFlatMap.java:194)
+		at reactor.core.publisher.Operators$MultiSubscriptionSubscriber.set(Operators.java:2367)
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onSubscribe(FluxOnErrorResume.java:74)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onSubscribe(MonoFlatMap.java:117)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onSubscribe(FluxMapFuseable.java:96)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onSubscribe(FluxMapFuseable.java:96)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onSubscribe(FluxContextWrite.java:101)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.onSubscribe(FluxMapFuseable.java:265)
+		at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.onSubscribe(FluxFilterFuseable.java:305)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.onSubscribe(Operators.java:2051)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onSubscribe(FluxMapFuseable.java:96)
+		at reactor.core.publisher.FluxJust.subscribe(FluxJust.java:68)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:76)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:165)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+		at reactor.core.publisher.FluxDoFinally$DoFinallySubscriber.onNext(FluxDoFinally.java:113)
+		at reactor.core.publisher.MonoPeekTerminal$MonoTerminalPeekSubscriber.onNext(MonoPeekTerminal.java:180)
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableConditionalSubscriber.onNext(FluxPeekFuseable.java:503)
+		at reactor.core.publisher.FluxSwitchIfEmpty$SwitchIfEmptySubscriber.onNext(FluxSwitchIfEmpty.java:74)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:158)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+		at reactor.core.publisher.MonoNext$NextSubscriber.onNext(MonoNext.java:82)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onNext(FluxDematerialize.java:98)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onNext(FluxDematerialize.java:44)
+		at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drainAsync(FluxFlattenIterable.java:453)
+		at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drain(FluxFlattenIterable.java:724)
+		at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.onNext(FluxFlattenIterable.java:256)
+		at reactor.core.publisher.FluxSwitchIfEmpty$SwitchIfEmptySubscriber.onNext(FluxSwitchIfEmpty.java:74)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.secondComplete(MonoFlatMap.java:245)
+		at reactor.core.publisher.MonoFlatMap$FlatMapInner.onNext(MonoFlatMap.java:305)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.complete(MonoIgnoreThen.java:294)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onNext(MonoIgnoreThen.java:188)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:237)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:204)
+		at reactor.core.publisher.MonoIgnoreElements$IgnoreElementsSubscriber.onComplete(MonoIgnoreElements.java:89)
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onComplete(FluxPeekFuseable.java:277)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onComplete(FluxDematerialize.java:121)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onNext(FluxDematerialize.java:91)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onNext(FluxDematerialize.java:44)
+		at reactor.core.publisher.FluxIterable$IterableSubscription.fastPath(FluxIterable.java:402)
+		at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:291)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.request(FluxDematerialize.java:127)
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.request(FluxPeekFuseable.java:144)
+		at reactor.core.publisher.MonoIgnoreElements$IgnoreElementsSubscriber.onSubscribe(MonoIgnoreElements.java:72)
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onSubscribe(FluxPeekFuseable.java:178)
+		at reactor.core.publisher.FluxDematerialize$DematerializeSubscriber.onSubscribe(FluxDematerialize.java:77)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4568)
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:265)
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:76)
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:165)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+		at reactor.core.publisher.MonoCollectList$MonoCollectListSubscriber.onComplete(MonoCollectList.java:118)
+		at reactor.core.publisher.DrainUtils.postCompleteDrain(DrainUtils.java:132)
+		at reactor.core.publisher.DrainUtils.postComplete(DrainUtils.java:187)
+		at reactor.core.publisher.FluxMaterialize$MaterializeSubscriber.onComplete(FluxMaterialize.java:141)
+		at reactor.core.publisher.FluxLimitRequest$FluxLimitRequestSubscriber.onNext(FluxLimitRequest.java:104)
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onNext(FluxOnErrorResume.java:79)
+		at reactor.core.publisher.SerializedSubscriber.onNext(SerializedSubscriber.java:99)
+		at reactor.core.publisher.FluxTimeout$TimeoutMainSubscriber.onNext(FluxTimeout.java:181)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+		at reactor.core.publisher.MonoCollectList$MonoCollectListSubscriber.onComplete(MonoCollectList.java:118)
+		at org.springframework.cloud.commons.publisher.FluxFirstNonEmptyEmitting$FirstNonEmptyEmittingSubscriber.onComplete(FluxFirstNonEmptyEmitting.java:325)
+		at reactor.core.publisher.Operators.complete(Operators.java:137)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:144)
+		at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83)
+		at reactor.core.publisher.Flux.subscribe(Flux.java:8840)
+		at org.springframework.cloud.commons.publisher.FluxFirstNonEmptyEmitting$RaceCoordinator.subscribe(FluxFirstNonEmptyEmitting.java:203)
+		at org.springframework.cloud.commons.publisher.FluxFirstNonEmptyEmitting.subscribe(FluxFirstNonEmptyEmitting.java:128)
+		at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:68)
+		at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54)
+		at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:68)
+		at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4568)
+		at reactor.core.publisher.FluxSwitchIfEmpty$SwitchIfEmptySubscriber.onComplete(FluxSwitchIfEmpty.java:82)
+		at reactor.core.publisher.Operators.complete(Operators.java:137)
+		at reactor.core.publisher.MonoEmpty.subscribe(MonoEmpty.java:46)
+		at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:68)
+		at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54)
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:76)
+		at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:55)
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4568)
+		at reactor.core.publisher.Mono.block(Mono.java:1778)
+		at com.microservices.projectfinal.client.api.account.TutorClient.getTutorByEmail(TutorClient.java:20)
+		at com.microservices.projectfinal.service.impl.CourseService.createCourse(CourseService.java:28)
+		at com.microservices.projectfinal.controller.CourseController.createCourse(CourseController.java:17)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+		at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+		at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+		at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+		at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+		at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+		at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+		at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
+		at reactor.core.publisher.Mono.block(Mono.java:1779)
+		at com.microservices.projectfinal.client.api.account.TutorClient.getTutorByEmail(TutorClient.java:20)
+		at com.microservices.projectfinal.service.impl.CourseService.createCourse(CourseService.java:28)
+		at com.microservices.projectfinal.controller.CourseController.createCourse(CourseController.java:17)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+		at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+		at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+		at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+		at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+		at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+		at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+		at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+2024-05-04 20:06:08 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 20:06:08 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714827968345, current=DOWN, previous=UP]
+2024-05-04 20:06:08 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:06:08 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:06:08 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:06:08 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 20:06:08 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 20:06:08 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 20:06:11 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 20:06:11 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 20:06:11 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 20:06:14 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 20:06:15 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 20:06:16 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=504b8b85ee688c25ccb011286675db1819186367, state=null
+2024-05-04 20:06:16 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 20:06:16 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 20:06:16 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 20:06:16 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 1 JPA repository interface.
+2024-05-04 20:06:16 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 20:06:17 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:06:17 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:06:17 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:06:17 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:06:17 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:06:17 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 20:06:17 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:06:17 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 20:06:17 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 20:06:17 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 20:06:17 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1063 ms
+2024-05-04 20:06:17 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 20:06:17 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 20:06:17 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 20:06:17 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 20:06:17 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 20:06:17 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11174bf
+2024-05-04 20:06:17 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 20:06:18 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 20:06:18 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 20:06:19 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:06:19 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 20:06:19 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 20:06:20 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 20:06:20 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:06:20 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 64522 (http) with context path '/course'
+2024-05-04 20:06:20 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 64522
+2024-05-04 20:06:20 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 20:06:20 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 20:06:20 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714827980316 with initial instances count: 3
+2024-05-04 20:06:20 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 20:06:20 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714827980319, current=UP, previous=STARTING]
+2024-05-04 20:06:20 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:06:20 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:06:20 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.515 seconds (process running for 7.128)
+2024-05-04 20:06:47 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 20:06:47 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 20:06:47 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 20:11:20 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:16:20 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:31:40 [HikariPool-1 housekeeper] [,] WARN   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m22s698ms386µs500ns).
+2024-05-04 20:35:12 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:35:53 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 20:35:53 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714829753646, current=DOWN, previous=UP]
+2024-05-04 20:35:53 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:35:53 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:35:55 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:35:55 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 20:35:55 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 20:35:55 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 20:35:58 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 20:35:58 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 20:35:58 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 20:36:02 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 20:36:02 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 20:36:03 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=504b8b85ee688c25ccb011286675db1819186367, state=null
+2024-05-04 20:36:03 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 20:36:03 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 20:36:04 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 20:36:04 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 109 ms. Found 1 JPA repository interface.
+2024-05-04 20:36:04 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 20:36:04 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:36:04 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:36:04 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:36:04 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:36:04 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:36:04 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 20:36:04 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:36:04 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 20:36:04 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 20:36:04 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 20:36:04 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1119 ms
+2024-05-04 20:36:04 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 20:36:04 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 20:36:05 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 20:36:05 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 20:36:05 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 20:36:05 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e0e0ba7
+2024-05-04 20:36:05 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 20:36:05 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 20:36:06 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 20:36:06 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:36:07 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 20:36:07 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 20:36:07 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 20:36:07 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:36:07 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 58103 (http) with context path '/course'
+2024-05-04 20:36:07 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 58103
+2024-05-04 20:36:07 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 20:36:07 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 20:36:07 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 20:36:08 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714829768294 with initial instances count: 3
+2024-05-04 20:36:08 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 20:36:08 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714829768298, current=UP, previous=STARTING]
+2024-05-04 20:36:08 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:36:08 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:36:08 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.93 seconds (process running for 7.537)
+2024-05-04 20:37:58 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 20:37:58 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 20:37:58 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 20:39:37 [HikariPool-1 housekeeper] [,] WARN   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m29s268ms437µs200ns).
+2024-05-04 20:39:49 [http-nio-auto-1-exec-2] [,] ERROR  o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/course] threw exception [Request processing failed: java.lang.RuntimeException: {"timestamp":"2024-05-04T13:39:49.455+00:00","path":"/accounting/tutor","status":500,"error":"Internal Server Error","requestId":"ea3fd1b5-10"}] with root cause
+java.lang.RuntimeException: {"timestamp":"2024-05-04T13:39:49.455+00:00","path":"/accounting/tutor","status":500,"error":"Internal Server Error","requestId":"ea3fd1b5-10"}
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:113)
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Assembly trace from producer [reactor.core.publisher.MonoIgnoreThen] :
+	reactor.core.publisher.Mono.then(Mono.java:4872)
+	org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+Error has been observed at the following site(s):
+	*___________Mono.then ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+	*________Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:687)
+	|_ Mono.onErrorResume ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:688)
+	|_       Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:693)
+	|_         checkpoint ⇢ 500 INTERNAL_SERVER_ERROR from GET http://localhost:8080/accounting/tutor [DefaultWebClient]
+	|_ Mono.switchIfEmpty ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.handleBodyMono(DefaultWebClient.java:656)
+	*___________Mono.then ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+	*________Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.bodyToMono(DefaultWebClient.java:572)
+Original Stack Trace:
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:113)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.onNext(FluxMapFuseable.java:299)
+		at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.onNext(FluxFilterFuseable.java:337)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+		at reactor.core.publisher.MonoCollect$CollectSubscriber.onComplete(MonoCollect.java:145)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onComplete(FluxMapFuseable.java:152)
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onComplete(FluxPeekFuseable.java:277)
+		at reactor.core.publisher.FluxMap$MapSubscriber.onComplete(FluxMap.java:144)
+		at reactor.netty.channel.FluxReceive.onInboundComplete(FluxReceive.java:415)
+		at reactor.netty.channel.ChannelOperations.onInboundComplete(ChannelOperations.java:446)
+		at reactor.netty.channel.ChannelOperations.terminate(ChannelOperations.java:500)
+		at reactor.netty.http.client.HttpClientOperations.onInboundNext(HttpClientOperations.java:793)
+		at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:114)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:436)
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:346)
+		at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:318)
+		at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:251)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+		at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
+		at reactor.core.publisher.Mono.block(Mono.java:1779)
+		at com.microservices.projectfinal.client.api.account.TutorClient.getTutorByEmail(TutorClient.java:20)
+		at com.microservices.projectfinal.service.impl.CourseService.createCourse(CourseService.java:28)
+		at com.microservices.projectfinal.controller.CourseController.createCourse(CourseController.java:17)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+		at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+		at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+		at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+		at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+		at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+		at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+		at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+2024-05-04 20:40:09 [http-nio-auto-1-exec-3] [,] ERROR  o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [/course] threw exception [Request processing failed: java.lang.RuntimeException: {"timestamp":"2024-05-04T13:40:09.025+00:00","path":"/accounting/tutor","status":500,"error":"Internal Server Error","requestId":"ea3fd1b5-12"}] with root cause
+java.lang.RuntimeException: {"timestamp":"2024-05-04T13:40:09.025+00:00","path":"/accounting/tutor","status":500,"error":"Internal Server Error","requestId":"ea3fd1b5-12"}
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:113)
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Assembly trace from producer [reactor.core.publisher.MonoIgnoreThen] :
+	reactor.core.publisher.Mono.then(Mono.java:4872)
+	org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+Error has been observed at the following site(s):
+	*___________Mono.then ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+	*________Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:687)
+	|_ Mono.onErrorResume ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:688)
+	|_       Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.applyStatusHandlers(DefaultWebClient.java:693)
+	|_         checkpoint ⇢ 500 INTERNAL_SERVER_ERROR from GET http://localhost:8080/accounting/tutor [DefaultWebClient]
+	|_ Mono.switchIfEmpty ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.handleBodyMono(DefaultWebClient.java:656)
+	*___________Mono.then ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient.releaseIfNotConsumed(DefaultWebClient.java:193)
+	*________Mono.flatMap ⇢ at org.springframework.web.reactive.function.client.DefaultWebClient$DefaultResponseSpec.bodyToMono(DefaultWebClient.java:572)
+Original Stack Trace:
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:113)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.onNext(FluxMapFuseable.java:299)
+		at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.onNext(FluxFilterFuseable.java:337)
+		at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+		at reactor.core.publisher.MonoCollect$CollectSubscriber.onComplete(MonoCollect.java:145)
+		at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onComplete(FluxMapFuseable.java:152)
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onComplete(FluxPeekFuseable.java:277)
+		at reactor.core.publisher.FluxMap$MapSubscriber.onComplete(FluxMap.java:144)
+		at reactor.netty.channel.FluxReceive.onInboundComplete(FluxReceive.java:415)
+		at reactor.netty.channel.ChannelOperations.onInboundComplete(ChannelOperations.java:446)
+		at reactor.netty.channel.ChannelOperations.terminate(ChannelOperations.java:500)
+		at reactor.netty.http.client.HttpClientOperations.onInboundNext(HttpClientOperations.java:793)
+		at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:114)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:436)
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:346)
+		at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:318)
+		at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:251)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+		at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
+		at reactor.core.publisher.Mono.block(Mono.java:1779)
+		at com.microservices.projectfinal.client.api.account.TutorClient.getTutorByEmail(TutorClient.java:20)
+		at com.microservices.projectfinal.service.impl.CourseService.createCourse(CourseService.java:28)
+		at com.microservices.projectfinal.controller.CourseController.createCourse(CourseController.java:17)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+		at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+		at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+		at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+		at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+		at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+		at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+		at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+2024-05-04 20:41:08 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:44:47 [HikariPool-1 housekeeper] [,] WARN   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m40s343ms970µs300ns).
+2024-05-04 20:46:08 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:51:05 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 20:51:05 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714830665255, current=DOWN, previous=UP]
+2024-05-04 20:51:05 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:51:05 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:51:07 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:51:07 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 20:51:07 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 20:51:07 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 20:51:08 [AsyncResolver-bootstrap-executor-0] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:51:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 20:51:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 20:51:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 20:51:15 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 20:51:15 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 20:51:17 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=be428db1b93c6c247dbc9fad64a5841258234690, state=null
+2024-05-04 20:51:17 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 20:51:17 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 20:51:17 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 20:51:17 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 113 ms. Found 1 JPA repository interface.
+2024-05-04 20:51:18 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 20:51:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:51:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:51:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:51:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:51:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:51:18 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 20:51:18 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:51:18 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 20:51:18 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 20:51:18 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 20:51:18 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1096 ms
+2024-05-04 20:51:18 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 20:51:18 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 20:51:18 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 20:51:18 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 20:51:18 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 20:51:18 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@36885319
+2024-05-04 20:51:18 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 20:51:18 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 20:51:19 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 20:51:19 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:51:20 [main] [,] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardJacksonObjectMapperBuilderCustomizer' defined in class path resource [org/springframework/boot/autoconfigure/jackson/JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration.class]: Unsatisfied dependency expressed through method 'standardJacksonObjectMapperBuilderCustomizer' parameter 0: Error creating bean with name 'spring.jackson-org.springframework.boot.autoconfigure.jackson.JacksonProperties': Could not bind properties to 'JacksonProperties' : prefix=spring.jackson, ignoreInvalidFields=false, ignoreUnknownFields=true
+2024-05-04 20:51:20 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:51:20 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 20:51:20 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 20:51:20 [main] [,] INFO   o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2024-05-04 20:51:20 [main] [,] INFO   o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-04 20:51:20 [main] [,] ERROR  o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.jackson.serialization' to java.util.Map<com.fasterxml.jackson.databind.SerializationFeature, java.lang.Boolean>:
+
+    Property: spring.jackson.serialization.wraprootvalue
+    Value: "true"
+    Origin: "spring.jackson.serialization.WRAP_ROOT_VALUE" from property source "bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml"
+    Reason: failed to convert java.lang.String to com.fasterxml.jackson.databind.SerializationFeature (caused by java.lang.IllegalArgumentException: No enum constant com.fasterxml.jackson.databind.SerializationFeature.AUTO_DETECT_FIELDS)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    CLOSE_CLOSEABLE
+    EAGER_SERIALIZER_FETCH
+    FAIL_ON_EMPTY_BEANS
+    FAIL_ON_SELF_REFERENCES
+    FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS
+    FLUSH_AFTER_WRITE_VALUE
+    INDENT_OUTPUT
+    ORDER_MAP_ENTRIES_BY_KEYS
+    USE_EQUALITY_FOR_OBJECT_ID
+    WRAP_EXCEPTIONS
+    WRAP_ROOT_VALUE
+    WRITE_BIGDECIMAL_AS_PLAIN
+    WRITE_CHAR_ARRAYS_AS_JSON_ARRAYS
+    WRITE_DATES_AS_TIMESTAMPS
+    WRITE_DATES_WITH_CONTEXT_TIME_ZONE
+    WRITE_DATES_WITH_ZONE_ID
+    WRITE_DATE_KEYS_AS_TIMESTAMPS
+    WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS
+    WRITE_DURATIONS_AS_TIMESTAMPS
+    WRITE_EMPTY_JSON_ARRAYS
+    WRITE_ENUMS_USING_INDEX
+    WRITE_ENUMS_USING_TO_STRING
+    WRITE_ENUM_KEYS_USING_INDEX
+    WRITE_NULL_MAP_VALUES
+    WRITE_SELF_REFERENCES_AS_NULL
+    WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED
+
+2024-05-04 20:59:35 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 20:59:35 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 20:59:37 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=99af781c2692c210f544a90bb6241e3696ee399c, state=null
+2024-05-04 20:59:37 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 20:59:37 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 20:59:37 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 20:59:37 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 93 ms. Found 1 JPA repository interface.
+2024-05-04 20:59:37 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 20:59:38 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:59:38 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:59:38 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 20:59:38 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:59:38 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 20:59:38 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 20:59:38 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:59:38 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 20:59:38 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 20:59:38 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 20:59:38 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1060 ms
+2024-05-04 20:59:38 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 20:59:38 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 20:59:38 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 20:59:38 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 20:59:38 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 20:59:38 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@446f3a53
+2024-05-04 20:59:38 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 20:59:38 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 20:59:39 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 20:59:40 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 20:59:40 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 20:59:40 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 20:59:40 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 20:59:41 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 20:59:41 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 59287 (http) with context path '/course'
+2024-05-04 20:59:41 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 59287
+2024-05-04 20:59:41 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 20:59:41 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 20:59:41 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714831181377 with initial instances count: 2
+2024-05-04 20:59:41 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 20:59:41 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831181380, current=UP, previous=STARTING]
+2024-05-04 20:59:41 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 20:59:41 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 20:59:41 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 7.146 seconds (process running for 7.78)
+2024-05-04 21:00:05 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 21:00:05 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 21:00:05 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 21:00:45 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 21:00:45 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831245650, current=DOWN, previous=UP]
+2024-05-04 21:00:45 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 21:00:45 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 21:00:47 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 21:00:47 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 21:00:47 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 21:00:47 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 21:00:50 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 21:00:50 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 21:00:50 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 21:00:54 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 21:00:55 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 21:00:56 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=99af781c2692c210f544a90bb6241e3696ee399c, state=null
+2024-05-04 21:00:56 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 21:00:56 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 21:00:56 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 21:00:56 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 103 ms. Found 1 JPA repository interface.
+2024-05-04 21:00:57 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 21:00:57 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 21:00:57 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:00:57 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 21:00:57 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:00:57 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:00:57 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 21:00:57 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 21:00:57 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 21:00:57 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 21:00:57 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 21:00:57 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1040 ms
+2024-05-04 21:00:57 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 21:00:57 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 21:00:57 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 21:00:57 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 21:00:57 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 21:00:57 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e0e0ba7
+2024-05-04 21:00:57 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 21:00:58 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 21:00:58 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 21:00:59 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 21:00:59 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 21:00:59 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 21:00:59 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 21:00:59 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 21:00:59 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 59395 (http) with context path '/course'
+2024-05-04 21:00:59 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 59395
+2024-05-04 21:00:59 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 21:01:00 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 21:01:00 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714831260352 with initial instances count: 2
+2024-05-04 21:01:00 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 21:01:00 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831260356, current=UP, previous=STARTING]
+2024-05-04 21:01:00 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 21:01:00 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 21:01:00 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.361 seconds (process running for 6.948)
+2024-05-04 21:02:07 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 21:02:07 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 21:02:07 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 21:03:05 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 21:03:05 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831385705, current=DOWN, previous=UP]
+2024-05-04 21:03:05 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 21:03:05 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 21:03:07 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 21:03:07 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 21:03:07 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 21:03:07 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 21:03:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 21:03:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 21:03:10 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 21:03:15 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 21:03:16 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 21:03:17 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=99af781c2692c210f544a90bb6241e3696ee399c, state=null
+2024-05-04 21:03:17 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 21:03:17 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 21:03:17 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 21:03:17 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 1 JPA repository interface.
+2024-05-04 21:03:18 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 21:03:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 21:03:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:03:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 21:03:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:03:18 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:03:18 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 21:03:18 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 21:03:18 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 21:03:18 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 21:03:18 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 21:03:18 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1161 ms
+2024-05-04 21:03:18 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 21:03:18 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 21:03:18 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 21:03:18 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 21:03:18 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 21:03:18 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@36885319
+2024-05-04 21:03:18 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 21:03:18 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 21:03:20 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 21:03:20 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 21:03:20 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 21:03:20 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 21:03:21 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 21:03:21 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 21:03:21 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 59623 (http) with context path '/course'
+2024-05-04 21:03:21 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 59623
+2024-05-04 21:03:21 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 21:03:21 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 21:03:21 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714831401376 with initial instances count: 2
+2024-05-04 21:03:21 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 21:03:21 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831401379, current=UP, previous=STARTING]
+2024-05-04 21:03:21 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 21:03:21 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 21:03:21 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.755 seconds (process running for 7.462)
+2024-05-04 21:05:43 [http-nio-auto-1-exec-1] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-04 21:05:43 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-04 21:05:43 [http-nio-auto-1-exec-1] [,] INFO   o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-04 21:07:13 [SpringApplicationShutdownHook] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COURSE-SERVICE with eureka with status DOWN
+2024-05-04 21:07:13 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831633929, current=DOWN, previous=UP]
+2024-05-04 21:07:13 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 21:07:13 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 21:07:16 [SpringApplicationShutdownHook] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 21:07:16 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-04 21:07:16 [SpringApplicationShutdownHook] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-04 21:07:16 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2024-05-04 21:07:19 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Unregistering ...
+2024-05-04 21:07:19 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - deregister  status: 200
+2024-05-04 21:07:19 [SpringApplicationShutdownHook] [,] INFO   c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2024-05-04 21:07:23 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-04 21:07:23 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-04 21:07:24 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, profiles=[course_service], label=null, version=99af781c2692c210f544a90bb6241e3696ee399c, state=null
+2024-05-04 21:07:24 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-04 21:07:24 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-04 21:07:25 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-04 21:07:25 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 96 ms. Found 1 JPA repository interface.
+2024-05-04 21:07:25 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=216f55a5-9b89-3cf8-b5a8-e36562c65621
+2024-05-04 21:07:25 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 21:07:25 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:07:25 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-04 21:07:25 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:07:25 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-04 21:07:25 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-04 21:07:25 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 21:07:25 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-04 21:07:25 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-04 21:07:25 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-04 21:07:25 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1123 ms
+2024-05-04 21:07:25 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-04 21:07:25 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-04 21:07:25 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-04 21:07:26 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-04 21:07:26 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-04 21:07:26 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2b82018
+2024-05-04 21:07:26 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-04 21:07:26 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-04 21:07:27 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-04 21:07:27 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-04 21:07:27 [main] [,] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-04 21:07:27 [main] [,] INFO   o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2024-05-04 21:07:28 [main] [,] WARN   o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-05-04 21:07:28 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-auto-1"]
+2024-05-04 21:07:28 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 59543 (http) with context path '/course'
+2024-05-04 21:07:28 [main] [,] INFO   o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 59543
+2024-05-04 21:07:28 [main] [,] INFO   o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2024-05-04 21:07:28 [main] [,] INFO   c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application is null : false
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - The response status is 200
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2024-05-04 21:07:28 [main] [,] INFO   c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1714831648469 with initial instances count: 2
+2024-05-04 21:07:28 [main] [,] INFO   o.s.c.n.e.s.EurekaServiceRegistry - Registering application COURSE-SERVICE with eureka with status UP
+2024-05-04 21:07:28 [main] [,] INFO   c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1714831648472, current=UP, previous=STARTING]
+2024-05-04 21:07:28 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0: registering service...
+2024-05-04 21:07:28 [DiscoveryClient-InstanceInfoReplicator-0] [,] INFO   c.netflix.discovery.DiscoveryClient - DiscoveryClient_COURSE-SERVICE/host.docker.internal:course-service:0 - registration status: 204
+2024-05-04 21:07:28 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - Started CourseServiceApp in 6.322 seconds (process running for 6.957)

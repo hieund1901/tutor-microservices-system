@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: course-service
+  profiles:
+    active: course_service
+  cloud:
+    config:
+      name: course-service,config-client
+      username: sonld36
+      password: allIAO27

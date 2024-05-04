@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: accounting-service
+  profiles:
+    active: accounting
+  cloud:
+    config:
+      name: accounting-service,config-client
+      username: sonld36
+      password: allIAO27

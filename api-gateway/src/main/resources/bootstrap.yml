@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: api_gateway
+  config:
+    import: 'configserver:'
+  cloud:
+    config:
+      name: api-gateway,config-client
+      username: sonld36
+      password: allIAO27
+
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
+    org.springframework.cloud.gateway: trace
