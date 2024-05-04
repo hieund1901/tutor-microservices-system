@@ -24,7 +24,7 @@ public class CourseResponseDTO {
     private String subject;
 
     @JsonProperty("tutor")
-    private TutorResponseDTO tutor;
+    private TutorResponse tutor;
 
     @Builder.Default
     private List<CourseVideoResponseDTO> courseVideos = new ArrayList<>();

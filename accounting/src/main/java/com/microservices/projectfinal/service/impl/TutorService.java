@@ -77,4 +77,13 @@ public class TutorService implements ITutorService {
         }
         return null;
     }
+
+    @Override
+    public TutorResponse getTutorByAccountId(long accountId) {
+        TutorEntity tutor = tutorRepository.getByAccountId(accountId);
+        if (tutor != null) {
+            return buildTutorResponse(tutor);
+        }
+        return null;
+    }
 }

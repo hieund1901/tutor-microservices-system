@@ -1,7 +1,7 @@
 package com.microservices.projectfinal.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -9,7 +9,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 
-@Data
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name = "course_videos")
@@ -17,15 +20,15 @@ public class CourseVideoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private CourseEntity course;
-
+    @Setter
     @Column(name = "video_url", nullable = false)
     private String videoUrl;
-
+    @Setter
     @Column(name = "thumbnail_url")
     private String thumbnailUrl;
 
@@ -35,14 +38,17 @@ public class CourseVideoEntity {
     @Column(length = 500)
     private String description;
 
+    @Setter
     @Column(nullable = false)
     private Long duration;
 
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "boolean default true")
-    private Boolean active;
+    private Boolean active = true;
 
+    @Builder.Default
     @Column(name = "number_of_order", columnDefinition = "int default 0")
-    private Integer numberOfOrder;
+    private Integer numberOfOrder = 0;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)

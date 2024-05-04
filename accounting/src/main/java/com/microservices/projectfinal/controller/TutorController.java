@@ -16,8 +16,13 @@ public class TutorController {
         return tutorService.createTutor(tutorCreateRequest);
     }
 
-    @GetMapping
-    public TutorResponse getTutorByEmail(@RequestParam("email") String email) {
+    @GetMapping("/by-email")
+    public TutorResponse getTutorByEmail(@RequestParam(name = "email") String email) {
         return tutorService.getTutorByEmail(email);
+    }
+
+    @GetMapping("/by-account-id")
+    public TutorResponse getTutorByAccountId(@RequestParam(name = "accountId") Long accountId) {
+        return tutorService.getTutorByAccountId(accountId);
     }
 }

@@ -1,11 +1,12 @@
 package com.microservices.projectfinal.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@JsonRootName("tutor")
 @Getter
 @Builder
 public class TutorResponse {

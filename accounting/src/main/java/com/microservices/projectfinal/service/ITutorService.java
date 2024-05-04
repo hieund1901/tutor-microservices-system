@@ -9,4 +9,5 @@ public interface ITutorService {
     TutorResponse getTutor(long id);
     void deleteTutor(long id);
     TutorResponse getTutorByEmail(String email);
+    TutorResponse getTutorByAccountId(long accountId);
 }

@@ -3,13 +3,19 @@ package com.microservices.projectfinal.service.impl;
 import com.microservices.projectfinal.client.api.account.TutorClient;
 import com.microservices.projectfinal.dto.CourseCreateDTO;
 import com.microservices.projectfinal.dto.CourseResponseDTO;
+import com.microservices.projectfinal.dto.ListCourseResponse;
 import com.microservices.projectfinal.dto.TutorResponse;
 import com.microservices.projectfinal.entity.CourseEntity;
 import com.microservices.projectfinal.repository.CourseRepository;
-import com.microservices.projectfinal.security.AuthenticationFacade;
 import com.microservices.projectfinal.service.ICourseService;
+import com.microservices.projectfinal.util.MediaFileUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -17,34 +23,54 @@ public class CourseService implements ICourseService {
     private final CourseRepository courseRepository;
     private final TutorClient tutorClient;
 
+    @Transactional
     @Override
     public CourseResponseDTO createCourse(CourseCreateDTO courseCreateDTO) {
-
-
         TutorResponse tutorResponse = tutorClient.getTutorByEmail("sonld6@gmail.com");
 
+        String thumbnailPath = MediaFileUtils.saveImage(courseCreateDTO.getThumbnail());
 
         var courseEntityBuilder = CourseEntity.builder()
                 .courseName(courseCreateDTO.getName())
                 .description(courseCreateDTO.getDescription())
                 .subject(courseCreateDTO.getSubject())
                 .price(courseCreateDTO.getPrice())
-                .tutorId(tutorResponse.getAccountId()).build();
+                .tutorId(tutorResponse.getAccountId())
+                .thumbnailPath(thumbnailPath)
+                .build();
 
         CourseEntity courseEntity = courseRepository.save(courseEntityBuilder);
 
+        return buildCourseResponse(courseEntity, tutorResponse);
+    }
+
+    private CourseResponseDTO buildCourseResponse(CourseEntity courseEntity, TutorResponse tutorResponse) {
         return CourseResponseDTO.builder()
                 .id(courseEntity.getId())
                 .name(courseEntity.getCourseName())
                 .description(courseEntity.getDescription())
                 .subject(courseEntity.getSubject())
                 .price(courseEntity.getPrice())
+                .tutor(tutorResponse)
+                .thumbnailPath(courseEntity.getThumbnailPath())
                 .build();
-
     }
 
     @Override
     public CourseResponseDTO updateCourse(CourseCreateDTO courseCreateDTO, Long courseId) {
         return null;
+    }
+
+    @Override
+    public ListCourseResponse getListCourse(int page, int size) {
+        TutorResponse tutorResponse = tutorClient.getTutorByAccountId(7L);
+        Page<CourseEntity> courseEntities = courseRepository.findAllByTutorId(7L,
+                PageRequest.of(page, size));
+        List<CourseResponseDTO> courseResponseDTOS = courseEntities.map(courseEntity -> buildCourseResponse(courseEntity, tutorResponse)).toList();
+        return ListCourseResponse.builder()
+                .courses(courseResponseDTOS)
+                .totalPage(courseEntities.getTotalPages())
+                .totalElements(courseEntities.getTotalElements())
+                .build();
     }
 }
