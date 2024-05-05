@@ -18,14 +18,14 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class HandleExceptions extends ResponseEntityExceptionHandler {
-//    @ExceptionHandler(value = ResponseException.class)
-//    public ResponseEntity<Object> response(ResponseException exception) {
-//        return ResponseHandler.generateResponse(exception.getMessage(), exception.getCode(), exception.getHttpStatus(), null);
-//    }
+    @ExceptionHandler(value = ResponseException.class)
+    public ResponseEntity<Object> response(ResponseException exception) {
+        return ResponseHandler.generateResponse(exception.getMessage(), exception.getHttpStatus(), null);
+    }
 
     @ExceptionHandler(value = AuthenticationException.class)
     public ResponseEntity<Object> responseAuth(AuthenticationException ex) {
-        return ResponseHandler.generateResponse(ex.getMessage(), 4011L, HttpStatus.UNAUTHORIZED, null);
+        return ResponseHandler.generateResponse(ex.getMessage(), HttpStatus.UNAUTHORIZED, null);
     }
 
     @Override
@@ -34,6 +34,6 @@ public class HandleExceptions extends ResponseEntityExceptionHandler {
         List<String> validationList = ex.getBindingResult().getFieldErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList());
-        return ResponseHandler.generateResponse(errorMessage, 4001L, HttpStatus.BAD_REQUEST, validationList);
+        return ResponseHandler.generateResponse(errorMessage,  HttpStatus.BAD_REQUEST, validationList);
     }
 }

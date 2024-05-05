@@ -1,12 +1,14 @@
 package com.microservices.projectfinal.entity;
 
+import com.microservices.projectfinal.dto.CourseVideoUpdateDTO;
+import com.microservices.projectfinal.util.MediaFileUtils;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 
 @Builder
@@ -52,11 +54,31 @@ public class CourseVideoEntity {
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @LastModifiedDate
     @Column(name = "modified_at", nullable = false)
-    private LocalDateTime modifiedAt;
+    private Instant modifiedAt;
 
     // getters and setters
+
+    public void update(CourseVideoUpdateDTO courseVideoUpdateDTO) {
+        this.title = courseVideoUpdateDTO.getTitle();
+        this.description = courseVideoUpdateDTO.getDescription();
+        this.numberOfOrder = courseVideoUpdateDTO.getNumberOfOrder();
+
+        if (courseVideoUpdateDTO.getNewVideo() != null) {
+            var videoInformationModel = MediaFileUtils.saveVideo(courseVideoUpdateDTO.getNewVideo());
+            this.videoUrl = videoInformationModel.getPath();
+            this.duration = videoInformationModel.getDuration();
+        }
+
+        if (courseVideoUpdateDTO.getNewThumbnail() != null) {
+            this.thumbnailUrl = MediaFileUtils.saveImage(courseVideoUpdateDTO.getNewThumbnail());
+        }
+    }
+
+    public void inactive() {
+        this.active = false;
+    }
 }

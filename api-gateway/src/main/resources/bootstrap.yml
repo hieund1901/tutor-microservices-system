@@ -9,7 +9,7 @@ spring:
     config:
       name: api-gateway,config-client
       username: sonld36
-      password: allIAO27
+      password: ${PASSWORD_CONFIG_SERVER}
 
 logging:
   level:

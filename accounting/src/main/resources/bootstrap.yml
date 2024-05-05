@@ -7,4 +7,4 @@ spring:
     config:
       name: accounting-service,config-client
       username: sonld36
-      password: allIAO27
+      password: ${PASSWORD_CONFIG_SERVER}

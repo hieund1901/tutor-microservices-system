@@ -12,13 +12,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.Instant;
 
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name = "course_purchases")
-public class CoursePurchaseEntity {
+@Table(name = "course_enrollments")
+public class CourseEnrollmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,15 +31,13 @@ public class CoursePurchaseEntity {
     @Column(name = "student_id", nullable = false)
     private Long studentId;
 
-    @Column(name = "purchase_date", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Instant purchaseDate;
+    @Column(name = "enrollment_date", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Instant enrollmentDate;
 
-    @Column(name = "payment_id", nullable = false)
-    private Integer paymentId;
-
+    @Builder.Default
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(255) default 'pending'")
-    private PurchaseStatus status = PurchaseStatus.PENDING;
+    @Column(columnDefinition = "varchar(255) default 'inactive'")
+    private EnrollmentStatus status = EnrollmentStatus.INACTIVE;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)
@@ -51,10 +49,8 @@ public class CoursePurchaseEntity {
 
     // getters and setters
 
-    public enum PurchaseStatus {
-        PENDING,
-        COMPLETED,
-        CANCELLED
+    public enum EnrollmentStatus {
+        ACTIVE,
+        INACTIVE
     }
 }
-

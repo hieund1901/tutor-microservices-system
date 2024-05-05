@@ -1,13 +1,11 @@
 package com.microservices.projectfinal.service.impl;
 
 import com.microservices.projectfinal.client.api.account.TutorClient;
-import com.microservices.projectfinal.dto.CourseCreateDTO;
-import com.microservices.projectfinal.dto.CourseResponseDTO;
-import com.microservices.projectfinal.dto.ListCourseResponse;
-import com.microservices.projectfinal.dto.TutorResponse;
+import com.microservices.projectfinal.dto.*;
 import com.microservices.projectfinal.entity.CourseEntity;
 import com.microservices.projectfinal.repository.CourseRepository;
 import com.microservices.projectfinal.service.ICourseService;
+import com.microservices.projectfinal.service.ICourseVideoService;
 import com.microservices.projectfinal.util.MediaFileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,6 +20,7 @@ import java.util.List;
 public class CourseService implements ICourseService {
     private final CourseRepository courseRepository;
     private final TutorClient tutorClient;
+    private final ICourseVideoService courseVideoService;
 
     @Transactional
     @Override
@@ -45,6 +44,7 @@ public class CourseService implements ICourseService {
     }
 
     private CourseResponseDTO buildCourseResponse(CourseEntity courseEntity, TutorResponse tutorResponse) {
+        List<CourseVideoResponseDTO> courseVideoResponseDTOS = courseVideoService.getCourseVideoByCourseId(courseEntity.getId());
         return CourseResponseDTO.builder()
                 .id(courseEntity.getId())
                 .name(courseEntity.getCourseName())
@@ -53,6 +53,7 @@ public class CourseService implements ICourseService {
                 .price(courseEntity.getPrice())
                 .tutor(tutorResponse)
                 .thumbnailPath(courseEntity.getThumbnailPath())
+                .courseVideos(courseVideoResponseDTOS)
                 .build();
     }
 
