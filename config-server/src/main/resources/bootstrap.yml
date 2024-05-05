@@ -7,7 +7,7 @@ spring:
         git:
           uri: https://github.com/sonld36/tutor-config-repository
           username: sonld36
-          password: ${PASSWORD_GITHUB}
+#          password: ${PASSWORD_GITHUB}
           default-label: master
         bootstrap: true
   security:
