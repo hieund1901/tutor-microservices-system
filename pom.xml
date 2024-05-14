@@ -20,7 +20,6 @@
 		<module>app-config-data</module>
 		<module>course-service</module>
 		<module>common-utils</module>
-		<module>client-api</module>
 		<module>shared</module>
 		<module>discovery-sever</module>
 		<module>api-gateway</module>
@@ -37,12 +36,13 @@
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<openfeign.version>4.1.1</openfeign.version>
 		<oauth2-client.version>5.6.0</oauth2-client.version>
-		<servlet-api.version>4.0.1</servlet-api.version>
+		<servlet-api.version>6.0.0</servlet-api.version>
 		<webflux.version>6.1.6</webflux.version>
 		<httpclient5.version>5.3.1</httpclient5.version>
 		<oauth2-client.version>6.2.3</oauth2-client.version>
 		<logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
 		<spring-cloud-commons.version>4.1.2</spring-cloud-commons.version>
+		<spring.security.web.version>6.2.4</spring.security.web.version>
 
 		<collection-utils.version>4.0</collection-utils.version>
 	</properties>
@@ -158,6 +158,18 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-collections4</artifactId>
 				<version>${collection-utils.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>jakarta.servlet</groupId>
+				<artifactId>jakarta.servlet-api</artifactId>
+				<version>${servlet-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring.security.web.version}</version>
 			</dependency>
 
 		</dependencies>

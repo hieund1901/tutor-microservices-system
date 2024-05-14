@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CourseEnrollmentController {
     private final ICourseEnrollmentService courseEnrollmentService;
 
-    @PostMapping("/${courseId}/${userId}")
+    @PostMapping("/{courseId}/{userId}")
     public ResponseEntity<?> enrollCourse(Long courseId, Long userId) {
         courseEnrollmentService.enrollCourse(courseId, userId);
         return ResponseEntity.ok().build();

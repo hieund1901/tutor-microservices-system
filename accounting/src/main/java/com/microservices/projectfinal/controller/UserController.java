@@ -28,8 +28,8 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<CreateUserRequest> createUser(@RequestBody @Valid CreateUserRequest createUserRequest) {
-//        CreateUserRequest created = keycloakAdminClientService.createKeycloakUser(createUserRequest);
-        return ResponseEntity.ok(createUserRequest);
+        CreateUserRequest created = keycloakAdminClientService.createKeycloakUser(createUserRequest);
+        return ResponseEntity.ok(created);
     }
 
     @PostMapping("/login")

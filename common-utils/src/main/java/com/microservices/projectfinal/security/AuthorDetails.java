@@ -13,7 +13,6 @@ import java.util.Map;
 @Builder
 @Getter
 public class AuthorDetails implements UserDetails {
-
     private String username;
     @Setter
     private String email;

@@ -4,6 +4,7 @@ import com.microservices.projectfinal.client.api.account.TutorClient;
 import com.microservices.projectfinal.dto.*;
 import com.microservices.projectfinal.entity.CourseEntity;
 import com.microservices.projectfinal.repository.CourseRepository;
+import com.microservices.projectfinal.security.AuthenticationFacade;
 import com.microservices.projectfinal.service.ICourseService;
 import com.microservices.projectfinal.service.ICourseVideoService;
 import com.microservices.projectfinal.util.MediaFileUtils;
@@ -21,6 +22,7 @@ public class CourseService implements ICourseService {
     private final CourseRepository courseRepository;
     private final TutorClient tutorClient;
     private final ICourseVideoService courseVideoService;
+    private final AuthenticationFacade authenticationFacade;
 
     @Transactional
     @Override

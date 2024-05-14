@@ -31,7 +31,7 @@ public class CoursePurchaseEntity {
     @Column(name = "student_id", nullable = false)
     private Long studentId;
 
-    @Column(name = "purchase_date", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "purchase_date", nullable = false)
     private Instant purchaseDate;
 
     @Column(name = "payment_id", nullable = false)
