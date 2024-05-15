@@ -65,7 +65,7 @@ public class KeycloakAdminClientService {
     }
 
     public AccountEntity getAccount(String email) {
-        return accountService.getAccount(email);
+        return accountService.getAccountByEmail(email);
     }
 
     private static CredentialRepresentation createPasswordCredentials(String password) {

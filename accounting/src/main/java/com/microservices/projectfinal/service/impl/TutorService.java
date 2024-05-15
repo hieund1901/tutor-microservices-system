@@ -20,7 +20,7 @@ public class TutorService implements ITutorService {
     @Override
     public TutorResponse createTutor(TutorCreateRequest tutorCreateRequest) {
         var email = authenticationFacade.getEmail();
-        AccountEntity account = accountService.getAccount(email);
+        AccountEntity account = accountService.getAccountByEmail(email);
 
         TutorEntity tutor = tutorRepository.getByAccountId(account.getId());
 
@@ -70,7 +70,7 @@ public class TutorService implements ITutorService {
 
     @Override
     public TutorResponse getTutorByEmail(String email) {
-        AccountEntity account = accountService.getAccount(email);
+        AccountEntity account = accountService.getAccountByEmail(email);
         TutorEntity tutor = tutorRepository.getByAccountId(account.getId());
         if (tutor != null) {
             return buildTutorResponse(tutor);

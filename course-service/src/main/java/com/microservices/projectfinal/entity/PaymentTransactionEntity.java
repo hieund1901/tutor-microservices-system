@@ -3,7 +3,7 @@ package com.microservices.projectfinal.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,35 +11,32 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@EntityListeners(AuditingEntityListener.class)
+@Builder
 @Entity
-@Table(name = "course_purchases")
-public class CoursePurchaseEntity {
+@Table(name = "payment_transactions")
+@Getter
+@EntityListeners(AuditingEntityListener.class)
+public class PaymentTransactionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
-    private CourseEntity course;
+    @Column(name = "reference_id", nullable = false)
+    private Long referenceId;
 
-    @Column(name = "student_id", nullable = false)
-    private Long studentId;
-
-    @Column(name = "purchase_date", nullable = false)
-    private Instant purchaseDate;
-
-    @Column(name = "payment_id", nullable = false)
-    private Integer paymentId;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(255) default 'pending'")
-    private PurchaseStatus status = PurchaseStatus.PENDING;
+    @Column(name = "reference_type")
+    private ReferenceType referenceType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "purchase_status")
+    private PurchaseStatus purchaseStatus;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)
@@ -51,10 +48,16 @@ public class CoursePurchaseEntity {
 
     // getters and setters
 
+    public enum ReferenceType {
+        COURSE,
+        CALL
+    }
+
     public enum PurchaseStatus {
         PENDING,
-        COMPLETED,
-        CANCELLED
+        APPROVED,
+        DECLINED,
+        REFUNDED
     }
 }
 
