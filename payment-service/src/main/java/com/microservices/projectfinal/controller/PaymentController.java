@@ -1,14 +1,12 @@
 package com.microservices.projectfinal.controller;
 
 import com.microservices.projectfinal.dto.VNPayResponseDTO;
+import com.microservices.projectfinal.dto.VnpayCallbackParam;
 import com.microservices.projectfinal.service.IPaymentService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -19,19 +17,21 @@ public class PaymentController {
 
     private final IPaymentService paymentService;
 
-    @GetMapping("/vn-pay")
+    @GetMapping("/vn-pay/{transactionId}")
     public ResponseEntity<VNPayResponseDTO> pay(
-            HttpServletRequest request
-    ) {
-        return ResponseEntity.ok(paymentService.createVnPayPayment(request));
+            @PathVariable Long transactionId,
+            @RequestParam("amount")BigDecimal amount,
+            @RequestParam("bank_code") String bankCode,
+            HttpServletRequest request) {
+        return ResponseEntity.ok(paymentService.createVnPayPayment(transactionId, amount, bankCode, request));
     }
 
     @GetMapping("/vn-pay-callback")
-    public ResponseEntity<VNPayResponseDTO> callback(HttpServletRequest request) {
-        String status = request.getParameter("vnp_ResponseCode");
+    public ResponseEntity<VNPayResponseDTO> callback(@ModelAttribute VnpayCallbackParam params) {
+        paymentService.processPaymentVnPayCallback(params);
         return ResponseEntity.ok(VNPayResponseDTO.builder()
-                .code(status)
-                .message("Payment " + ("00".equals(status) ? "success" : "failed"))
+                .code(params.getVnp_TransactionStatus())
+                .message("Payment " + ("00".equals(params.getVnp_TransactionStatus()) ? "success" : "failed"))
                 .build());
     }
 

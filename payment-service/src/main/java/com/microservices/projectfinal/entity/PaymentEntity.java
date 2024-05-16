@@ -24,11 +24,9 @@ public class PaymentEntity {
     private Integer userId;
 
     @Builder.Default
-    @Column(columnDefinition = "decimal default 0")
     private BigDecimal amount = BigDecimal.ZERO;
 
     @Builder.Default
-    @Column(columnDefinition = "varchar(255) default 'VND'")
     private String currency = "VND";
 
     @Column(name = "payment_method")
@@ -38,8 +36,11 @@ public class PaymentEntity {
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 
+    @Column(name = "payment_transaction_type")
+    private String paymentTransactionType;
+
     @Column(name = "payment_transaction_id")
-    private String paymentTransactionId;
+    private Long paymentTransactionId;
 
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;

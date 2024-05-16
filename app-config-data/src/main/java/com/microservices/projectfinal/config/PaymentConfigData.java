@@ -18,7 +18,6 @@ public class PaymentConfigData {
         private String secretKey;
         private String version;
         private String command;
-        private String orderType;
         private String apiUrl;
     }
 }

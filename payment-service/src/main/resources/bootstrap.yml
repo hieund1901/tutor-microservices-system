@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: payment-service
+  profiles:
+    active: payment_service
+  cloud:
+    config:
+      name: payment-service,config-client
+      username: sonld36
+      password: ${PASSWORD_CONFIG_SERVER}
