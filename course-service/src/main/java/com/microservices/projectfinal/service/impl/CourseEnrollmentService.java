@@ -72,6 +72,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
     @Override
     public boolean isEnrolled(Long courseId, Long userId) {
-        return false;
+        var courseEnrollmentEntityOptional = courseEnrollmentRepository.findByCourseIdAndStudentId(courseId, userId);
+        return courseEnrollmentEntityOptional.filter(courseEnrollmentEntity -> courseEnrollmentEntity.getStatus() == CourseEnrollmentEntity.EnrollmentStatus.ACTIVE).isPresent();
     }
 }

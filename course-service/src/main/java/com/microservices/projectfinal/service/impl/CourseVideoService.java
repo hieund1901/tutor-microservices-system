@@ -9,6 +9,7 @@ import com.microservices.projectfinal.exception.ResponseException;
 import com.microservices.projectfinal.model.VideoInformationModel;
 import com.microservices.projectfinal.repository.CourseRepository;
 import com.microservices.projectfinal.repository.CourseVideoRepository;
+import com.microservices.projectfinal.service.ICourseEnrollmentService;
 import com.microservices.projectfinal.service.ICourseVideoService;
 import com.microservices.projectfinal.util.MediaFileUtils;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class CourseVideoService implements ICourseVideoService {
     private final CourseVideoRepository courseVideoRepository;
     private final CourseRepository courseRepository;
     private final ResourceLoader resourceLoader;
+    private final ICourseEnrollmentService enrollmentService;
 
     @Transactional
     @Override
@@ -66,7 +68,11 @@ public class CourseVideoService implements ICourseVideoService {
     }
 
     @Override
-    public CourseVideoResponseDTO getCourseVideoById(Long courseId, Long courseVideoId) {
+    public CourseVideoResponseDTO getCourseVideoById(Long userId, Long courseId, Long courseVideoId) {
+        var checkEnrollment = enrollmentService.isEnrolled(courseId, userId);
+        if (!checkEnrollment) {
+            throw new ResponseException("You are not enrolled in this course", HttpStatus.BAD_REQUEST);
+        }
         CourseVideoEntity courseVideoEntity = courseVideoRepository.findByCourseIdAndId(courseId, courseVideoId)
                 .orElseThrow(() -> new ResponseException("Video not found", HttpStatus.BAD_REQUEST));
 
@@ -74,7 +80,12 @@ public class CourseVideoService implements ICourseVideoService {
     }
 
     @Override
-    public Mono<Resource> getVideoResource(Long courseId, Long courseVideoId) {
+    public Mono<Resource> getVideoResource(Long userId, Long courseId, Long courseVideoId) {
+        var checkEnrollment = enrollmentService.isEnrolled(courseId, userId);
+        if (!checkEnrollment) {
+            throw new ResponseException("You are not enrolled in this course", HttpStatus.BAD_REQUEST);
+        }
+
         CourseVideoEntity courseVideoEntity = courseVideoRepository.findByCourseIdAndId(courseId, courseVideoId).orElseThrow(
                 () -> new ResponseException("Video not found", HttpStatus.BAD_REQUEST)
         );

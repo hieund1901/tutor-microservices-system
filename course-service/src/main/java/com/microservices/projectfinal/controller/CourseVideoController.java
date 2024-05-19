@@ -24,13 +24,13 @@ public class CourseVideoController {
     }
 
     @GetMapping(value = "/stream/{courseId}/{courseVideoId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public Mono<Resource> getVideoResource(@PathVariable Long courseId, @PathVariable Long courseVideoId) {
-        return courseVideoService.getVideoResource(courseId, courseVideoId);
+    public Mono<Resource> getVideoResource(@RequestHeader("X-System-UserId") Long userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
+        return courseVideoService.getVideoResource(userId, courseId, courseVideoId);
     }
 
     @GetMapping(value = "/information/{courseId}/{courseVideoId}")
-    public ResponseEntity<?> getVideoInformation(@PathVariable Long courseId, @PathVariable Long courseVideoId) {
-        return ResponseEntity.ok(courseVideoService.getCourseVideoById(courseId, courseVideoId));
+    public ResponseEntity<?> getVideoInformation(@RequestHeader("X-System-UserId") Long userId ,@PathVariable Long courseId, @PathVariable Long courseVideoId) {
+        return ResponseEntity.ok(courseVideoService.getCourseVideoById(userId, courseId, courseVideoId));
     }
 
     @PutMapping(value = "/{courseId}/{courseVideoId}")

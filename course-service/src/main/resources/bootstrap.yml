@@ -5,6 +5,6 @@ spring:
     active: course_service
   cloud:
     config:
-      name: course-service,config-client, config-security
+      name: course-service,config-client, config-security, config-kafka
       username: sonld36
       password: ${PASSWORD_CONFIG_SERVER}

@@ -3,25 +3,30 @@ package com.microservices.projectfinal.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@Getter
 @Table(name = "payments")
 public class PaymentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    private Long userId;
 
     @Builder.Default
     private BigDecimal amount = BigDecimal.ZERO;
@@ -42,9 +47,10 @@ public class PaymentEntity {
     @Column(name = "payment_transaction_id")
     private Long paymentTransactionId;
 
+    @CreatedDate
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
-
+    @LastModifiedDate
     @Column(name = "modified_at", nullable = false)
     private Instant modifiedAt;
 

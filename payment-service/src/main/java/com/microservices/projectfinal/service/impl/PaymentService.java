@@ -1,20 +1,26 @@
 package com.microservices.projectfinal.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microservices.projectfinal.config.PaymentConfigData;
 import com.microservices.projectfinal.dto.VNPayResponseDTO;
 import com.microservices.projectfinal.dto.VnpayCallbackParam;
 import com.microservices.projectfinal.entity.PaymentEntity;
+import com.microservices.projectfinal.entity.PaymentLogEntity;
 import com.microservices.projectfinal.exception.ResponseException;
+import com.microservices.projectfinal.repository.PaymentLogRepository;
 import com.microservices.projectfinal.repository.PaymentRepository;
 import com.microservices.projectfinal.repository.PaymentTransactionRepository;
 import com.microservices.projectfinal.service.IPaymentService;
 import com.microservices.projectfinal.utils.VnPayUtil;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -28,6 +34,8 @@ public class PaymentService implements IPaymentService {
     private final PaymentConfigData paymentConfigData;
     private final PaymentTransactionRepository paymentTransactionRepository;
     private final PaymentRepository paymentRepository;
+    private final PaymentLogRepository paymentLogRepository;
+    private final ObjectMapper objectMapper;
 
     @Override
     public VNPayResponseDTO createVnPayPayment(Long transactionId, BigDecimal amount, String bankCode, HttpServletRequest request) {
@@ -54,25 +62,36 @@ public class PaymentService implements IPaymentService {
                 .build();
     }
 
+    @Transactional
     @Override
-    public int processPaymentVnPayCallback(VnpayCallbackParam params) {
+    public void processPaymentVnPayCallback(VnpayCallbackParam params) throws JsonProcessingException {
         if (!"00".equals(params.getVnp_ResponseCode())) {
             throw new ResponseException("Payment failed", HttpStatus.BAD_REQUEST);
         }
         var transactionId = Long.parseLong(params.getVnp_TxnRef().split("_")[1]);
         var paymentOrderType = params.getVnp_OrderInfo();
+        var transaction = paymentTransactionRepository.findById(transactionId).get();
 
         PaymentEntity paymentEntity = PaymentEntity.builder()
                 .paymentMethod("VNPay")
                 .paymentStatus(PaymentEntity.PaymentStatus.APPROVED)
                 .paymentTransactionId(transactionId)
-                .amount(new BigDecimal(params.getVnp_Amount()))
+                .userId(transaction.getUserId())
+                .amount(new BigDecimal(params.getVnp_Amount()).divide(new BigDecimal(100), 0, RoundingMode.HALF_UP))
                 .currency("VND")
                 .paymentTransactionType(paymentOrderType)
                 .build();
+        var paymentSaved = paymentRepository.save(paymentEntity);
 
-        paymentRepository.save(paymentEntity);
-        return 1;
+        PaymentLogEntity paymentLogEntity = PaymentLogEntity.builder()
+                .paymentId(Long.valueOf(paymentSaved.getId()))
+                .transactionId(transactionId)
+                .paymentType(paymentOrderType)
+                .verb("create")
+                .data(objectMapper.writeValueAsString(paymentSaved))
+                .build();
+
+        paymentLogRepository.save(paymentLogEntity);
     }
 
     private Map<String, String> getVNPayConfig(PaymentConfigData.VnPay vnPayConfigData, Long transactionId) {

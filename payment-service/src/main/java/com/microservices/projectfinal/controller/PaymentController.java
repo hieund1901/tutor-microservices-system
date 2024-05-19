@@ -1,5 +1,6 @@
 package com.microservices.projectfinal.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.microservices.projectfinal.dto.VNPayResponseDTO;
 import com.microservices.projectfinal.dto.VnpayCallbackParam;
 import com.microservices.projectfinal.service.IPaymentService;
@@ -27,7 +28,7 @@ public class PaymentController {
     }
 
     @GetMapping("/vn-pay-callback")
-    public ResponseEntity<VNPayResponseDTO> callback(@ModelAttribute VnpayCallbackParam params) {
+    public ResponseEntity<VNPayResponseDTO> callback(@ModelAttribute VnpayCallbackParam params) throws JsonProcessingException {
         paymentService.processPaymentVnPayCallback(params);
         return ResponseEntity.ok(VNPayResponseDTO.builder()
                 .code(params.getVnp_TransactionStatus())
