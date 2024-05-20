@@ -2,6 +2,7 @@ package com.microservices.projectfinal.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.microservices.projectfinal.config.PaymentConfigData;
 import com.microservices.projectfinal.dto.VNPayResponseDTO;
 import com.microservices.projectfinal.dto.VnpayCallbackParam;
@@ -82,6 +83,7 @@ public class PaymentService implements IPaymentService {
                 .paymentTransactionType(paymentOrderType)
                 .build();
         var paymentSaved = paymentRepository.save(paymentEntity);
+        objectMapper.disable(SerializationFeature.WRAP_ROOT_VALUE);
 
         PaymentLogEntity paymentLogEntity = PaymentLogEntity.builder()
                 .paymentId(Long.valueOf(paymentSaved.getId()))

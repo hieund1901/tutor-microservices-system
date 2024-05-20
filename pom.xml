@@ -43,6 +43,8 @@
 		<logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
 		<spring-cloud-commons.version>4.1.2</spring-cloud-commons.version>
 		<spring.security.web.version>6.2.4</spring.security.web.version>
+		<auth0.jwt.version>3.11.0</auth0.jwt.version>
+		<auth0.jwks.version>0.15.0</auth0.jwks.version>
 
 		<collection-utils.version>4.0</collection-utils.version>
 	</properties>
@@ -185,7 +187,16 @@
 				<artifactId>jackson-datatype-jsr310</artifactId>
 				<version>2.17.0</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>java-jwt</artifactId>
+				<version>${auth0.jwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>jwks-rsa</artifactId>
+				<version>${auth0.jwks.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

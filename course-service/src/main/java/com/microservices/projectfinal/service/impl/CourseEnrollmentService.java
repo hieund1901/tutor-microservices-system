@@ -11,11 +11,13 @@ import com.microservices.projectfinal.repository.PaymentTransactionRepository;
 import com.microservices.projectfinal.service.ICourseEnrollmentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class CourseEnrollmentService implements ICourseEnrollmentService {
@@ -74,5 +76,28 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
     public boolean isEnrolled(Long courseId, Long userId) {
         var courseEnrollmentEntityOptional = courseEnrollmentRepository.findByCourseIdAndStudentId(courseId, userId);
         return courseEnrollmentEntityOptional.filter(courseEnrollmentEntity -> courseEnrollmentEntity.getStatus() == CourseEnrollmentEntity.EnrollmentStatus.ACTIVE).isPresent();
+    }
+
+    @Transactional
+    @Override
+    public void activateCourse(Long transactionId, Long userId) {
+        var coursePaymentTransaction = paymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(transactionId, PaymentTransactionEntity.ReferenceType.COURSE, userId)
+                .orElse(null);
+        if (coursePaymentTransaction == null) {
+            log.error("Transaction not found");
+            return;
+        }
+
+        coursePaymentTransaction.setPurchaseStatus(PaymentTransactionEntity.PurchaseStatus.APPROVED);
+        var courseEnrollmentId = coursePaymentTransaction.getReferenceId();
+        var courseEnrollment = courseEnrollmentRepository.findById(courseEnrollmentId).orElse(null);
+        if (courseEnrollment == null) {
+            log.error("Course enrollment not found");
+            return;
+        }
+
+        courseEnrollment.setStatus(CourseEnrollmentEntity.EnrollmentStatus.ACTIVE);
+        courseEnrollmentRepository.save(courseEnrollment);
+        paymentTransactionRepository.save(coursePaymentTransaction);
     }
 }

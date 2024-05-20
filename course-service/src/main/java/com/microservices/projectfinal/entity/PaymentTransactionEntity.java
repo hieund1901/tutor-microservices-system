@@ -1,10 +1,7 @@
 package com.microservices.projectfinal.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -34,6 +31,7 @@ public class PaymentTransactionEntity {
     @Column(name = "reference_type")
     private ReferenceType referenceType;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     @Column(name = "purchase_status")
     private PurchaseStatus purchaseStatus;

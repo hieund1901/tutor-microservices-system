@@ -73,7 +73,14 @@
             <groupId>com.microservices.projectfinal</groupId>
             <artifactId>dto</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>jwks-rsa</artifactId>
+        </dependency>
 
     </dependencies>
 </project>
