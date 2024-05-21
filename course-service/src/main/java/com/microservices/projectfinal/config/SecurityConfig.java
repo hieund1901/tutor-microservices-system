@@ -2,7 +2,6 @@ package com.microservices.projectfinal.config;
 
 import com.microservices.projectfinal.security.AuthService;
 import com.microservices.projectfinal.security.AuthorDetailsService;
-import com.microservices.projectfinal.security.JwtConverter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,7 +17,6 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -52,20 +49,15 @@ public class SecurityConfig {
     }
 
 
-    @Bean
-    Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {
-        return new JwtConverter(authorDetailsService);
-    }
-
     private void authenticationFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        Optional<Authentication> authentication = this.authenticate((HttpServletRequest) request);
+        Optional<AbstractAuthenticationToken> authentication = this.authenticate((HttpServletRequest) request);
         authentication.ifPresent(SecurityContextHolder.getContext()::setAuthentication);
         chain.doFilter(request, response);
     }
 
-    private Optional<Authentication> authenticate(HttpServletRequest request) {
+    private Optional<AbstractAuthenticationToken> authenticate(HttpServletRequest request) {
         for (AuthService authService : this.authServices) {
-            Optional<Authentication> authentication = authService.authenticate(request);
+            Optional<AbstractAuthenticationToken> authentication = authService.authenticate(request);
             if (authentication.isPresent()) {
                 return authentication;
             }

@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.microservices.projectfinal.exception.InvalidTokenException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -25,21 +26,23 @@ import static java.util.Objects.isNull;
 @Slf4j
 public class JwtTokenValidator {
     private final JwkProvider jwkProvider;
+    private final JwtConverter jwtConverter;
 
-    public JwtTokenValidator(KeycloakJwkProvider jwkProvider) {
+    public JwtTokenValidator(KeycloakJwkProvider jwkProvider, JwtConverter jwtConverter) {
         this.jwkProvider = jwkProvider;
+        this.jwtConverter = jwtConverter;
     }
 
-    public AccessToken validateAuthorizationHeader(String authorizationHeader) {
-        validateToken(authorizationHeader);
-        return new AccessToken(authorizationHeader);
+    public AbstractAuthenticationToken validateAuthorizationHeader(String authorizationHeader) {
+        return validateToken(authorizationHeader);
     }
 
-    private void validateToken(String value) {
+    private AbstractAuthenticationToken validateToken(String value) {
         DecodedJWT decodedJWT = decodeToken(value);
         verifyTokenHeader(decodedJWT);
         verifySignature(decodedJWT);
         verifyPayload(decodedJWT);
+        return this.jwtConverter.convert(decodedJWT);
     }
 
     private DecodedJWT decodeToken(String value) {

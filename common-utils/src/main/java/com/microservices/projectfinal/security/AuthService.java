@@ -7,8 +7,6 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.jwt.Jwt;
 
 import java.util.Base64;
 import java.util.Optional;
@@ -22,7 +20,7 @@ public abstract class AuthService {
     private static final String BEARER_PREFIX = "Bearer ";
     private static final Base64.Decoder B64_DECODER = Base64.getDecoder();
 
-    public abstract Optional<Authentication> authenticate(HttpServletRequest request);
+    public abstract Optional<AbstractAuthenticationToken> authenticate(HttpServletRequest request);
 
     protected static Optional<Credentials> extractBasicAuthHeader(@NonNull HttpServletRequest request) {
         try {

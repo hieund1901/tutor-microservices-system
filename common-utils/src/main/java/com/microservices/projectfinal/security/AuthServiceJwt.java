@@ -2,7 +2,6 @@ package com.microservices.projectfinal.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,11 +15,8 @@ public class AuthServiceJwt extends AuthService {
     }
 
     @Override
-    public Optional<Authentication> authenticate(HttpServletRequest request) {
-        return extractBearerTokenHeader(request, jwtTokenValidator).flatMap(this::verify);
+    public Optional<AbstractAuthenticationToken> authenticate(HttpServletRequest request) {
+        return extractBearerTokenHeader(request, jwtTokenValidator);
     }
 
-    private Optional<? extends Authentication> verify(AbstractAuthenticationToken accessToken) {
-        return Optional.of(accessToken);
-    }
 }
