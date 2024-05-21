@@ -45,6 +45,9 @@ public class AccountEntity {
     @Column(name = "avatar_path")
     private String avatarPath;
 
+    @Column(name = "user_id", unique = true, nullable = false)
+    private String userId;
+
     @CreatedDate
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;

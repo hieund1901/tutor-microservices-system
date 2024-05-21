@@ -12,10 +12,9 @@ public class AuthorDetailsService implements UserDetailsService {
     private String email;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         return AuthorDetails.builder()
-                .username(username)
-                .email(email)
+                .username(userId)
                 .build();
     }
 

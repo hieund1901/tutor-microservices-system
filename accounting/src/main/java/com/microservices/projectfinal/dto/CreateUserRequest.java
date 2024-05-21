@@ -1,5 +1,6 @@
 package com.microservices.projectfinal.dto;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.microservices.projectfinal.entity.AccountEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -11,6 +12,7 @@ import java.util.Date;
 
 @Getter
 @Builder
+@JsonRootName("user")
 public class CreateUserRequest {
     @Size(min = 6, max = 20)
     private String username;

@@ -26,7 +26,7 @@ public class JwtConverter implements Converter<DecodedJWT, AbstractAuthenticatio
     private static final String DEFAULT_ROLE_PREFIX = "ROLE_";
     private static final String DEFAULT_SCOPE_PREFIX = "SCOPE_";
     private static final String SCOPE_SEPARATOR = " ";
-
+    private static final String USER_ID_CLAIM = "sub";
     private final AuthorDetailsService authorDetailsService;
 
     @Override
@@ -35,9 +35,9 @@ public class JwtConverter implements Converter<DecodedJWT, AbstractAuthenticatio
 
         Collection<GrantedAuthority> authorities = getAuthoritiesFromJwt(claims);
         return Optional.ofNullable(
-                authorDetailsService.loadUserByUsername(claims.get(USERNAME_CLAIM).asString())).map(userDetails -> {
+                authorDetailsService.loadUserByUsername(claims.get(USER_ID_CLAIM).asString())).map(userDetails -> {
             ((AuthorDetails) userDetails).setAuthorities(authorities);
-            ((AuthorDetails) userDetails).setEmail(claims.get(EMAIL_CLAIM).asString());
+
             return new UsernamePasswordAuthenticationToken(userDetails, "N/A", authorities);
         }).orElseThrow(() -> new BadCredentialsException("User could not be found!"));
     }
