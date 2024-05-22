@@ -39,7 +39,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
         CourseEnrollmentEntity courseEnrollmentEntity = CourseEnrollmentEntity.builder()
                 .course(courseEntity)
-//                .studentId(userId)
+                .studentId(userId)
                 .enrollmentDate(Instant.now())
                 .status(CourseEnrollmentEntity.EnrollmentStatus.INACTIVE)
                 .build();
@@ -48,7 +48,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
         PaymentTransactionEntity paymentTransaction = PaymentTransactionEntity.builder()
                 .referenceId(courseEnrollment.getId())
-//                .userId(userId)
+                .userId(userId)
                 .referenceType(PaymentTransactionEntity.ReferenceType.COURSE)
                 .purchaseStatus(PaymentTransactionEntity.PurchaseStatus.PENDING)
                 .build();
@@ -58,7 +58,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         return CourseEnrollmentDTO.builder()
                 .id(courseEnrollment.getId())
                 .courseId(courseEntity.getId())
-//                .studentId(userId)
+                .studentId(userId)
                 .transactionId(transactionSaved.getId())
                 .enrollmentDate(courseEnrollment.getEnrollmentDate())
                 .status(courseEnrollment.getStatus().name())
@@ -80,7 +80,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
     @Transactional
     @Override
-    public void activateCourse(Long transactionId, Long userId) {
+    public void activateCourse(Long transactionId, String userId) {
         var coursePaymentTransaction = paymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(transactionId, PaymentTransactionEntity.ReferenceType.COURSE, userId)
                 .orElse(null);
         if (coursePaymentTransaction == null) {

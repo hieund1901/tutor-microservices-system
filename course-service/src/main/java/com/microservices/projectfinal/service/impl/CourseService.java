@@ -4,7 +4,6 @@ import com.microservices.projectfinal.client.api.account.TutorClient;
 import com.microservices.projectfinal.dto.*;
 import com.microservices.projectfinal.entity.CourseEntity;
 import com.microservices.projectfinal.repository.CourseRepository;
-import com.microservices.projectfinal.security.AuthenticationFacade;
 import com.microservices.projectfinal.service.ICourseService;
 import com.microservices.projectfinal.service.ICourseVideoService;
 import com.microservices.projectfinal.util.MediaFileUtils;
@@ -22,11 +21,10 @@ public class CourseService implements ICourseService {
     private final CourseRepository courseRepository;
     private final TutorClient tutorClient;
     private final ICourseVideoService courseVideoService;
-    private final AuthenticationFacade authenticationFacade;
 
     @Transactional
     @Override
-    public CourseResponseDTO createCourse(String userId,CourseCreateDTO courseCreateDTO) {
+    public CourseResponseDTO createCourse(String userId, CourseCreateDTO courseCreateDTO) {
         TutorResponse tutorResponse = tutorClient.getTutorByUserId(userId);
         String thumbnailPath = MediaFileUtils.saveImage(courseCreateDTO.getThumbnail());
 
@@ -36,6 +34,7 @@ public class CourseService implements ICourseService {
                 .subject(courseCreateDTO.getSubject())
                 .price(courseCreateDTO.getPrice())
                 .tutorId(tutorResponse.getAccountId())
+                .userId(userId)
                 .thumbnailPath(thumbnailPath)
                 .build();
 
@@ -64,7 +63,7 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public ListCourseResponse getListCourse(String userId ,int page, int size) {
+    public ListCourseResponse getListCourse(String userId, int page, int size) {
         TutorResponse tutorResponse = tutorClient.getTutorByUserId(userId);
         Page<CourseEntity> courseEntities = courseRepository.findAllByTutorId(tutorResponse.getAccountId(),
                 PageRequest.of(page, size));

@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
     Page<CourseEntity> findAllByTutorId(Long tutorId, Pageable pageable);
-    Optional<CourseEntity> findById(Long courseId);
+    Optional<CourseEntity> findByIdAndUserId(Long courseId, String userId);
 }

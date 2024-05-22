@@ -28,7 +28,7 @@ public class PaymentTransactionEntity {
     private Long referenceId;
 
     @Column(name = "user_id", nullable = false)
-    private Long userId;
+    private String userId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "reference_type")

@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
-import java.sql.Struct;
 import java.util.Date;
 import java.util.List;
 
@@ -36,10 +35,9 @@ public class CourseVideoService implements ICourseVideoService {
 
     @Transactional
     @Override
-    public CourseVideoResponseDTO createCourseVideo(CourseVideoCreateDTO courseVideoCreateDTO) {
-        CourseEntity courseEntity = courseRepository.findById(courseVideoCreateDTO.getCourseId()).orElseThrow(
-                () -> new ResponseException("Course not found", HttpStatus.BAD_REQUEST)
-        );
+    public CourseVideoResponseDTO createCourseVideo(String userId,CourseVideoCreateDTO courseVideoCreateDTO) {
+        CourseEntity courseEntity = courseRepository.findByIdAndUserId(courseVideoCreateDTO.getCourseId(), userId)
+                .orElseThrow(() -> new ResponseException("Course not found", HttpStatus.BAD_REQUEST));
         //chưa handle thứ tự video
         CourseVideoEntity courseVideoEntity = CourseVideoEntity.builder()
                 .title(courseVideoCreateDTO.getTitle())
@@ -55,7 +53,7 @@ public class CourseVideoService implements ICourseVideoService {
         semiSave.setThumbnailUrl(thumbnailPath);
         semiSave.setVideoUrl(videoInfor.getPath());
         semiSave.setDuration(videoInfor.getDuration());
-         CourseVideoEntity finalSaved = courseVideoRepository.save(semiSave);
+        CourseVideoEntity finalSaved = courseVideoRepository.save(semiSave);
         return buildCourseVideoResponse(finalSaved);
     }
 

@@ -33,6 +33,7 @@ services:
         - "API_HOST=host.docker.internal"
     extra_hosts:
       - "Admin-PC:host-gateway"
+      - "localhost:host-gateway"
     networks:
         - ${GLOBAL_NETWORK:-services}
 

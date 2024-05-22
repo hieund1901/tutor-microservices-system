@@ -40,6 +40,9 @@ public class SecurityConfig {
                 .addFilterAt(this::authenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
+                                .requestMatchers(
+                                        request -> request.getServletPath().startsWith("/integration/vn-pay-callback")
+                                ).permitAll()
                                 .anyRequest().authenticated()
                 );
         return http.build();

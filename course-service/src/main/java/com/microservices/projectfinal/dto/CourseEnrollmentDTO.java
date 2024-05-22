@@ -15,7 +15,7 @@ public class CourseEnrollmentDTO {
 
     private Long courseId;
 
-    private Long studentId;
+    private String studentId;
 
     private Long transactionId;
 

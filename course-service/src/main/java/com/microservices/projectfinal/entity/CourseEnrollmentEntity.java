@@ -36,7 +36,6 @@ public class CourseEnrollmentEntity {
 
     @Builder.Default
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(255) default 'inactive'")
     private EnrollmentStatus status = EnrollmentStatus.INACTIVE;
 
     @CreatedDate

@@ -33,8 +33,10 @@ public class CourseEntity {
 
     @Column(nullable = false)
     private String description;
-
+    @Column(name = "tutor_id", nullable = false)
     private long tutorId;
+    @Column(name = "user_id", nullable = false)
+    private String userId;
 
     private BigDecimal price;
 

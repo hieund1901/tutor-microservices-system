@@ -6,5 +6,5 @@ public interface ICourseEnrollmentService {
     CourseEnrollmentDTO enrollCourse(Long courseId, String userId);
     void unEnrollCourse(Long courseId, Long userId);
     boolean isEnrolled(Long courseId, String userId);
-    void activateCourse(Long transactionId, Long userId);
+    void activateCourse(Long transactionId, String userId);
 }

@@ -5,6 +5,6 @@ spring:
     active: payment_service
   cloud:
     config:
-      name: payment-service,config-client
+      name: payment-service,config-client,config-security
       username: sonld36
       password: ${PASSWORD_CONFIG_SERVER}

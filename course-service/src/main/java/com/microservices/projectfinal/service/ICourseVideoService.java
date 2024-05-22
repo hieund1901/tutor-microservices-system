@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface ICourseVideoService {
-    CourseVideoResponseDTO createCourseVideo(CourseVideoCreateDTO courseVideoCreateDTO);
+    CourseVideoResponseDTO createCourseVideo(String userId, CourseVideoCreateDTO courseVideoCreateDTO);
     List<CourseVideoResponseDTO> getCourseVideoByCourseId(Long courseId);
     CourseVideoResponseDTO getCourseVideoById(String userId, Long courseId, Long courseVideoId);
 

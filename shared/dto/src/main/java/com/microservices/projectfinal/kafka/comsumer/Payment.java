@@ -15,7 +15,7 @@ public class Payment {
     private Long id;
 
     @JsonProperty("user_id")
-    private Long userId;
+    private String userId;
 
     private BigDecimal amount = BigDecimal.ZERO;
     private String currency = "VND";

@@ -41,7 +41,7 @@ public class CourseVideoEntity {
     private String description;
 
     @Setter
-    @Column(nullable = false)
+    @Column()
     private Long duration;
 
     @Builder.Default

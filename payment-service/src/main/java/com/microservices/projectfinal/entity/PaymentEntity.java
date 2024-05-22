@@ -26,7 +26,7 @@ public class PaymentEntity {
     private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private Long userId;
+    private String userId;
 
     @Builder.Default
     private BigDecimal amount = BigDecimal.ZERO;
