@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    container_name: postgres
+    hostname: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      POSTGRES_DB: ${POSTGRES_DB:-tutor-system}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./initdb.sql:/docker-entrypoint-initdb.d/init.sql
+    command:
+      - postgres
+      - -c
+      - wal_level=logical
+    networks:
+      - ${GLOBAL_NETWORK:-postgres}
+volumes:
+    postgres_data:
+      driver: local
+

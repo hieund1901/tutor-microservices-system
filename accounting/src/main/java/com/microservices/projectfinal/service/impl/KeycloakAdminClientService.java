@@ -48,7 +48,7 @@ public class KeycloakAdminClientService {
         if (Objects.equals(201, response.getStatus())) {
             var userId = extractUserId(response);
             accountService.createAccount(createUserRequest, userId);
-            assignRoleToUser(userId, PermissionType.STUDENT.name());
+            assignRoleToUser(userId, PermissionType.STUDENT.getType());
 
             return createUserRequest;
         }
