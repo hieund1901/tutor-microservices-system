@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.sql.Struct;
 import java.util.Date;
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class CourseVideoService implements ICourseVideoService {
     }
 
     @Override
-    public CourseVideoResponseDTO getCourseVideoById(Long userId, Long courseId, Long courseVideoId) {
+    public CourseVideoResponseDTO getCourseVideoById(String userId, Long courseId, Long courseVideoId) {
         var checkEnrollment = enrollmentService.isEnrolled(courseId, userId);
         if (!checkEnrollment) {
             throw new ResponseException("You are not enrolled in this course", HttpStatus.BAD_REQUEST);
@@ -80,7 +81,7 @@ public class CourseVideoService implements ICourseVideoService {
     }
 
     @Override
-    public Mono<Resource> getVideoResource(Long userId, Long courseId, Long courseVideoId) {
+    public Mono<Resource> getVideoResource(String userId, Long courseId, Long courseVideoId) {
         var checkEnrollment = enrollmentService.isEnrolled(courseId, userId);
         if (!checkEnrollment) {
             throw new ResponseException("You are not enrolled in this course", HttpStatus.BAD_REQUEST);

@@ -26,9 +26,8 @@ public class CourseService implements ICourseService {
 
     @Transactional
     @Override
-    public CourseResponseDTO createCourse(CourseCreateDTO courseCreateDTO) {
-        String email = authenticationFacade.getEmail();
-        TutorResponse tutorResponse = tutorClient.getTutorByEmail(email);
+    public CourseResponseDTO createCourse(String userId,CourseCreateDTO courseCreateDTO) {
+        TutorResponse tutorResponse = tutorClient.getTutorByUserId(userId);
         String thumbnailPath = MediaFileUtils.saveImage(courseCreateDTO.getThumbnail());
 
         var courseEntityBuilder = CourseEntity.builder()
@@ -65,9 +64,8 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public ListCourseResponse getListCourse(int page, int size) {
-        var email = authenticationFacade.getEmail();
-        TutorResponse tutorResponse = tutorClient.getTutorByEmail(email);
+    public ListCourseResponse getListCourse(String userId ,int page, int size) {
+        TutorResponse tutorResponse = tutorClient.getTutorByUserId(userId);
         Page<CourseEntity> courseEntities = courseRepository.findAllByTutorId(tutorResponse.getAccountId(),
                 PageRequest.of(page, size));
         List<CourseResponseDTO> courseResponseDTOS = courseEntities.map(courseEntity -> buildCourseResponse(courseEntity, tutorResponse)).toList();

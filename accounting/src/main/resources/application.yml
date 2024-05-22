@@ -1,0 +1,4 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: host.docker.internal

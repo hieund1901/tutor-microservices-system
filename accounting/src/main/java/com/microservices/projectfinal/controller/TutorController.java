@@ -1,5 +1,6 @@
 package com.microservices.projectfinal.controller;
 
+import com.microservices.projectfinal.annotation.UserId;
 import com.microservices.projectfinal.dto.TutorCreateRequest;
 import com.microservices.projectfinal.dto.TutorResponse;
 import com.microservices.projectfinal.service.ITutorService;
@@ -12,17 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class TutorController {
     private final ITutorService tutorService;
     @PostMapping
-    public TutorResponse createTutor(@RequestBody TutorCreateRequest tutorCreateRequest) {
-        return tutorService.createTutor(tutorCreateRequest);
+    public TutorResponse createTutor(@UserId String userId, @RequestBody TutorCreateRequest tutorCreateRequest) {
+        return tutorService.createTutor(userId, tutorCreateRequest);
     }
 
-    @GetMapping("/by-email")
-    public TutorResponse getTutorByEmail(@RequestParam(name = "email") String email) {
-        return tutorService.getTutorByEmail(email);
-    }
-
-    @GetMapping("/by-account-id")
-    public TutorResponse getTutorByAccountId(@RequestParam(name = "accountId") Long accountId) {
-        return tutorService.getTutorByAccountId(accountId);
+    @GetMapping
+    public TutorResponse getTutorByEmail(@UserId String userId) {
+        return tutorService.getTutorByUserId(userId);
     }
 }

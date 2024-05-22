@@ -16,15 +16,24 @@ public class AuthServiceBasic extends AuthService {
     private String username;
     @Value("${spring.security.user.password}")
     private String password;
+    private static final String X_USER_ID = "X-User-ID";
 
     @Override
     public Optional<AbstractAuthenticationToken> authenticate(HttpServletRequest request) {
-        return extractBasicAuthHeader(request).flatMap(this::check);
+        return extractBasicAuthHeader(request).flatMap(credentials -> check(credentials, request));
     }
 
-    private Optional<AbstractAuthenticationToken> check(Credentials credentials) {
+    private Optional<AbstractAuthenticationToken> check(Credentials credentials, HttpServletRequest request) {
         if (credentials.getUsername().equals(username) && credentials.getPassword().equals(password)) {
-            return Optional.of(new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword(), List.of(new SimpleGrantedAuthority("ADMIN"))));
+            var userId = request.getHeader(X_USER_ID);
+            if (userId == null) {
+                throw new IllegalStateException("Can't get user id of current context");
+            }
+            var authorDetail = AuthorDetails.builder()
+                    .username(userId)
+                    .authorities(List.of(new SimpleGrantedAuthority(PermissionType.ADMIN.getType())))
+                    .build();
+            return Optional.of(new UsernamePasswordAuthenticationToken(authorDetail, null, authorDetail.getAuthorities()));
         }
         return Optional.empty();
     }

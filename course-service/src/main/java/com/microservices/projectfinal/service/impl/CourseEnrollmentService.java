@@ -28,7 +28,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
     @Transactional
     @Override
-    public CourseEnrollmentDTO enrollCourse(Long courseId, Long userId) {
+    public CourseEnrollmentDTO enrollCourse(Long courseId, String userId) {
         var courseEnrollmentEntityOptional = courseEnrollmentRepository.findByCourseIdAndStudentId(courseId, userId);
         if (courseEnrollmentEntityOptional.isPresent()) {
             throw new ResponseException("Already enrolled", HttpStatus.BAD_REQUEST);
@@ -39,7 +39,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
         CourseEnrollmentEntity courseEnrollmentEntity = CourseEnrollmentEntity.builder()
                 .course(courseEntity)
-                .studentId(userId)
+//                .studentId(userId)
                 .enrollmentDate(Instant.now())
                 .status(CourseEnrollmentEntity.EnrollmentStatus.INACTIVE)
                 .build();
@@ -48,7 +48,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
 
         PaymentTransactionEntity paymentTransaction = PaymentTransactionEntity.builder()
                 .referenceId(courseEnrollment.getId())
-                .userId(userId)
+//                .userId(userId)
                 .referenceType(PaymentTransactionEntity.ReferenceType.COURSE)
                 .purchaseStatus(PaymentTransactionEntity.PurchaseStatus.PENDING)
                 .build();
@@ -58,7 +58,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         return CourseEnrollmentDTO.builder()
                 .id(courseEnrollment.getId())
                 .courseId(courseEntity.getId())
-                .studentId(userId)
+//                .studentId(userId)
                 .transactionId(transactionSaved.getId())
                 .enrollmentDate(courseEnrollment.getEnrollmentDate())
                 .status(courseEnrollment.getStatus().name())
@@ -73,7 +73,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
     }
 
     @Override
-    public boolean isEnrolled(Long courseId, Long userId) {
+    public boolean isEnrolled(Long courseId, String userId) {
         var courseEnrollmentEntityOptional = courseEnrollmentRepository.findByCourseIdAndStudentId(courseId, userId);
         return courseEnrollmentEntityOptional.filter(courseEnrollmentEntity -> courseEnrollmentEntity.getStatus() == CourseEnrollmentEntity.EnrollmentStatus.ACTIVE).isPresent();
     }

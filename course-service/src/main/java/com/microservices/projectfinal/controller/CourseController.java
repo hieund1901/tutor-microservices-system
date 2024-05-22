@@ -1,10 +1,10 @@
 package com.microservices.projectfinal.controller;
 
+import com.microservices.projectfinal.annotation.UserId;
 import com.microservices.projectfinal.dto.CourseCreateDTO;
 import com.microservices.projectfinal.dto.CourseResponseDTO;
 import com.microservices.projectfinal.dto.ListCourseResponse;
 import com.microservices.projectfinal.service.ICourseService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ public class CourseController {
     private final ICourseService courseService;
 
     @PostMapping(value = "/create", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<CourseResponseDTO> createCourse(@ModelAttribute CourseCreateDTO courseCreateDTO) {
-        return ResponseEntity.ok(courseService.createCourse(courseCreateDTO));
+    public ResponseEntity<CourseResponseDTO> createCourse(@UserId String userId, @ModelAttribute CourseCreateDTO courseCreateDTO) {
+        return ResponseEntity.ok(courseService.createCourse(userId, courseCreateDTO));
     }
 
     @GetMapping
-    public ResponseEntity<ListCourseResponse> getListCourse(@RequestParam(value = "page", defaultValue = "0") int page,
+    public ResponseEntity<ListCourseResponse> getListCourse(@UserId String userId, @RequestParam(value = "page", defaultValue = "0") int page,
                                                             @RequestParam(value = "size", defaultValue = "10") int size) {
-        return ResponseEntity.ok(courseService.getListCourse(page, size));
+        return ResponseEntity.ok(courseService.getListCourse(userId,page, size));
     }
 
 

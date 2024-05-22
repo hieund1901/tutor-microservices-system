@@ -30,6 +30,9 @@ services:
         - "SERVER_PORT=8080"
         - "EUREKA_CLIENT_SERVICE-URL_DEFAULT-ZONE=http://discovery-server:8761/eureka"
         - "PASSWORD_CONFIG_SERVER=${PASSWORD_CONFIG_SERVER}"
+        - "API_HOST=host.docker.internal"
+    extra_hosts:
+      - "Admin-PC:host-gateway"
     networks:
         - ${GLOBAL_NETWORK:-services}
 

@@ -16,14 +16,15 @@ public class    TutorClient {
         this.webClientConfigData = webClientConfigData;
     }
 
-    public TutorResponse getTutorByEmail(String email) {
-        return getWebClient(email).bodyToMono(TutorResponse.class).block();
+    public TutorResponse getTutorByUserId(String userId) {
+        return getWebClient(userId).bodyToMono(TutorResponse.class).block();
     }
 
-    private WebClient.ResponseSpec getWebClient(String email) {
+    private WebClient.ResponseSpec getWebClient(String userId) {
         return webClientBuilder.build()
                 .get()
-                .uri(TUTOR_URL + "/by-email", uriBuilder -> uriBuilder.queryParam("email", email).build())
+                .uri(TUTOR_URL)
+                .header("X-User-ID", userId)
                 .retrieve()
                 .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),
                         clientResponse -> clientResponse.bodyToMono(String.class).map(RuntimeException::new)

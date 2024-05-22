@@ -11,9 +11,9 @@ import java.util.List;
 public interface ICourseVideoService {
     CourseVideoResponseDTO createCourseVideo(CourseVideoCreateDTO courseVideoCreateDTO);
     List<CourseVideoResponseDTO> getCourseVideoByCourseId(Long courseId);
-    CourseVideoResponseDTO getCourseVideoById(Long userId, Long courseId, Long courseVideoId);
+    CourseVideoResponseDTO getCourseVideoById(String userId, Long courseId, Long courseVideoId);
 
-    Mono<Resource> getVideoResource(Long userId, Long courseId, Long courseVideoId);
+    Mono<Resource> getVideoResource(String userId, Long courseId, Long courseVideoId);
     CourseVideoResponseDTO updateCourseVideo(Long courseId, Long courseVideoId, CourseVideoUpdateDTO courseVideoUpdateDTO);
     void deleteCourseVideo(Long courseId, Long courseVideoId);
 }

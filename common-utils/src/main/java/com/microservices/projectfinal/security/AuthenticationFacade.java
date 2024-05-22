@@ -10,9 +10,4 @@ public class AuthenticationFacade {
     public Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
-
-
-    public String getEmail() {
-        return ((AuthorDetails) getAuthentication().getPrincipal()).getEmail();
-    }
 }

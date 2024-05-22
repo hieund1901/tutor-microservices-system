@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class CourseEnrollmentController {
     private final ICourseEnrollmentService courseEnrollmentService;
 
-    @GetMapping("/{courseId}/{userId}")
-    public ResponseEntity<?> enrollCourse(@PathVariable Long courseId, @PathVariable Long userId) {
+    @GetMapping("/{courseId}")
+    public ResponseEntity<?> enrollCourse(@PathVariable Long courseId, @RequestHeader("X-User-ID") String userId) {
         return ResponseEntity.ok(courseEnrollmentService.enrollCourse(courseId, userId));
     }
 }

@@ -15,8 +15,6 @@ import java.util.Map;
 public class AuthorDetails implements UserDetails {
     private String username;
     @Setter
-    private String email;
-    @Setter
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, PermissionType> permissions;
 
@@ -32,7 +30,7 @@ public class AuthorDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return this.username;
     }
 
     @Override

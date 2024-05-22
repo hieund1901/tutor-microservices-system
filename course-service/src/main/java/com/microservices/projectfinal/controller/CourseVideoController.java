@@ -1,5 +1,6 @@
 package com.microservices.projectfinal.controller;
 
+import com.microservices.projectfinal.annotation.UserId;
 import com.microservices.projectfinal.dto.CourseVideoCreateDTO;
 import com.microservices.projectfinal.dto.CourseVideoUpdateDTO;
 import com.microservices.projectfinal.service.ICourseVideoService;
@@ -24,12 +25,12 @@ public class CourseVideoController {
     }
 
     @GetMapping(value = "/stream/{courseId}/{courseVideoId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public Mono<Resource> getVideoResource(@RequestHeader("X-System-UserId") Long userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
+    public Mono<Resource> getVideoResource(@UserId String userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
         return courseVideoService.getVideoResource(userId, courseId, courseVideoId);
     }
 
     @GetMapping(value = "/information/{courseId}/{courseVideoId}")
-    public ResponseEntity<?> getVideoInformation(@RequestHeader("X-System-UserId") Long userId ,@PathVariable Long courseId, @PathVariable Long courseVideoId) {
+    public ResponseEntity<?> getVideoInformation(@UserId String userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
         return ResponseEntity.ok(courseVideoService.getCourseVideoById(userId, courseId, courseVideoId));
     }
 

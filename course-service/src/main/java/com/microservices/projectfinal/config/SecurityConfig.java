@@ -1,7 +1,9 @@
 package com.microservices.projectfinal.config;
 
 import com.microservices.projectfinal.security.AuthService;
+import com.microservices.projectfinal.security.AuthorDetails;
 import com.microservices.projectfinal.security.AuthorDetailsService;
+import com.microservices.projectfinal.util.AddParamToHeader;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -15,7 +17,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;

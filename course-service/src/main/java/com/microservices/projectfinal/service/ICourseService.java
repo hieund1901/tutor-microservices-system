@@ -5,10 +5,10 @@ import com.microservices.projectfinal.dto.CourseResponseDTO;
 import com.microservices.projectfinal.dto.ListCourseResponse;
 
 public interface ICourseService {
-    CourseResponseDTO createCourse(CourseCreateDTO courseCreateDTO);
+    CourseResponseDTO createCourse(String userId, CourseCreateDTO courseCreateDTO);
 
     CourseResponseDTO updateCourse(CourseCreateDTO courseCreateDTO, Long courseId);
 
-    ListCourseResponse getListCourse(int page, int size);
+    ListCourseResponse getListCourse(String userId,int page, int size);
 
 }
