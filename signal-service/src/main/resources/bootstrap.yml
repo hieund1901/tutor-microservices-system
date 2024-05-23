@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: signal-service
+  profiles:
+    active: signal_service
+  cloud:
+    config:
+      name: config-client
+      username: sonld36
+      password: ${PASSWORD_CONFIG_SERVER}

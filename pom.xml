@@ -24,7 +24,8 @@
 		<module>discovery-sever</module>
 		<module>api-gateway</module>
 		<module>payment-service</module>
-    </modules>
+		<module>signal-service</module>
+	</modules>
 	<properties>
 		<java.version>17</java.version>
 		<lombok.version>1.18.22</lombok.version>
