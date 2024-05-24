@@ -1,23 +1,27 @@
 package com.microservices.projectfinal.config;
 
-import com.microservices.projectfinal.handler.SignalingHandler;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 @RequiredArgsConstructor
 @Configuration
-@EnableWebSocket
-public class SignalingConfiguration implements WebSocketConfigurer {
-    @Value("${allowed.origins:*}")
-    private String allowedOrigins;
-    private final SignalingHandler signalingHandler;
+@EnableWebSocketMessageBroker
+public class SignalingConfiguration implements WebSocketMessageBrokerConfigurer {
     @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(signalingHandler, "/socket")
-                .setAllowedOrigins(allowedOrigins);
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.enableSimpleBroker("/topic");
+        registry.setApplicationDestinationPrefixes("/app");
+        registry.setUserDestinationPrefix("/user");
+    }
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/signaling")
+                .setAllowedOriginPatterns("*")
+                .withSockJS();
     }
 }

@@ -1,2 +1,10 @@
 server:
   port: 8088
+
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      WRAP_ROOT_VALUE: true
+    deserialization:
+      UNWRAP_ROOT_VALUE: true
