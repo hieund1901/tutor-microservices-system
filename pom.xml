@@ -25,6 +25,7 @@
 		<module>api-gateway</module>
 		<module>payment-service</module>
 		<module>signal-service</module>
+		<module>livechat-service</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>
@@ -47,6 +48,7 @@
 		<auth0.jwt.version>3.11.0</auth0.jwt.version>
 		<auth0.jwks.version>0.15.0</auth0.jwks.version>
 		<storm-websocket.version>2.3.4</storm-websocket.version>
+		<redis.version>3.2.5</redis.version>
 
 		<collection-utils.version>4.0</collection-utils.version>
 	</properties>
@@ -87,6 +89,11 @@
 			<dependency>
 				<groupId>com.microservices.projectfinal</groupId>
 				<artifactId>kafka-consumer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microservices.projectfinal</groupId>
+				<artifactId>redis</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -199,6 +206,13 @@
 				<artifactId>jwks-rsa</artifactId>
 				<version>${auth0.jwks.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${redis.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

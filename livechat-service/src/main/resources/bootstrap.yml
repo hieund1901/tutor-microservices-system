@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: livechat-service
+  profiles:
+    active: livechat_service
+  cloud:
+    config:
+      name: config-client, livechat-service, config-redis
+      username: sonld36
+      password: ${PASSWORD_CONFIG_SERVER}

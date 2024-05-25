@@ -1,16 +1,17 @@
 package com.microservices.projectfinal.handler;
 
-import com.microservices.projectfinal.dto.CallAcceptRequest;
-import com.microservices.projectfinal.dto.CallSession;
-import com.microservices.projectfinal.dto.IncomingCallRequest;
-import com.microservices.projectfinal.dto.CallRequest;
+import com.microservices.projectfinal.constant.CommonConstant;
+import com.microservices.projectfinal.dto.*;
+import com.microservices.projectfinal.service.IUserRedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessageType;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RequiredArgsConstructor
@@ -19,39 +20,80 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SignalingHandler {
 
     private final SimpMessagingTemplate simpleMessageTemplate;
+    private final IUserRedisService userService;
     private ConcurrentHashMap<String, CallSession> callSessions = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, String> userSessionMap = new ConcurrentHashMap<>();
+
+    @MessageMapping("/register")
+    public void handleRegister(Register register, @Header("simpSessionId") String sessionId) {
+        userSessionMap.put(register.getUserId(), sessionId);
+        userService.setUserStatus(register.getUserId(), CommonConstant.UserStatus.ONLINE.name());
+    }
 
 
     @MessageMapping("/call")
     public void handleCall(CallRequest callRequest) {
         //check online for toUserId
+        var toUserStatus = userService.getUserStatus(callRequest.getToUserId());
 
-        String sessionId = UUID.randomUUID().toString();
+        if (toUserStatus.equals(CommonConstant.UserStatus.BUSY.name())) {
+            log.error("User is busy: {}", callRequest.getToUserId());
+            return;
+        }
+
+        var onlineUserSessionId = userSessionMap.get(callRequest.getToUserId());
+        if (onlineUserSessionId == null || toUserStatus.equals(CommonConstant.UserStatus.OFFLINE.name())) {
+            log.error("User is not online: {}", callRequest.getToUserId());
+            return;
+        }
+
         CallSession callSession = CallSession.builder()
-                .sessionId(sessionId)
                 .fromUserId(callRequest.getFromUserId())
                 .toUserId(callRequest.getToUserId())
                 .callerSdpOffer(callRequest.getSdpOffer())
                 .build();
 
-        callSessions.put(sessionId, callSession);
-
-        simpleMessageTemplate.convertAndSendToUser(callRequest.getToUserId(),
-                "/topic/incoming-call",
-                new IncomingCallRequest(sessionId, callRequest.getFromUserId(), callRequest.getToUserId(), callRequest.getSdpOffer()));
+        callSessions.put(callRequest.getFromUserId(), callSession);
+        log.info(onlineUserSessionId);
+        SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
+                .create(SimpMessageType.MESSAGE);
+        headerAccessor.setSessionId(onlineUserSessionId);
+        headerAccessor.setLeaveMutable(true);
+        simpleMessageTemplate.convertAndSendToUser(onlineUserSessionId,
+                "/queue/incoming-call",
+                new IncomingCallRequest(onlineUserSessionId, callRequest.getFromUserId(), callRequest.getToUserId(), callRequest.getSdpOffer()),
+                headerAccessor.getMessageHeaders());
     }
 
-    @MessageMapping("/accept")
+    @MessageMapping("/call-accept")
     public void handleAccept(CallAcceptRequest request) {
-        CallSession session = callSessions.get(request.getSessionId());
-        if (session == null) {
-            log.error("Session not found for sessionId: {}", request.getSessionId());
+        var toUserStatus = userService.getUserStatus(request.getToUserId());
+
+        if (toUserStatus.equals(CommonConstant.UserStatus.BUSY.name())) {
+            log.error("User is busy: {}", request.getToUserId());
             return;
         }
 
+        var onlineUserSessionId = userSessionMap.get(request.getToUserId());
+        if (onlineUserSessionId == null || toUserStatus.equals(CommonConstant.UserStatus.OFFLINE.name())) {
+            log.error("User is not online: {}", request.getToUserId());
+            return;
+        }
+
+        CallSession session = callSessions.get(request.getToUserId());
+        if (session == null) {
+            log.error("Session not found for sessionId: {}", onlineUserSessionId);
+            return;
+        }
+
+        SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
+                .create(SimpMessageType.MESSAGE);
+        headerAccessor.setSessionId(onlineUserSessionId);
+        headerAccessor.setLeaveMutable(true);
+
         session.setCalleeSdpAnswer(request.getCalleeSdpAnswer());
-        simpleMessageTemplate.convertAndSendToUser(session.getFromUserId(),
-                "/topic/call-accepted",
-                new IncomingCallRequest(session.getSessionId(), session.getFromUserId(), session.getToUserId(), session.getCalleeSdpAnswer()));
+        simpleMessageTemplate.convertAndSendToUser(onlineUserSessionId,
+                "/queue/call-accepted",
+                request, headerAccessor.getMessageHeaders());
     }
 }

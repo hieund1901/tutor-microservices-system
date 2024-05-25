@@ -16,6 +16,7 @@
         <module>dto</module>
         <module>client-api</module>
         <module>kafka</module>
+        <module>redis</module>
     </modules>
 
     <properties>

@@ -18,7 +18,9 @@ public class CallRequest {
     private SpdOffer sdpOffer;
 
     @Data
-    public class SpdOffer {
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class SpdOffer {
         private String type;
         private String sdp;
     }

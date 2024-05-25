@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CallAcceptRequest {
-    private String sessionId;
+    private String toUserId;
     private CallRequest.SpdOffer calleeSdpAnswer;
 }

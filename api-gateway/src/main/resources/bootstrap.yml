@@ -15,4 +15,4 @@ logging:
   level:
     root: info
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
-    org.springframework.cloud.gateway: trace
+    org.springframework.cloud.gateway: debug

@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CallSession {
-    private String sessionId;
     private String fromUserId;
     private String toUserId;
     private CallRequest.SpdOffer callerSdpOffer;

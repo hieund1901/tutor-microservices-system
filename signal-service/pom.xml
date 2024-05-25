@@ -19,6 +19,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.microservices.projectfinal</groupId>
+            <artifactId>dto</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.microservices.projectfinal</groupId>
+            <artifactId>redis</artifactId>
+        </dependency>
+
+
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
@@ -34,6 +45,15 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 </project>
