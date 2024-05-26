@@ -17,7 +17,7 @@ import java.time.Instant;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "Accounts")
+@Table(name = "accounts")
 public class AccountEntity {
 
     @Id

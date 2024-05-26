@@ -1,7 +1,7 @@
 package com.microservices.projectfinal.service.impl;
 
 import com.microservices.projectfinal.dto.TutorCreateRequest;
-import com.microservices.projectfinal.dto.TutorResponse;
+import com.microservices.projectfinal.dto.TutorResponseDTO;
 import com.microservices.projectfinal.entity.AccountEntity;
 import com.microservices.projectfinal.entity.TutorEntity;
 import com.microservices.projectfinal.exception.ResponseException;
@@ -24,7 +24,7 @@ public class TutorService implements ITutorService {
     private final AccountRepository accountRepository;
 
     @Override
-    public TutorResponse createTutor(String userId, TutorCreateRequest tutorCreateRequest) {
+    public TutorResponseDTO createTutor(String userId, TutorCreateRequest tutorCreateRequest) {
         AccountEntity account = accountRepository.findByUserId(userId).orElseThrow(
                 () -> new ResponseException("Account not found", HttpStatus.NOT_FOUND)
         );
@@ -46,28 +46,26 @@ public class TutorService implements ITutorService {
         return buildTutorResponse(tutorCreated);
     }
 
-    private TutorResponse buildTutorResponse(TutorEntity tutorEntity) {
+    private TutorResponseDTO buildTutorResponse(TutorEntity tutorEntity) {
         AccountEntity account = tutorEntity.getAccount();
-        return TutorResponse.builder()
+        return TutorResponseDTO.builder()
                 .teachFee(tutorEntity.getTeachFee())
                 .subject(tutorEntity.getSubject())
-                .timePerOnePurchase(tutorEntity.getTimePerOnePurchase())
                 .avatarPath(account.getAvatarPath())
                 .address(account.getAddress())
                 .email(account.getEmail())
                 .firstName(account.getFirstname())
                 .lastName(account.getLastname())
-                .accountId(account.getId())
                 .build();
     }
 
     @Override
-    public TutorResponse updateTutor(long id, TutorCreateRequest tutorCreateRequest) {
+    public TutorResponseDTO updateTutor(long id, TutorCreateRequest tutorCreateRequest) {
         return null;
     }
 
     @Override
-    public TutorResponse getTutor(long id) {
+    public TutorResponseDTO getTutor(long id) {
         return null;
     }
 
@@ -77,7 +75,7 @@ public class TutorService implements ITutorService {
     }
 
     @Override
-    public TutorResponse getTutorByUserId(String userId) {
+    public TutorResponseDTO getTutorByUserId(String userId) {
         AccountEntity account = accountRepository.findByUserId(userId).orElseThrow(
                 () -> new ResponseException("Account not found", HttpStatus.NOT_FOUND)
         );

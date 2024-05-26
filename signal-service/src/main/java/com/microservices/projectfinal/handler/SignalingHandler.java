@@ -21,7 +21,6 @@ public class SignalingHandler {
 
     private final SimpMessagingTemplate simpleMessageTemplate;
     private final IUserRedisService userService;
-    private ConcurrentHashMap<String, CallSession> callSessions = new ConcurrentHashMap<>();
     private ConcurrentHashMap<String, String> userSessionMap = new ConcurrentHashMap<>();
 
     @MessageMapping("/register")
@@ -46,14 +45,6 @@ public class SignalingHandler {
             log.error("User is not online: {}", callRequest.getToUserId());
             return;
         }
-
-        CallSession callSession = CallSession.builder()
-                .fromUserId(callRequest.getFromUserId())
-                .toUserId(callRequest.getToUserId())
-                .callerSdpOffer(callRequest.getSdpOffer())
-                .build();
-
-        callSessions.put(callRequest.getFromUserId(), callSession);
         log.info(onlineUserSessionId);
         SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
                 .create(SimpMessageType.MESSAGE);
@@ -80,18 +71,11 @@ public class SignalingHandler {
             return;
         }
 
-        CallSession session = callSessions.get(request.getToUserId());
-        if (session == null) {
-            log.error("Session not found for sessionId: {}", onlineUserSessionId);
-            return;
-        }
-
         SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
                 .create(SimpMessageType.MESSAGE);
         headerAccessor.setSessionId(onlineUserSessionId);
         headerAccessor.setLeaveMutable(true);
 
-        session.setCalleeSdpAnswer(request.getCalleeSdpAnswer());
         simpleMessageTemplate.convertAndSendToUser(onlineUserSessionId,
                 "/queue/call-accepted",
                 request, headerAccessor.getMessageHeaders());

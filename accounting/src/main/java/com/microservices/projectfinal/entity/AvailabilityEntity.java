@@ -1,41 +1,42 @@
 package com.microservices.projectfinal.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "Availabilities")
+@Getter
+@Table(name = "availabilities")
 public class AvailabilityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "tutor_id")
-    private TutorEntity tutor;
+    @Setter
+    @Column(name = "tutor_id", nullable = false)
+    private String tutorId;
 
-    @Column(name = "start_time", nullable = false)
-    private LocalDateTime startTime;
+    @Setter
+    @Column(name = "dim_time_key", nullable = false)
+    private Long dimTimeKey;
 
-    @Column(name = "end_time", nullable = false)
-    private LocalDateTime endTime;
+    @Setter
+    @Column(name = "is_available")
+    private boolean isAvailable = true;
 
-    @Column(name = "day_of_week", nullable = false)
-    private Integer dayOfWeek;
-
-    @Column(name = "is_active", nullable = false, columnDefinition = "boolean default true")
-    private Boolean isActive = true;
-
+    @CreatedDate
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
+    @LastModifiedDate
     @Column(name = "modified_at", nullable = false)
-    private LocalDateTime modifiedAt;
+    private Instant modifiedAt;
 }

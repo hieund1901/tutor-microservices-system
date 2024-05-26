@@ -1,12 +1,12 @@
 package com.microservices.projectfinal.service;
 
 import com.microservices.projectfinal.dto.TutorCreateRequest;
-import com.microservices.projectfinal.dto.TutorResponse;
+import com.microservices.projectfinal.dto.TutorResponseDTO;
 
 public interface ITutorService {
-    TutorResponse createTutor(String userId,TutorCreateRequest tutorCreateRequest);
-    TutorResponse updateTutor(long id, TutorCreateRequest tutorCreateRequest);
-    TutorResponse getTutor(long id);
+    TutorResponseDTO createTutor(String userId, TutorCreateRequest tutorCreateRequest);
+    TutorResponseDTO updateTutor(long id, TutorCreateRequest tutorCreateRequest);
+    TutorResponseDTO getTutor(long id);
     void deleteTutor(long id);
-    TutorResponse getTutorByUserId(String userId);
+    TutorResponseDTO getTutorByUserId(String userId);
 }

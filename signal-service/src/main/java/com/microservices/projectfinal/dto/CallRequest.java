@@ -10,6 +10,8 @@ import lombok.*;
 @AllArgsConstructor
 @JsonRootName("call_request")
 public class CallRequest {
+    @JsonProperty("call_session_id")
+    private String callSessionId;
     @JsonProperty("from_user_id")
     private String fromUserId;
     @JsonProperty("to_user_id")
