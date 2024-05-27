@@ -27,12 +27,12 @@ public class AvailabilityScheduleController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAvailabilitySchedule(@UserId String userId) {
+    public ResponseEntity<?> getAvailabilityScheduleByUserId(@UserId String userId) {
         return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(userId));
     }
 
     @GetMapping("/{tutorId}")
-    public ResponseEntity<?> getAvailabilitySchedule(@PathVariable String tutorId) {
+    public ResponseEntity<?> getAvailabilityScheduleByTutorId(@PathVariable String tutorId) {
         return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
     }
 }

@@ -46,7 +46,7 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
     @Override
     public AvailabilitiesResponseDTO getAvailabilitySchedule(String tutorId) {
         var timeKeyNow = TimeKeyUtils.generateTimeKey(Instant.now(), LocalTime.now());
-        var availabilities = availabilityRepository.findByTutorIdAndDimTimeKeyGreaterThanEqual(tutorId, timeKeyNow);
+//        var availabilities = availabilityRepository.findByTutorIdAndDimTimeKeyGreaterThanEqual(tutorId, timeKeyNow);
 
         return null;
     }
