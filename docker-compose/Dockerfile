@@ -20,7 +20,7 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 # change these values to point to a running postgres instance
 ENV KC_DB=postgres
-ENV KC_DB_URL=jdbc:postgresql://host.docker.internal:5432/keycloak
+ENV KC_DB_URL=jdbc:postgresql://host.docker.internal:5433/keycloak
 ENV KC_DB_USERNAME=admin
 ENV KC_DB_PASSWORD=admin
 
