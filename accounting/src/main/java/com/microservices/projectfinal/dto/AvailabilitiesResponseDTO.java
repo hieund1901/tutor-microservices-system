@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
+
 @Builder
 @Getter
 @JsonRootName("availabilities")
@@ -15,9 +16,9 @@ public class AvailabilitiesResponseDTO {
 
     @Builder
     @Getter
-    static class AvailabilityResponseDTO {
+    public static class AvailabilityResponseDTO {
         private Long id;
-        private TutorResponseDTO tutor;
+        private String tutorId;
         private TimeDTO time;
     }
 }

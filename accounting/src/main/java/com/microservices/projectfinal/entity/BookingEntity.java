@@ -3,6 +3,7 @@ package com.microservices.projectfinal.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
 @Table(name = "bookings")
 public class BookingEntity {
 
@@ -19,16 +21,11 @@ public class BookingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "availability_id")
-    private AvailabilityEntity availability;
+    @Column(name = "availability_id")
+    private Long availabilityId;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private AccountEntity student;
-
-    @Column(name = "booking_time", nullable = false)
-    private LocalDateTime bookingTime;
+    @Column(name = "student_id")
+    private String studentId;
 
     @Enumerated(EnumType.STRING)
     private BookingStatus status;

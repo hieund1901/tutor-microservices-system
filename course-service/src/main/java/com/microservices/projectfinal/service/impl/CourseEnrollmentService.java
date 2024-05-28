@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Collections;
+import java.util.Objects;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -47,7 +49,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         var courseEnrollment = courseEnrollmentRepository.save(courseEnrollmentEntity);
 
         PaymentTransactionEntity paymentTransaction = PaymentTransactionEntity.builder()
-                .referenceId(courseEnrollment.getId())
+                .referenceIds(Collections.singletonList(courseEnrollment.getId()))
                 .userId(userId)
                 .referenceType(PaymentTransactionEntity.ReferenceType.COURSE)
                 .purchaseStatus(PaymentTransactionEntity.PurchaseStatus.PENDING)
@@ -89,7 +91,9 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         }
 
         coursePaymentTransaction.setPurchaseStatus(PaymentTransactionEntity.PurchaseStatus.APPROVED);
-        var courseEnrollmentId = coursePaymentTransaction.getReferenceId();
+        var courseEnrollmentId = Objects.requireNonNull(coursePaymentTransaction.getReferenceIds()).stream().findFirst().orElseThrow(
+                () -> new ResponseException("Reference id not found", HttpStatus.BAD_REQUEST)
+        );
         var courseEnrollment = courseEnrollmentRepository.findById(courseEnrollmentId).orElse(null);
         if (courseEnrollment == null) {
             log.error("Course enrollment not found");

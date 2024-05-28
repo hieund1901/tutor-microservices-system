@@ -27,12 +27,18 @@ public class AvailabilityScheduleController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAvailabilityScheduleByUserId(@UserId String userId) {
+    public ResponseEntity<?> getAvailabilitySchedule(@UserId String userId) {
         return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(userId));
     }
 
-    @GetMapping("/{tutorId}")
-    public ResponseEntity<?> getAvailabilityScheduleByTutorId(@PathVariable String tutorId) {
-        return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
+//    @GetMapping("/{tutorId}")
+//    public ResponseEntity<?> getAvailabilitySchedule(@PathVariable String tutorId) {
+//        return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
+//    }
+
+    @PostMapping("register")
+    public ResponseEntity<?> registerAvailabilitySchedule(@UserId String studentId, @RequestParam(name = "ids") List<Long> availabilityIds) {
+        availabilityScheduleService.registerAvailability(studentId, availabilityIds);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
