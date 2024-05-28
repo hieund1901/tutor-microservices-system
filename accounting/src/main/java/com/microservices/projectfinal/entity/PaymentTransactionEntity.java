@@ -22,9 +22,8 @@ public class PaymentTransactionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
     @Column(name = "reference_ids", nullable = false)
-    private List<Long> referenceIds;
+    private String referenceIds;
 
     @Column(name = "user_id", nullable = false)
     private String userId;

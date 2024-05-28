@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface AvailabilityRepository extends JpaRepository<AvailabilityEntity, Long> {
     Optional<AvailabilityEntity> findByTutorIdAndDimTimeKey(String tutorId, Long dimTimeKey);
-    List<AvailabilityEntity> findByIdContainsAndDimTimeKeyGreaterThan(List<Long> ids, Long dimTimeKey);
+    List<AvailabilityEntity> findByIdInAndDimTimeKeyGreaterThan(List<Long> ids, Long dimTimeKey);
 }

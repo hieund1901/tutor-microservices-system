@@ -1,9 +1,14 @@
 package com.microservices.projectfinal.util;
 
 import com.microservices.projectfinal.model.VideoInformationModel;
+import io.minio.BucketExistsArgs;
+import io.minio.MakeBucketArgs;
+import io.minio.MinioClient;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Files;
@@ -11,24 +16,24 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-
 public class MediaFileUtils {
 
-    private static final String UPLOAD_DIR = System.getProperty("user.dir") + "\\local-storage-media";
-    private static final String IMAGE_DIR = UPLOAD_DIR + "\\images";
-    private static final String VIDEO_DIR = UPLOAD_DIR + "\\videos";
+//    private static final String UPLOAD_DIR = System.getProperty("user.dir") + "\\local-storage-media";
+    private static final String IMAGE_BUCKET = "images";
+    private static final String VIDEO_BUCKET = "videos";
 
     @SneakyThrows
     public static String saveImage(MultipartFile file) {
         if (file == null || file.isEmpty()) return null;
-        String extension = file.getOriginalFilename().split("\\.")[1];
-        String imageName = UUID.randomUUID() + "." + extension;
-        Path path = Paths.get(IMAGE_DIR);
-        if (!Files.exists(path)) Files.createDirectories(path);
+//        String extension = file.getOriginalFilename().split("\\.")[1];
+//        String imageName = UUID.randomUUID() + "." + extension;
+//        Path path = Paths.get(IMAGE_DIR);
+//        if (!Files.exists(path)) Files.createDirectories(path);
+//
+//        Path fileNameAndPath = Paths.get(IMAGE_DIR, imageName);
+//        Files.write(fileNameAndPath, file.getBytes());
+//        return fileNameAndPath.toString();
 
-        Path fileNameAndPath = Paths.get(IMAGE_DIR, imageName);
-        Files.write(fileNameAndPath, file.getBytes());
-        return fileNameAndPath.toString();
     }
 
     @SneakyThrows
@@ -56,5 +61,11 @@ public class MediaFileUtils {
         FFmpegProbeResult probeResult = ffprobe.probe(fileName);
         // Lấy thời lượng video
         return (long) probeResult.getFormat().duration;
+    }
+
+    @SneakyThrows
+    private void makeBucket(String bucketName) {
+        boolean found = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+        if (!found) minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
     }
 }

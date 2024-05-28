@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -22,7 +23,7 @@ public class BookingService implements IBookingService {
     @Transactional
     @Override
     public void createBooking(String studentId, List<Long> availabilityIds) {
-        var bookingExists = bookingRepository.findByStudentIdAndAvailabilityIdContaining(studentId, availabilityIds);
+        var bookingExists = bookingRepository.findByStudentIdAndAvailabilityIdIn(studentId, availabilityIds);
         if (bookingExists.isPresent()) {
             throw new ResponseException("Booking already exists", HttpStatus.BAD_REQUEST);
         }
@@ -33,9 +34,10 @@ public class BookingService implements IBookingService {
         ).toList();
 
         var saved = bookingRepository.saveAll(bookingEntities);
+        var referenceIds = saved.stream().map(BookingEntity::getId).map(String::valueOf).collect(Collectors.joining(", "));
 
         var transaction = PaymentTransactionEntity.builder()
-                .referenceIds(saved.stream().map(BookingEntity::getId).toList())
+                .referenceIds(referenceIds)
                 .userId(studentId)
                 .referenceType(PaymentTransactionEntity.ReferenceType.CALL)
                 .purchaseStatus(PaymentTransactionEntity.PurchaseStatus.PENDING)

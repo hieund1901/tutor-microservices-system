@@ -29,6 +29,7 @@ public class AvailabilityEntity {
     private Long dimTimeKey;
 
     @Setter
+    @Builder.Default
     @Column(name = "is_available")
     private boolean isAvailable = true;
 

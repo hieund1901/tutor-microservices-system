@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/availability-schedule")
@@ -27,14 +29,14 @@ public class AvailabilityScheduleController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAvailabilitySchedule(@UserId String userId) {
+    public ResponseEntity<?> getAvailabilityScheduleByUserId(@UserId String userId) {
         return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(userId));
     }
 
-//    @GetMapping("/{tutorId}")
-//    public ResponseEntity<?> getAvailabilitySchedule(@PathVariable String tutorId) {
-//        return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
-//    }
+    @GetMapping("/{tutorId}")
+    public ResponseEntity<?> getAvailabilityScheduleByTutorId(@PathVariable String tutorId) {
+        return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
+    }
 
     @PostMapping("register")
     public ResponseEntity<?> registerAvailabilitySchedule(@UserId String studentId, @RequestParam(name = "ids") List<Long> availabilityIds) {

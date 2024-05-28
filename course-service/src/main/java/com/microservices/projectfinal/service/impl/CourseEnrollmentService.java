@@ -16,7 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -49,7 +51,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         var courseEnrollment = courseEnrollmentRepository.save(courseEnrollmentEntity);
 
         PaymentTransactionEntity paymentTransaction = PaymentTransactionEntity.builder()
-                .referenceIds(Collections.singletonList(courseEnrollment.getId()))
+                .referenceIds(courseEnrollment.getId().toString())
                 .userId(userId)
                 .referenceType(PaymentTransactionEntity.ReferenceType.COURSE)
                 .purchaseStatus(PaymentTransactionEntity.PurchaseStatus.PENDING)
@@ -83,7 +85,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
     @Transactional
     @Override
     public void activateCourse(Long transactionId, String userId) {
-        var coursePaymentTransaction = paymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(transactionId, PaymentTransactionEntity.ReferenceType.COURSE, userId)
+        var coursePaymentTransaction = paymentTransactionRepository.findByReferenceIdsAndReferenceTypeAndUserId(String.valueOf(transactionId), PaymentTransactionEntity.ReferenceType.COURSE, userId)
                 .orElse(null);
         if (coursePaymentTransaction == null) {
             log.error("Transaction not found");
@@ -91,7 +93,8 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         }
 
         coursePaymentTransaction.setPurchaseStatus(PaymentTransactionEntity.PurchaseStatus.APPROVED);
-        var courseEnrollmentId = Objects.requireNonNull(coursePaymentTransaction.getReferenceIds()).stream().findFirst().orElseThrow(
+        List<Long> referenceIds = Arrays.stream(coursePaymentTransaction.getReferenceIds().split(",")).map(Long::parseLong).toList();
+        var courseEnrollmentId = Objects.requireNonNull(referenceIds).stream().findFirst().orElseThrow(
                 () -> new ResponseException("Reference id not found", HttpStatus.BAD_REQUEST)
         );
         var courseEnrollment = courseEnrollmentRepository.findById(courseEnrollmentId).orElse(null);

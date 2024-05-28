@@ -1,0 +1,179 @@
+2024-05-28 21:24:24 [background-preinit] [,] INFO   o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-28 21:24:26 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8888
+2024-05-28 21:24:28 [main] [,] INFO   o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=course-service,config-client, config-security, config-kafka, profiles=[course_service], label=null, version=73d3633a8e91888f463b337ad050291532e204ad, state=null
+2024-05-28 21:24:28 [main] [,] INFO   o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client-course_service.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-kafka.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-security.yml'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sonld36/tutor-config-repository/config-client.yml'}]
+2024-05-28 21:24:28 [main] [,] INFO   c.m.projectfinal.CourseServiceApp - The following 1 profile is active: "course_service"
+2024-05-28 21:24:29 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-28 21:24:29 [main] [,] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 297 ms. Found 4 JPA repository interfaces.
+2024-05-28 21:24:30 [main] [,] INFO   o.s.cloud.context.scope.GenericScope - BeanFactory id=81124521-58fd-3cc9-8141-418a403dc9b4
+2024-05-28 21:24:31 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-28 21:24:31 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-28 21:24:31 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-05-28 21:24:31 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-28 21:24:31 [main] [,] WARN   o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-05-28 21:24:31 [main] [,] INFO   o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 0 (http)
+2024-05-28 21:24:31 [main] [,] INFO   o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-auto-1"]
+2024-05-28 21:24:31 [main] [,] INFO   o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-28 21:24:31 [main] [,] INFO   o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-28 21:24:31 [main] [,] INFO   o.a.c.c.C.[.[localhost].[/course] - Initializing Spring embedded WebApplicationContext
+2024-05-28 21:24:31 [main] [,] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3443 ms
+2024-05-28 21:24:32 [main] [,] INFO   o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-28 21:24:32 [main] [,] INFO   org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-28 21:24:32 [main] [,] INFO   o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-28 21:24:33 [main] [,] INFO   o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-28 21:24:33 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-28 21:24:33 [main] [,] INFO   com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@69c0bae6
+2024-05-28 21:24:33 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-28 21:24:33 [main] [,] WARN   org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-28 21:24:36 [main] [,] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-28 21:24:36 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-28 21:24:37 [main] [,] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'courseController' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\controller\CourseController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'courseService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'courseVideoService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseVideoService.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'courseEnrollmentService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseEnrollmentService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'paymentTransactionRepository' defined in com.microservices.projectfinal.repository.PaymentTransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+2024-05-28 21:24:37 [main] [,] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-28 21:24:37 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-28 21:24:37 [main] [,] INFO   com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-28 21:24:37 [main] [,] INFO   o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2024-05-28 21:24:37 [main] [,] INFO   o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-28 21:24:37 [main] [,] ERROR  o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'courseController' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\controller\CourseController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'courseService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'courseVideoService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseVideoService.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'courseEnrollmentService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseEnrollmentService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'paymentTransactionRepository' defined in com.microservices.projectfinal.repository.PaymentTransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.microservices.projectfinal.CourseServiceApp.main(CourseServiceApp.java:11)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'courseService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'courseVideoService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseVideoService.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'courseEnrollmentService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseEnrollmentService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'paymentTransactionRepository' defined in com.microservices.projectfinal.repository.PaymentTransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'courseVideoService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseVideoService.class]: Unsatisfied dependency expressed through constructor parameter 3: Error creating bean with name 'courseEnrollmentService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseEnrollmentService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'paymentTransactionRepository' defined in com.microservices.projectfinal.repository.PaymentTransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 33 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'courseEnrollmentService' defined in file [D:\personal\hieu-datn\tutor-system\course-service\target\classes\com\microservices\projectfinal\service\impl\CourseEnrollmentService.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'paymentTransactionRepository' defined in com.microservices.projectfinal.repository.PaymentTransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 47 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paymentTransactionRepository' defined in com.microservices.projectfinal.repository.PaymentTransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 61 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); Reason: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:135)
+	at org.springframework.data.util.Lazy.get(Lazy.java:113)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 72 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.Optional com.microservices.projectfinal.repository.PaymentTransactionRepository.findByReferenceIdAndReferenceTypeAndUserId(java.lang.Long,com.microservices.projectfinal.entity.PaymentTransactionEntity$ReferenceType,java.lang.String); No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:106)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
+	... 84 common frames omitted
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'referenceId' found for type 'PaymentTransactionEntity'; Did you mean 'referenceIds'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:443)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:419)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:372)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:354)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:332)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:259)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:260)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:389)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:390)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:103)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
+	... 88 common frames omitted

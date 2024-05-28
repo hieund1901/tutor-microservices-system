@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
-    Optional<BookingEntity> findByStudentIdAndAvailabilityIdContaining(String studentId, List<Long> availabilityIds);
+    Optional<BookingEntity> findByStudentIdAndAvailabilityIdIn(String studentId, List<Long> availabilityIds);
 }

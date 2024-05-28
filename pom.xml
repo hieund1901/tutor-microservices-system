@@ -50,6 +50,8 @@
 		<storm-websocket.version>2.3.4</storm-websocket.version>
 		<redis.version>3.2.5</redis.version>
 
+		<minio.version>8.5.10</minio.version>
+
 		<collection-utils.version>4.0</collection-utils.version>
 	</properties>
 
@@ -211,6 +213,12 @@
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-redis</artifactId>
 				<version>${redis.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.minio</groupId>
+				<artifactId>minio</artifactId>
+				<version>${minio.version}</version>
 			</dependency>
 
 		</dependencies>

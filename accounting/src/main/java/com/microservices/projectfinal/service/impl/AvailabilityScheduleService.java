@@ -74,8 +74,8 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
 
     @Transactional
     @Override
-    public void registerAvailability(String studentId, List<Long> availabilityId) {
-        var availabilities = availabilityRepository.findByIdContainsAndDimTimeKeyGreaterThan(availabilityId, TimeKeyUtils.generateTimeKey(Instant.now(), LocalTime.now()));
+    public void registerAvailability(String studentId, List<Long> availabilityIds) {
+        var availabilities = availabilityRepository.findByIdInAndDimTimeKeyGreaterThan(availabilityIds, TimeKeyUtils.generateTimeKey(Instant.now(), LocalTime.now()));
         if (CollectionUtil.isEmpty(availabilities)) {
             throw new ResponseException("No availability found", HttpStatus.BAD_REQUEST);
         }
@@ -89,9 +89,8 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
 
         var makeNotAvailable = availabilities.stream().peek(item -> item.setAvailable(false)).toList();
         var availabilitiesSaved = availabilityRepository.saveAll(makeNotAvailable);
-        bookingService.createBooking(studentId,availabilitiesSaved.stream().map(AvailabilityEntity::getId).toList());
+        bookingService.createBooking(studentId, availabilitiesSaved.stream().map(AvailabilityEntity::getId).toList());
     }
-
 
 
     private AvailabilityEntity checkAvailabilitySchedule(String tutorId, AvailabilityScheduleCreateDTO availabilityScheduleCreateDTO) {
