@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@ConditionalOnProperty(value = "storage.minio.enable", havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(value = "storage.minio.enable", havingValue = "true", matchIfMissing = true)
 @Configuration
 public class MinIOConfig {
     @Value("${minio.url}")

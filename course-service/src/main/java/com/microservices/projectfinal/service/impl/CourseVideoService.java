@@ -14,12 +14,10 @@ import com.microservices.projectfinal.service.ICourseVideoService;
 import com.microservices.projectfinal.util.MediaFileUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import reactor.core.publisher.Mono;
 
 import java.io.InputStream;
 import java.util.Date;
@@ -81,7 +79,7 @@ public class CourseVideoService implements ICourseVideoService {
     }
 
     @Override
-    public Mono<InputStream> getVideoResource(String userId, Long courseId, Long courseVideoId) {
+    public InputStream getVideoResource(String userId, Long courseId, Long courseVideoId) {
         var checkEnrollment = enrollmentService.isEnrolled(courseId, userId);
         if (!checkEnrollment) {
             throw new ResponseException("You are not enrolled in this course", HttpStatus.BAD_REQUEST);
@@ -100,9 +98,7 @@ public class CourseVideoService implements ICourseVideoService {
             throw new ResponseException("Video not found", HttpStatus.BAD_REQUEST);
         }
 
-        InputStream inputStream = mediaFileUtils.getVideo(videoUrl);
-
-        return Mono.just(inputStream);
+        return mediaFileUtils.getVideo(videoUrl);
     }
 
     @Override

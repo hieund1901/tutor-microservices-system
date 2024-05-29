@@ -221,6 +221,13 @@
 				<version>${minio.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-autoconfigure</artifactId>
+				<version>3.2.5</version>
+			</dependency>
+
+
 		</dependencies>
 	</dependencyManagement>
 
