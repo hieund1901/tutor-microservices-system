@@ -1,6 +1,7 @@
 package com.microservices.projectfinal.entity;
 
 import com.microservices.projectfinal.dto.CourseVideoUpdateDTO;
+import com.microservices.projectfinal.model.VideoInformationModel;
 import com.microservices.projectfinal.util.MediaFileUtils;
 import jakarta.persistence.*;
 import lombok.*;
@@ -62,19 +63,20 @@ public class CourseVideoEntity {
 
     // getters and setters
 
-    public void update(CourseVideoUpdateDTO courseVideoUpdateDTO) {
+    public void update(CourseVideoUpdateDTO courseVideoUpdateDTO,
+                       VideoInformationModel videoInformationModel,
+                       String thumbnailUrl) {
         this.title = courseVideoUpdateDTO.getTitle();
         this.description = courseVideoUpdateDTO.getDescription();
         this.numberOfOrder = courseVideoUpdateDTO.getNumberOfOrder();
 
         if (courseVideoUpdateDTO.getNewVideo() != null) {
-            var videoInformationModel = MediaFileUtils.saveVideo(courseVideoUpdateDTO.getNewVideo());
             this.videoUrl = videoInformationModel.getPath();
             this.duration = videoInformationModel.getDuration();
         }
 
         if (courseVideoUpdateDTO.getNewThumbnail() != null) {
-            this.thumbnailUrl = MediaFileUtils.saveImage(courseVideoUpdateDTO.getNewThumbnail());
+            this.thumbnailUrl = thumbnailUrl;
         }
     }
 

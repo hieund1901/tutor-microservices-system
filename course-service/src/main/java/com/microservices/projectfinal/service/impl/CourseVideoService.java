@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class CourseVideoService implements ICourseVideoService {
     private final CourseRepository courseRepository;
     private final ResourceLoader resourceLoader;
     private final ICourseEnrollmentService enrollmentService;
+    private final MediaFileUtils mediaFileUtils;
 
     @Transactional
     @Override
@@ -47,8 +49,8 @@ public class CourseVideoService implements ICourseVideoService {
 
         CourseVideoEntity semiSave = courseVideoRepository.save(courseVideoEntity);
 
-        String thumbnailPath = MediaFileUtils.saveImage(courseVideoCreateDTO.getThumbnail());
-        VideoInformationModel videoInfor = MediaFileUtils.saveVideo(courseVideoCreateDTO.getVideo());
+        String thumbnailPath = mediaFileUtils.saveImage(courseVideoCreateDTO.getThumbnail());
+        VideoInformationModel videoInfor = mediaFileUtils.saveVideo(courseVideoCreateDTO.getVideo());
 
         semiSave.setThumbnailUrl(thumbnailPath);
         semiSave.setVideoUrl(videoInfor.getPath());
@@ -79,7 +81,7 @@ public class CourseVideoService implements ICourseVideoService {
     }
 
     @Override
-    public Mono<Resource> getVideoResource(String userId, Long courseId, Long courseVideoId) {
+    public Mono<InputStream> getVideoResource(String userId, Long courseId, Long courseVideoId) {
         var checkEnrollment = enrollmentService.isEnrolled(courseId, userId);
         if (!checkEnrollment) {
             throw new ResponseException("You are not enrolled in this course", HttpStatus.BAD_REQUEST);
@@ -93,14 +95,23 @@ public class CourseVideoService implements ICourseVideoService {
             throw new ResponseException("Video is inactive", HttpStatus.BAD_REQUEST);
         }
 
-        return Mono.fromSupplier(() -> resourceLoader.getResource("file:" + courseVideoEntity.getVideoUrl()));
+        var videoUrl = courseVideoEntity.getVideoUrl();
+        if (videoUrl == null) {
+            throw new ResponseException("Video not found", HttpStatus.BAD_REQUEST);
+        }
+
+        InputStream inputStream = mediaFileUtils.getVideo(videoUrl);
+
+        return Mono.just(inputStream);
     }
 
     @Override
     public CourseVideoResponseDTO updateCourseVideo(Long courseId, Long courseVideoId, CourseVideoUpdateDTO courseVideoUpdateDTO) {
         CourseVideoEntity courseVideoEntity = courseVideoRepository.findByCourseIdAndId(courseId, courseVideoId)
                 .orElseThrow(() -> new ResponseException("Video not found", HttpStatus.BAD_REQUEST));
-        courseVideoEntity.update(courseVideoUpdateDTO);
+        var videoInformationModel = mediaFileUtils.saveVideo(courseVideoUpdateDTO.getNewVideo());
+        var thumbnailUrl = mediaFileUtils.saveImage(courseVideoUpdateDTO.getNewThumbnail());
+        courseVideoEntity.update(courseVideoUpdateDTO, videoInformationModel, thumbnailUrl);
 
         CourseVideoEntity updated = courseVideoRepository.save(courseVideoEntity);
         return buildCourseVideoResponse(updated);

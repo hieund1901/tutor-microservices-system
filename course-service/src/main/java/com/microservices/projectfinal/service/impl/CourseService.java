@@ -21,12 +21,13 @@ public class CourseService implements ICourseService {
     private final CourseRepository courseRepository;
     private final TutorClient tutorClient;
     private final ICourseVideoService courseVideoService;
+    private final MediaFileUtils mediaFileUtils;
 
     @Transactional
     @Override
     public CourseResponseDTO createCourse(String userId, CourseCreateDTO courseCreateDTO) {
         TutorResponse tutorResponse = tutorClient.getTutorByUserId(userId);
-        String thumbnailPath = MediaFileUtils.saveImage(courseCreateDTO.getThumbnail());
+        String thumbnailPath = mediaFileUtils.saveImage(courseCreateDTO.getThumbnail());
 
         var courseEntityBuilder = CourseEntity.builder()
                 .courseName(courseCreateDTO.getName())

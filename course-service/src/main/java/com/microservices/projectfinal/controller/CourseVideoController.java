@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.io.InputStream;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/video")
@@ -25,7 +27,7 @@ public class CourseVideoController {
     }
 
     @GetMapping(value = "/stream/{courseId}/{courseVideoId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public Mono<Resource> getVideoResource(@UserId String userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
+    public Mono<InputStream> getVideoResource(@UserId String userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
         return courseVideoService.getVideoResource(userId, courseId, courseVideoId);
     }
 
