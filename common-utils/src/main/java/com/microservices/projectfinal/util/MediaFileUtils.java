@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.UUID;
 
+@ConditionalOnProperty(value = "storage.minio.enable", havingValue = "true", matchIfMissing = false)
 @RequiredArgsConstructor
 @Component
 public class MediaFileUtils {
