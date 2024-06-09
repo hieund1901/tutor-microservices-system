@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class BookingService implements IBookingService {
 
     @Transactional
     @Override
-    public void createBooking(String studentId, List<Long> availabilityIds) {
+    public Long createBookingAndTakeTransactionId(String studentId, List<Long> availabilityIds) {
         var bookingExists = bookingRepository.findByStudentIdAndAvailabilityIdIn(studentId, availabilityIds);
         if (bookingExists.isPresent()) {
             throw new ResponseException("Booking already exists", HttpStatus.BAD_REQUEST);
@@ -42,6 +43,23 @@ public class BookingService implements IBookingService {
                 .referenceType(PaymentTransactionEntity.ReferenceType.CALL)
                 .purchaseStatus(PaymentTransactionEntity.PurchaseStatus.PENDING)
                 .build();
-        paymentTransactionRepository.save(transaction);
+        var transactionSaved = paymentTransactionRepository.save(transaction);
+        return transactionSaved.getId();
+    }
+
+    @Override
+    public void activeBooking(Long transactionId, String userId) {
+        var transaction = paymentTransactionRepository.findByIdAndUserId(transactionId, userId)
+                .orElseThrow(() -> new ResponseException("Transaction not found", HttpStatus.NOT_FOUND));
+
+        if (transaction.getPurchaseStatus() == PaymentTransactionEntity.PurchaseStatus.PENDING) {
+            transaction.setPurchaseStatus(PaymentTransactionEntity.PurchaseStatus.APPROVED);
+            paymentTransactionRepository.save(transaction);
+        }
+
+        var referenceIds = Arrays.stream(transaction.getReferenceIds().split(", ")).map(Long::parseLong).collect(Collectors.toList());
+        var bookingEntities = bookingRepository.findByIdIn(referenceIds);
+        bookingEntities.forEach(bookingEntity -> bookingEntity.setStatus(BookingEntity.BookingStatus.CONFIRMED));
+        bookingRepository.saveAll(bookingEntities);
     }
 }

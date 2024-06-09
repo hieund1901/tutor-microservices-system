@@ -12,6 +12,7 @@ import java.util.Date;
 @Builder
 @Getter
 public class TutorResponseDTO {
+    private String userId;
     private String email;
     private String firstName;
     private AccountEntity.Gender gender;

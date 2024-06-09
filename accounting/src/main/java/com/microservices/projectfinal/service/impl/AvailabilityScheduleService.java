@@ -3,13 +3,12 @@ package com.microservices.projectfinal.service.impl;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.microservices.projectfinal.data.dao.AvailabilityScheduleDao;
 import com.microservices.projectfinal.data.model.GetAvailableRequest;
-import com.microservices.projectfinal.dto.AvailabilitiesResponseDTO;
-import com.microservices.projectfinal.dto.AvailabilityScheduleCreateDTO;
-import com.microservices.projectfinal.dto.AvailabilitySchedulesCreateDTO;
-import com.microservices.projectfinal.dto.TimeDTO;
+import com.microservices.projectfinal.dto.*;
 import com.microservices.projectfinal.entity.AvailabilityEntity;
 import com.microservices.projectfinal.exception.ResponseException;
+import com.microservices.projectfinal.mapper.TimeMapper;
 import com.microservices.projectfinal.repository.AvailabilityRepository;
+import com.microservices.projectfinal.repository.DimTimeRepository;
 import com.microservices.projectfinal.service.IAvailabilityScheduleService;
 import com.microservices.projectfinal.service.IBookingService;
 import com.microservices.projectfinal.util.TimeKeyUtils;
@@ -33,6 +32,8 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
     private final AvailabilityRepository availabilityRepository;
     private final AvailabilityScheduleDao availabilityScheduleDao;
     private final IBookingService bookingService;
+    private final DimTimeRepository dimTimeRepository;
+    private final TimeMapper timeMapper;
 
     @Override
     public void createAvailabilitySchedule(String tutorId, AvailabilitySchedulesCreateDTO availabilityScheduleCreateDTO) {
@@ -74,7 +75,7 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
 
     @Transactional
     @Override
-    public void registerAvailability(String studentId, List<Long> availabilityIds) {
+    public AvailabilitiesRegisterResponseDTO registerAvailability(String studentId, List<Long> availabilityIds) {
         var availabilities = availabilityRepository.findByIdInAndDimTimeKeyGreaterThan(availabilityIds, TimeKeyUtils.generateTimeKey(Instant.now(), LocalTime.now()));
         if (CollectionUtil.isEmpty(availabilities)) {
             throw new ResponseException("No availability found", HttpStatus.BAD_REQUEST);
@@ -89,7 +90,11 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
 
         var makeNotAvailable = availabilities.stream().peek(item -> item.setAvailable(false)).toList();
         var availabilitiesSaved = availabilityRepository.saveAll(makeNotAvailable);
-        bookingService.createBooking(studentId, availabilitiesSaved.stream().map(AvailabilityEntity::getId).toList());
+        var transactionId = bookingService.createBookingAndTakeTransactionId(studentId, availabilitiesSaved.stream().map(AvailabilityEntity::getId).toList());
+        return AvailabilitiesRegisterResponseDTO.builder()
+                .transactionId(transactionId)
+                .availabilities(availabilitiesSaved.stream().map(this::mapToAvailabilityResponseDTO).toList())
+                .build();
     }
 
 
@@ -134,5 +139,15 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
 
         availabilitiesResponseDTOBuilder.time(timeDTO);
         return availabilitiesResponseDTOBuilder.build();
+    }
+
+    private AvailabilitiesResponseDTO.AvailabilityResponseDTO mapToAvailabilityResponseDTO(AvailabilityEntity availabilityEntity) {
+        var time = dimTimeRepository.findByTimeKey(availabilityEntity.getDimTimeKey());
+        var timeDTO = timeMapper.toTimeDTO(time);
+        return AvailabilitiesResponseDTO.AvailabilityResponseDTO.builder()
+                .id(availabilityEntity.getId())
+                .tutorId(availabilityEntity.getTutorId())
+                .time(timeDTO)
+                .build();
     }
 }

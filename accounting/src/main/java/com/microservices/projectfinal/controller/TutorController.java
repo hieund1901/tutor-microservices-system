@@ -5,7 +5,10 @@ import com.microservices.projectfinal.dto.TutorCreateRequest;
 import com.microservices.projectfinal.dto.TutorResponseDTO;
 import com.microservices.projectfinal.service.ITutorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -18,7 +21,12 @@ public class TutorController {
     }
 
     @GetMapping
-    public TutorResponseDTO getTutorByEmail(@UserId String userId) {
+    public ResponseEntity<?> getTutors(@RequestParam int page) {
+        return ResponseEntity.ok(tutorService.getListTutor(page));
+    }
+
+    @GetMapping("{userId}")
+    public TutorResponseDTO getTutorByEmail(@PathVariable String userId) {
         return tutorService.getTutorByUserId(userId);
     }
 }

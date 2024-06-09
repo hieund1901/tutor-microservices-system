@@ -1,10 +1,7 @@
 package com.microservices.projectfinal.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 import java.time.LocalDateTime;
@@ -27,8 +24,10 @@ public class BookingEntity {
     @Column(name = "student_id")
     private String studentId;
 
+    @Setter
+    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private BookingStatus status;
+    private BookingStatus status = BookingStatus.PENDING;
 
     // getters and setters
     public enum BookingStatus {

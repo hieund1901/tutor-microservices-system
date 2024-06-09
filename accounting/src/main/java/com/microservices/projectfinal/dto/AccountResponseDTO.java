@@ -15,6 +15,8 @@ public class AccountResponseDTO {
 
     private String lastname;
 
+    private String userId;
+
     private String email;
 
     private Instant birth;

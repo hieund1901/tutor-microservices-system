@@ -8,7 +8,6 @@ import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
@@ -18,12 +17,13 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.UUID;
 
+@ConditionalOnProperty(prefix = "bean.media-file-utils", name = "enabled", havingValue = "true")
 @RequiredArgsConstructor
 @Component
 public class MediaFileUtils {
     private final MinioClient minioClient;
 
-//    private static final String UPLOAD_DIR = System.getProperty("user.dir") + "\\local-storage-media";
+    //    private static final String UPLOAD_DIR = System.getProperty("user.dir") + "\\local-storage-media";
     public static final String IMAGE_BUCKET = "images";
     public static final String VIDEO_BUCKET = "videos";
 

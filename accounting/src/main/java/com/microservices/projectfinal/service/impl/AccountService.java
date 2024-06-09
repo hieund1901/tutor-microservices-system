@@ -77,6 +77,13 @@ public class AccountService implements IAccountService {
 
     }
 
+    @Override
+    public AccountEntity getById(Long id) {
+        return accountRepository.findById(id).orElseThrow(
+                () -> new ResponseException("Account not found", HttpStatus.NOT_FOUND)
+        );
+    }
+
     public UserRepresentation getUserById(String userId) {
         Keycloak keycloak = keycloakProvider.getInstance();
         RealmResource realmResource = keycloak.realm(keyCloakConfigData.getRealm());

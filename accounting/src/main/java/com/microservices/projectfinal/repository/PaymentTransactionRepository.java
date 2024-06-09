@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface PaymentTransactionRepository extends JpaRepository<PaymentTransactionEntity, Long> {
     Optional<PaymentTransactionEntity> findByReferenceIdsLikeAndReferenceTypeAndUserId(String referenceIds, PaymentTransactionEntity.ReferenceType referenceType, String userId);
+    Optional<PaymentTransactionEntity> findByIdAndUserId(Long id, String userId);
 }

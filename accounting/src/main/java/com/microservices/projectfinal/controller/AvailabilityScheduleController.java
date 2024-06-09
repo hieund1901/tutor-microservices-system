@@ -38,9 +38,8 @@ public class AvailabilityScheduleController {
         return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
     }
 
-    @PostMapping("register")
+    @GetMapping("register")
     public ResponseEntity<?> registerAvailabilitySchedule(@UserId String studentId, @RequestParam(name = "ids") List<Long> availabilityIds) {
-        availabilityScheduleService.registerAvailability(studentId, availabilityIds);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(availabilityScheduleService.registerAvailability(studentId, availabilityIds));
     }
 }

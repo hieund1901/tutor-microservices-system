@@ -1,6 +1,7 @@
 package com.microservices.projectfinal.service.impl;
 
 import com.microservices.projectfinal.dto.TutorCreateRequest;
+import com.microservices.projectfinal.dto.TutorListResponseDTO;
 import com.microservices.projectfinal.dto.TutorResponseDTO;
 import com.microservices.projectfinal.entity.AccountEntity;
 import com.microservices.projectfinal.entity.TutorEntity;
@@ -9,8 +10,11 @@ import com.microservices.projectfinal.repository.AccountRepository;
 import com.microservices.projectfinal.repository.TutorRepository;
 import com.microservices.projectfinal.security.AuthenticationFacade;
 import com.microservices.projectfinal.security.PermissionType;
+import com.microservices.projectfinal.service.IAccountService;
 import com.microservices.projectfinal.service.ITutorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class TutorService implements ITutorService {
     private final TutorRepository tutorRepository;
     private final AuthenticationFacade authenticationFacade;
-    private final AccountService accountService;
+    private final IAccountService accountService;
     private final KeycloakAdminClientService keycloakAdminClientService;
     private final AccountRepository accountRepository;
 
@@ -87,6 +91,30 @@ public class TutorService implements ITutorService {
         return null;
     }
 
+    @Override
+    public TutorListResponseDTO getListTutor(int page) {
+        Page<TutorEntity> tutorEntities = tutorRepository.findAll(PageRequest.of(page - 1, 10));
+        var tutors = tutorEntities.get().map((item) -> {
+            AccountEntity account = item.getAccount();
+            return TutorResponseDTO.builder()
+                    .teachFee(item.getTeachFee())
+                    .subject(item.getSubject())
+                    .avatarPath(account.getAvatarPath())
+                    .address(account.getAddress())
+                    .email(account.getEmail())
+                    .firstName(account.getFirstname())
+                    .lastName(account.getLastname())
+                    .userId(account.getUserId())
+                    .build();
+        });
+
+        return TutorListResponseDTO.builder()
+                .tutors(tutors.toList())
+                .total(tutorEntities.getTotalPages())
+                .build();
+
+    }
+
 //    @Override
 //    public TutorResponse getTutorByEmail(String email) {
 //        AccountEntity account = accountService.getAccountByEmail(email);
@@ -97,12 +125,4 @@ public class TutorService implements ITutorService {
 //        return null;
 //    }
 //
-//    @Override
-//    public TutorResponse getTutorByAccountId(long accountId) {
-//        TutorEntity tutor = tutorRepository.getByAccountId(accountId);
-//        if (tutor != null) {
-//            return buildTutorResponse(tutor);
-//        }
-//        return null;
-//    }
 }

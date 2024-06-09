@@ -11,4 +11,5 @@ public interface IAccountService {
     AccountEntity getAccountByEmail(String email);
     AccountResponseDTO getAccountByUserId(String userId);
     void getAllAccounts();
+    AccountEntity getById(Long id);
 }
