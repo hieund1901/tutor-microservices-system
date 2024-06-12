@@ -11,4 +11,5 @@ public interface ITutorService {
     void deleteTutor(long id);
     TutorResponseDTO getTutorByUserId(String userId);
     TutorListResponseDTO getListTutor(int page);
+
 }

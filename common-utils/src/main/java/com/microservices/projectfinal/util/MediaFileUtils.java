@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.UUID;
 
-@ConditionalOnProperty(prefix = "bean.media-file-utils", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "bean.media-file-utils", name = "enabled", havingValue = "true", matchIfMissing = true)
 @RequiredArgsConstructor
 @Component
 public class MediaFileUtils {
@@ -44,6 +44,16 @@ public class MediaFileUtils {
         );
 
         return imageName;
+    }
+
+    @SneakyThrows
+    public InputStream getImage(String imageName) {
+        return minioClient.getObject(
+                GetObjectArgs.builder()
+                        .bucket(IMAGE_BUCKET)
+                        .object(imageName)
+                        .build()
+        );
     }
 
     @SneakyThrows

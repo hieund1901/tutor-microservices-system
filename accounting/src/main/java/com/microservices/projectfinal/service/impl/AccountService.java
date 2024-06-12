@@ -9,6 +9,7 @@ import com.microservices.projectfinal.exception.ResponseException;
 import com.microservices.projectfinal.mapper.AccountMapper;
 import com.microservices.projectfinal.repository.AccountRepository;
 import com.microservices.projectfinal.service.IAccountService;
+import com.microservices.projectfinal.util.MediaFileUtils;
 import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.RealmResource;
@@ -17,6 +18,8 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
+
 @RequiredArgsConstructor
 @Service
 public class AccountService implements IAccountService {
@@ -24,6 +27,7 @@ public class AccountService implements IAccountService {
     private final AccountMapper accountMapper;
     private final KeycloakProvider keycloakProvider;
     private final KeyCloakConfigData keyCloakConfigData;
+    private final MediaFileUtils mediaFileUtils;
 
 
     @Override
@@ -82,6 +86,11 @@ public class AccountService implements IAccountService {
         return accountRepository.findById(id).orElseThrow(
                 () -> new ResponseException("Account not found", HttpStatus.NOT_FOUND)
         );
+    }
+
+    @Override
+    public InputStream getAvatar(String avatarPath) {
+        return mediaFileUtils.getImage(avatarPath);
     }
 
     public UserRepresentation getUserById(String userId) {

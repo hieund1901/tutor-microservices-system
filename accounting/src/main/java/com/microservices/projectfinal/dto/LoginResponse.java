@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.Builder;
 import lombok.Getter;
 
-@JsonRootName("vnpay_response")
-@Getter
+@JsonRootName("login")
 @Builder
-public class VNPayResponseDTO {
-    public String code;
-    public String message;
-    public String paymentUrl;
+@Getter
+public class LoginResponse {
+    private final String accessToken;
 }

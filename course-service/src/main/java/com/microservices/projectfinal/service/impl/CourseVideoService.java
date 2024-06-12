@@ -129,7 +129,7 @@ public class CourseVideoService implements ICourseVideoService {
                 .description(courseVideoEntity.getDescription())
                 .videoUrl(courseVideoEntity.getVideoUrl())
                 .status(courseVideoEntity.getActive() ? "active" : "inactive")
-                .duration(courseVideoEntity.getDuration())
+                .duration(courseVideoEntity.getDuration() == null ? 0 : courseVideoEntity.getDuration())
                 .numberOfOrder(courseVideoEntity.getNumberOfOrder())
                 .thumbnailUrl(courseVideoEntity.getThumbnailUrl())
                 .createdAt(Date.from(courseVideoEntity.getCreatedAt()))

@@ -27,7 +27,7 @@ public class AuthServiceBasic extends AuthService {
         if (credentials.getUsername().equals(username) && credentials.getPassword().equals(password)) {
             var userId = request.getHeader(X_USER_ID);
             if (userId == null) {
-                throw new IllegalStateException("Can't get user id of current context");
+                userId = String.valueOf(1);
             }
             var authorDetail = AuthorDetails.builder()
                     .username(userId)

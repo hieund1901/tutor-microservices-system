@@ -23,7 +23,7 @@ public class    TutorClient {
     private WebClient.ResponseSpec getWebClient(String userId) {
         return webClientBuilder.build()
                 .get()
-                .uri(TUTOR_URL)
+                .uri(TUTOR_URL, uriBuilder -> uriBuilder.pathSegment(userId).build())
                 .header("X-User-ID", userId)
                 .retrieve()
                 .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),
@@ -31,17 +31,4 @@ public class    TutorClient {
                 );
     }
 
-    public TutorResponse getTutorByAccountId(Long accountId) {
-        return getWebClient(accountId).bodyToMono(TutorResponse.class).block();
-    }
-
-    private WebClient.ResponseSpec getWebClient(Long accountId) {
-        return webClientBuilder.build()
-                .get()
-                .uri(TUTOR_URL + "/by-account-id", uriBuilder -> uriBuilder.queryParam("accountId", accountId).build())
-                .retrieve()
-                .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),
-                        clientResponse -> clientResponse.bodyToMono(String.class).map(RuntimeException::new)
-                );
-    }
 }

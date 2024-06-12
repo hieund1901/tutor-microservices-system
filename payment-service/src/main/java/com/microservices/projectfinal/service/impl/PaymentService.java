@@ -3,6 +3,7 @@ package com.microservices.projectfinal.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.microservices.projectfinal.client.api.course.EnrollClient;
 import com.microservices.projectfinal.config.PaymentConfigData;
 import com.microservices.projectfinal.dto.VNPayResponseDTO;
 import com.microservices.projectfinal.dto.VnpayCallbackParam;
@@ -37,6 +38,7 @@ public class PaymentService implements IPaymentService {
     private final PaymentRepository paymentRepository;
     private final PaymentLogRepository paymentLogRepository;
     private final ObjectMapper objectMapper;
+    private final EnrollClient enrollClient;
 
     @Override
     public VNPayResponseDTO createVnPayPayment(Long transactionId, BigDecimal amount, String bankCode, HttpServletRequest request) {
@@ -65,7 +67,7 @@ public class PaymentService implements IPaymentService {
 
     @Transactional
     @Override
-    public void processPaymentVnPayCallback(VnpayCallbackParam params) throws JsonProcessingException {
+    public String processPaymentVnPayCallback(VnpayCallbackParam params) throws JsonProcessingException {
         if (!"00".equals(params.getVnp_ResponseCode())) {
             throw new ResponseException("Payment failed", HttpStatus.BAD_REQUEST);
         }
@@ -94,6 +96,16 @@ public class PaymentService implements IPaymentService {
                 .build();
 
         paymentLogRepository.save(paymentLogEntity);
+
+        var urlRedirect = "http://localhost:5173/";
+
+        if (paymentOrderType.equalsIgnoreCase("course")) {
+            var enrolledCourses = enrollClient.getEnrolledCourses(Long.valueOf(transaction.getReferenceIds().split(",")[0]));
+            var courseIds = enrolledCourses.getCourseId();
+            urlRedirect += "course/" + courseIds;
+        }
+
+        return urlRedirect;
     }
 
     private Map<String, String> getVNPayConfig(PaymentConfigData.VnPay vnPayConfigData, Long transactionId) {

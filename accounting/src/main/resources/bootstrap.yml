@@ -5,6 +5,6 @@ spring:
     active: accounting
   cloud:
     config:
-      name: accounting-service,config-client, config-security, config-kafka
+      name: accounting-service,config-client, config-security, config-kafka, config-minio
       username: sonld36
       password: ${PASSWORD_CONFIG_SERVER}

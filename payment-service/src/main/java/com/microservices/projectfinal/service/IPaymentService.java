@@ -9,5 +9,5 @@ import java.math.BigDecimal;
 
 public interface IPaymentService {
     VNPayResponseDTO createVnPayPayment(Long transactionId, BigDecimal amount, String bankCode, HttpServletRequest request);
-    void processPaymentVnPayCallback(VnpayCallbackParam params) throws JsonProcessingException;
+    String processPaymentVnPayCallback(VnpayCallbackParam params) throws JsonProcessingException;
 }

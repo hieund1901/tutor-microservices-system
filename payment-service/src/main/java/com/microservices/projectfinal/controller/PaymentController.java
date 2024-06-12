@@ -6,6 +6,8 @@ import com.microservices.projectfinal.dto.VnpayCallbackParam;
 import com.microservices.projectfinal.service.IPaymentService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +30,11 @@ public class PaymentController {
     }
 
     @GetMapping("/vn-pay-callback")
-    public ResponseEntity<VNPayResponseDTO> callback(@ModelAttribute VnpayCallbackParam params) throws JsonProcessingException {
-        paymentService.processPaymentVnPayCallback(params);
-        return ResponseEntity.ok(VNPayResponseDTO.builder()
-                .code(params.getVnp_TransactionStatus())
-                .message("Payment " + ("00".equals(params.getVnp_TransactionStatus()) ? "success" : "failed"))
-                .build());
+    public ResponseEntity<Void> callback(@ModelAttribute VnpayCallbackParam params) throws JsonProcessingException {
+        var redirectUrl = paymentService.processPaymentVnPayCallback(params);
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .header(HttpHeaders.LOCATION, redirectUrl)
+                .build();
     }
 
 }

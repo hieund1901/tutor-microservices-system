@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.InputStream;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -64,15 +65,29 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public ListCourseResponse getListCourse(String userId, int page, int size) {
-        TutorResponse tutorResponse = tutorClient.getTutorByUserId(userId);
-        Page<CourseEntity> courseEntities = courseRepository.findAllByTutorId(tutorResponse.getAccountId(),
-                PageRequest.of(page, size));
-        List<CourseResponseDTO> courseResponseDTOS = courseEntities.map(courseEntity -> buildCourseResponse(courseEntity, tutorResponse)).toList();
+    public ListCourseResponse getListCourse(int page, int size) {
+        Page<CourseEntity> courseEntities = courseRepository.findAll(
+                PageRequest.of(page - 1, size));
+        List<CourseResponseDTO> courseResponseDTOS = courseEntities.map(courseEntity -> {
+            TutorResponse tutorResponse = tutorClient.getTutorByUserId(courseEntity.getUserId());
+            return buildCourseResponse(courseEntity, tutorResponse);
+        }).toList();
         return ListCourseResponse.builder()
                 .courses(courseResponseDTOS)
                 .totalPage(courseEntities.getTotalPages())
                 .totalElements(courseEntities.getTotalElements())
                 .build();
+    }
+
+    @Override
+    public InputStream getThumbnail(String thumbnailPath) {
+        return mediaFileUtils.getImage(thumbnailPath);
+    }
+
+    @Override
+    public CourseResponseDTO getCourse(Long courseId) {
+        CourseEntity courseEntity = courseRepository.findById(courseId).orElseThrow();
+        TutorResponse tutorResponse = tutorClient.getTutorByUserId(courseEntity.getUserId());
+        return buildCourseResponse(courseEntity, tutorResponse);
     }
 }

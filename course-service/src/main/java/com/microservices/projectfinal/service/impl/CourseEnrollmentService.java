@@ -107,4 +107,19 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
         courseEnrollmentRepository.save(courseEnrollment);
         paymentTransactionRepository.save(coursePaymentTransaction);
     }
+
+    @Override
+    public CourseEnrollmentDTO getEnrolledCourses(Long id) {
+        return courseEnrollmentRepository.findById(id)
+                .map(courseEnrollmentEntity -> CourseEnrollmentDTO.builder()
+                        .id(courseEnrollmentEntity.getId())
+                        .courseId(courseEnrollmentEntity.getCourse().getId())
+                        .studentId(courseEnrollmentEntity.getStudentId())
+                        .enrollmentDate(courseEnrollmentEntity.getEnrollmentDate())
+                        .status(courseEnrollmentEntity.getStatus().name())
+                        .createdAt(courseEnrollmentEntity.getCreatedAt())
+                        .modifiedAt(courseEnrollmentEntity.getModifiedAt())
+                        .build())
+                .orElseThrow(() -> new ResponseException("Course enrollment not found", HttpStatus.NOT_FOUND));
+    }
 }
