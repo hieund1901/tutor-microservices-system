@@ -99,5 +99,12 @@ public class KeycloakAdminClientService {
         userResource.roles().realmLevel().add(Collections.singletonList(roleRepresentation));
     }
 
+    public String getRole(String userId) {
+        Keycloak keycloak = keycloakProvider.getInstance();
+        RealmResource realmResource = keycloak.realm(keyCloakConfigData.getRealm());
+        UserResource userResource = realmResource.users().get(userId);
+        return userResource.roles().realmLevel().listEffective().stream().findFirst().get().getName();
+    }
+
 
 }

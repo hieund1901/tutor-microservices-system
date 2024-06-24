@@ -84,4 +84,9 @@ public class UserController {
         }
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).body(new InputStreamResource(thumbnail));
     }
+
+    @GetMapping("/appointment")
+    public ResponseEntity<?> getAppointment(@UserId String userId, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return ResponseEntity.ok(accountService.getAppointments(userId, page, size));
+    }
 }

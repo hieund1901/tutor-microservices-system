@@ -10,5 +10,7 @@ public interface IAvailabilityScheduleService {
     void createAvailabilitySchedule(String tutorId, AvailabilitySchedulesCreateDTO availabilityScheduleCreateDTO);
     void updateAvailabilitySchedule(String tutorId, AvailabilitySchedulesCreateDTO availabilityScheduleCreateDTO);
     AvailabilitiesResponseDTO getAvailabilitySchedule(String tutorId);
-    AvailabilitiesRegisterResponseDTO registerAvailability(String studentId, List<Long> availabilityId);
+    AvailabilitiesRegisterResponseDTO registerAvailability(String studentId,String tutorId, List<Long> availabilityId);
+    AvailabilitiesResponseDTO getByIds(List<Long> ids);
+    AvailabilitiesResponseDTO getAvailabilityScheduleByUserIdAndTimeKey(String userId, Long timeKey);
 }

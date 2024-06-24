@@ -4,13 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.microservices.projectfinal.data.dao.AvailabilityScheduleDao;
 import com.microservices.projectfinal.data.model.GetAvailableRequest;
 import com.microservices.projectfinal.dto.*;
+import com.microservices.projectfinal.entity.AccountEntity;
 import com.microservices.projectfinal.entity.AvailabilityEntity;
+import com.microservices.projectfinal.entity.TutorEntity;
 import com.microservices.projectfinal.exception.ResponseException;
 import com.microservices.projectfinal.mapper.TimeMapper;
+import com.microservices.projectfinal.repository.AccountRepository;
 import com.microservices.projectfinal.repository.AvailabilityRepository;
 import com.microservices.projectfinal.repository.DimTimeRepository;
+import com.microservices.projectfinal.repository.TutorRepository;
 import com.microservices.projectfinal.service.IAvailabilityScheduleService;
 import com.microservices.projectfinal.service.IBookingService;
+import com.microservices.projectfinal.service.ITutorService;
 import com.microservices.projectfinal.util.TimeKeyUtils;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -34,12 +39,13 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
     private final IBookingService bookingService;
     private final DimTimeRepository dimTimeRepository;
     private final TimeMapper timeMapper;
-
+    private final AccountRepository accountRepository;
+    private final TutorRepository tutorRepository;
     @Override
     public void createAvailabilitySchedule(String tutorId, AvailabilitySchedulesCreateDTO availabilityScheduleCreateDTO) {
         var availabilities = availabilityScheduleCreateDTO.getAvailabilitySchedules();
         var availabilitiesEntityToSave = availabilities.stream().map(
-                item -> checkAvailabilitySchedule(tutorId, item)
+                item -> checkAvailabilitySchedule(tutorId, item.getTimeKey())
         ).toList();
         availabilityRepository.saveAll(availabilitiesEntityToSave);
     }
@@ -49,7 +55,7 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
         var availabilities = availabilityScheduleCreateDTO.getAvailabilitySchedules();
         var availabilitiesEntityToUpdate = availabilities.stream().map(
                 item -> {
-                    var availabilityEntity = checkAvailabilitySchedule(tutorId, item);
+                    var availabilityEntity = checkAvailabilitySchedule(tutorId, item.getTimeKey());
                     availabilityEntity.setAvailable(item.isAvailable());
                     return availabilityEntity;
                 }
@@ -75,8 +81,8 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
 
     @Transactional
     @Override
-    public AvailabilitiesRegisterResponseDTO registerAvailability(String studentId, List<Long> availabilityIds) {
-        var availabilities = availabilityRepository.findByIdInAndDimTimeKeyGreaterThan(availabilityIds, TimeKeyUtils.generateTimeKey(Instant.now(), LocalTime.now()));
+    public AvailabilitiesRegisterResponseDTO registerAvailability(String studentId,String tutorId, List<Long> availabilityIds) {
+        var availabilities = availabilityRepository.findByDimTimeKeyInAndTutorId(availabilityIds, tutorId);
         if (CollectionUtil.isEmpty(availabilities)) {
             throw new ResponseException("No availability found", HttpStatus.BAD_REQUEST);
         }
@@ -97,9 +103,33 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
                 .build();
     }
 
+    @Override
+    public AvailabilitiesResponseDTO getByIds(List<Long> ids) {
+        var timeKeyNow = TimeKeyUtils.generateTimeKey(Instant.now(), LocalTime.now());
+        var availabilities = availabilityRepository.findByIdInAndDimTimeKeyGreaterThanEqual(ids, timeKeyNow);
+        var mapped = availabilities.stream().map(this::mapToAvailabilityResponseDTO).toList();
+        return AvailabilitiesResponseDTO.builder()
+                .availabilities(mapped)
+                .build();
+    }
 
-    private AvailabilityEntity checkAvailabilitySchedule(String tutorId, AvailabilityScheduleCreateDTO availabilityScheduleCreateDTO) {
-        var timeKey = getTimeKey(availabilityScheduleCreateDTO);
+    @Override
+    public AvailabilitiesResponseDTO getAvailabilityScheduleByUserIdAndTimeKey(String userId, Long timeKey) {
+        var startTimeKey = TimeKeyUtils.startTimeKey(timeKey);
+        var endTimeKey = TimeKeyUtils.endTimeKey(timeKey);
+        var availabilities = availabilityRepository.findByTutorIdAndDimTimeKeyBetweenAndAvailableIsTrue(userId, startTimeKey, endTimeKey);
+        if (CollectionUtil.isEmpty(availabilities)) {
+            throw new ResponseException("No availability found", HttpStatus.BAD_REQUEST);
+        }
+
+
+        return AvailabilitiesResponseDTO.builder()
+                .availabilities(availabilities.stream().map(this::mapToAvailabilityResponseDTO).toList())
+                .build();
+    }
+
+
+    private AvailabilityEntity checkAvailabilitySchedule(String tutorId, Long timeKey) {
         var availabilityEntity = availabilityRepository.findByTutorIdAndDimTimeKey(tutorId, timeKey);
         return availabilityEntity.orElseGet(() -> AvailabilityEntity.builder()
                 .tutorId(tutorId)
@@ -108,16 +138,17 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
     }
 
     private Long getTimeKey(AvailabilityScheduleCreateDTO availabilityScheduleCreateDTO) {
-        var time = availabilityScheduleCreateDTO.getStartTime();
-        var day = availabilityScheduleCreateDTO.getDayStart();
-        return TimeKeyUtils.generateTimeKey(day, time);
+        return availabilityScheduleCreateDTO.getTimeKey();
     }
 
     private AvailabilitiesResponseDTO.AvailabilityResponseDTO mapToAvailabilitiesResponseDTO(Map<String, Object> availabilities) {
+
+        var tutor = getTutorByUserId((String) availabilities.get("tutorId"));
         var availabilitiesResponseDTOBuilder = AvailabilitiesResponseDTO.AvailabilityResponseDTO
                 .builder()
                 .id((Long) availabilities.get("id"))
-                .tutorId((String) availabilities.get("tutor_id"));
+                .tutor(tutor);
+
         ;
         var timeDTO = new TimeDTO();
         for (var field : timeDTO.getClass().getDeclaredFields()) {
@@ -144,10 +175,37 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
     private AvailabilitiesResponseDTO.AvailabilityResponseDTO mapToAvailabilityResponseDTO(AvailabilityEntity availabilityEntity) {
         var time = dimTimeRepository.findByTimeKey(availabilityEntity.getDimTimeKey());
         var timeDTO = timeMapper.toTimeDTO(time);
+        var tutor = getTutorByUserId(availabilityEntity.getTutorId());
         return AvailabilitiesResponseDTO.AvailabilityResponseDTO.builder()
                 .id(availabilityEntity.getId())
-                .tutorId(availabilityEntity.getTutorId())
+                .tutor(tutor)
                 .time(timeDTO)
+                .build();
+    }
+
+    public TutorResponseDTO getTutorByUserId(String userId) {
+        AccountEntity account = accountRepository.findByUserId(userId).orElseThrow(
+                () -> new ResponseException("Account not found", HttpStatus.NOT_FOUND)
+        );
+
+        TutorEntity tutor = tutorRepository.getByAccountId(account.getId());
+        if (tutor != null) {
+            return buildTutorResponse(tutor);
+        }
+        return null;
+    }
+
+    private TutorResponseDTO buildTutorResponse(TutorEntity tutorEntity) {
+        AccountEntity account = tutorEntity.getAccount();
+        return TutorResponseDTO.builder()
+                .teachFee(tutorEntity.getTeachFee())
+                .subject(tutorEntity.getSubject())
+                .avatarPath(account.getAvatarPath())
+                .address(account.getAddress())
+                .email(account.getEmail())
+                .firstName(account.getFirstname())
+                .lastName(account.getLastname())
+                .userId(account.getUserId())
                 .build();
     }
 }

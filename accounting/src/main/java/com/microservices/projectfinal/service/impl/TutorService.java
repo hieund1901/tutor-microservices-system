@@ -22,8 +22,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TutorService implements ITutorService {
     private final TutorRepository tutorRepository;
-    private final AuthenticationFacade authenticationFacade;
-    private final IAccountService accountService;
     private final KeycloakAdminClientService keycloakAdminClientService;
     private final AccountRepository accountRepository;
 
@@ -60,6 +58,7 @@ public class TutorService implements ITutorService {
                 .email(account.getEmail())
                 .firstName(account.getFirstname())
                 .lastName(account.getLastname())
+                .userId(account.getUserId())
                 .build();
     }
 

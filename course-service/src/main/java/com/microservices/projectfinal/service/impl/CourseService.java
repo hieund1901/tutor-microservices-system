@@ -2,20 +2,28 @@ package com.microservices.projectfinal.service.impl;
 
 import com.microservices.projectfinal.client.api.account.TutorClient;
 import com.microservices.projectfinal.dto.*;
+import com.microservices.projectfinal.entity.CourseEnrollmentEntity;
 import com.microservices.projectfinal.entity.CourseEntity;
+import com.microservices.projectfinal.repository.CourseEnrollmentRepository;
 import com.microservices.projectfinal.repository.CourseRepository;
+import com.microservices.projectfinal.security.AuthorDetails;
+import com.microservices.projectfinal.service.ICourseEnrollmentService;
 import com.microservices.projectfinal.service.ICourseService;
 import com.microservices.projectfinal.service.ICourseVideoService;
 import com.microservices.projectfinal.util.MediaFileUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Objects;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class CourseService implements ICourseService {
@@ -23,6 +31,7 @@ public class CourseService implements ICourseService {
     private final TutorClient tutorClient;
     private final ICourseVideoService courseVideoService;
     private final MediaFileUtils mediaFileUtils;
+    private final CourseEnrollmentRepository courseEnrollmentRepository;
 
     @Transactional
     @Override
@@ -89,5 +98,38 @@ public class CourseService implements ICourseService {
         CourseEntity courseEntity = courseRepository.findById(courseId).orElseThrow();
         TutorResponse tutorResponse = tutorClient.getTutorByUserId(courseEntity.getUserId());
         return buildCourseResponse(courseEntity, tutorResponse);
+    }
+
+    @Override
+    public ListCourseResponse getListCourseBought(String userId, int page, int size) {
+        var enrollments = courseEnrollmentRepository.findByStudentIdAndStatusIs(userId, CourseEnrollmentEntity.EnrollmentStatus.ACTIVE, PageRequest.of(page - 1, size));
+        List<CourseResponseDTO> courseResponseDTOS = enrollments.stream().map(enrollment -> {
+            CourseEntity courseEntity = enrollment.getCourse();
+            TutorResponse tutorResponse = tutorClient.getTutorByUserId(courseEntity.getUserId());
+            return buildCourseResponse(courseEntity, tutorResponse);
+        }).toList();
+        return ListCourseResponse.builder()
+                .courses(courseResponseDTOS)
+                .page(page)
+                .size(size)
+                .totalElements(enrollments.getTotalElements())
+                .totalPage(enrollments.getTotalPages())
+                .build();
+    }
+
+    @Override
+    public ListCourseResponse getCoursesByUserId(String userId) {
+        Page<CourseEntity> courseEntities = courseRepository.findAllByUserId(userId, PageRequest.of(0, 10));
+
+        List<CourseResponseDTO> courseResponseDTOS = courseEntities.map(courseEntity -> {
+            TutorResponse tutorResponse = tutorClient.getTutorByUserId(courseEntity.getUserId());
+            return buildCourseResponse(courseEntity, tutorResponse);
+        }).toList();
+
+        return ListCourseResponse.builder()
+                .courses(courseResponseDTOS)
+                .totalPage(courseEntities.getTotalPages())
+                .totalElements(courseEntities.getTotalElements())
+                .build();
     }
 }

@@ -31,7 +31,7 @@ public class AvailabilityEntity {
     @Setter
     @Builder.Default
     @Column(name = "is_available")
-    private boolean isAvailable = true;
+    private boolean available = true;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)

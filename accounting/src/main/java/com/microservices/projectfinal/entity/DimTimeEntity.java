@@ -30,6 +30,9 @@ public class DimTimeEntity {
     @Column(name = "day_of_week", nullable = false)
     private Integer dayOfWeek;
 
+    @Column(name = "day_of_month", nullable = false)
+    private Integer dayOfMonth;
+
     @Column(name = "day_name", nullable = false)
     private String dayName;
 

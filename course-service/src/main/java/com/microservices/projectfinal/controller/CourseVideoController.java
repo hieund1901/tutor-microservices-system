@@ -32,8 +32,8 @@ public class CourseVideoController {
 
     @GetMapping(value = "/stream/{courseId}/{courseVideoId}")
     public ResponseEntity<InputStreamResource> getVideoResource(@UserId String userId, @PathVariable Long courseId, @PathVariable Long courseVideoId) {
+        InputStream stream = courseVideoService.getVideoResource(userId, courseId, courseVideoId);
         try {
-            InputStream stream = courseVideoService.getVideoResource(userId, courseId, courseVideoId);
             InputStreamResource inputStreamResource = new InputStreamResource(stream);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.parseMediaType("video/mp4"));

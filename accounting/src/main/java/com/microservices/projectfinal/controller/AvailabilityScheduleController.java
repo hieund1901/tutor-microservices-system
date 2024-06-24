@@ -38,8 +38,13 @@ public class AvailabilityScheduleController {
         return ResponseEntity.ok(availabilityScheduleService.getAvailabilitySchedule(tutorId));
     }
 
-    @GetMapping("register")
-    public ResponseEntity<?> registerAvailabilitySchedule(@UserId String studentId, @RequestParam(name = "ids") List<Long> availabilityIds) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(availabilityScheduleService.registerAvailability(studentId, availabilityIds));
+    @GetMapping("/register/{tutorId}")
+    public ResponseEntity<?> registerAvailabilitySchedule(@UserId String studentId, @PathVariable String tutorId, @RequestParam(name = "timeKeys") List<Long> availabilityIds) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(availabilityScheduleService.registerAvailability(studentId, tutorId,availabilityIds));
+    }
+
+    @GetMapping(value = "/{tutorId}", params = "timeKey")
+    public ResponseEntity<?> getAvailabilityScheduleByTimeKey(@PathVariable String tutorId,@RequestParam Long timeKey) {
+        return ResponseEntity.ok(availabilityScheduleService.getAvailabilityScheduleByUserIdAndTimeKey(tutorId, timeKey));
     }
 }

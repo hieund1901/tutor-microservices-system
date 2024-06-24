@@ -30,4 +30,6 @@ public class AccountResponseDTO {
     private Instant createdAt;
 
     private Instant modifiedAt;
+
+    private String role;
 }

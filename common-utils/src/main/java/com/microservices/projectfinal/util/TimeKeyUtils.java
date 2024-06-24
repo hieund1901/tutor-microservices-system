@@ -12,4 +12,16 @@ public class TimeKeyUtils {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHH");
         return Long.parseLong(localDateTime.format(formatter));
     }
+
+    public  static Long startTimeKey(Long timeKey) {
+        String timeKeyString = timeKey.toString();
+        String startTimeKey = timeKeyString.concat("00");
+        return Long.parseLong(startTimeKey);
+    }
+
+    public static Long endTimeKey(Long timeKey) {
+        String timeKeyString = timeKey.toString();
+        String endTimeKey = timeKeyString.concat("23");
+        return Long.parseLong(endTimeKey);
+    }
 }

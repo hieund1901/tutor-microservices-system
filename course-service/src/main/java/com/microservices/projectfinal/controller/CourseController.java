@@ -6,7 +6,6 @@ import com.microservices.projectfinal.dto.CourseResponseDTO;
 import com.microservices.projectfinal.dto.ListCourseResponse;
 import com.microservices.projectfinal.service.ICourseService;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +31,12 @@ public class CourseController {
         return ResponseEntity.ok(courseService.getListCourse(page, size));
     }
 
+    @GetMapping("/enrolled")
+    public ResponseEntity<ListCourseResponse> getListCourseBought(@UserId String userId, @RequestParam(value = "page", defaultValue = "1") int page,
+                                                                  @RequestParam(value = "size", defaultValue = "10") int size) {
+        return ResponseEntity.ok(courseService.getListCourseBought(userId, page, size));
+    }
+
     @GetMapping("/thumbnail")
     public ResponseEntity<InputStreamResource> getThumbnail(@RequestParam String thumbnailPath) throws IOException {
         InputStream thumbnail = courseService.getThumbnail(thumbnailPath);
@@ -52,5 +57,10 @@ public class CourseController {
     @GetMapping("{courseId}")
     public ResponseEntity<CourseResponseDTO> getCourse(@PathVariable Long courseId) {
         return ResponseEntity.ok(courseService.getCourse(courseId));
+    }
+
+    @GetMapping("/tutor/{tutorId}")
+    public ResponseEntity<?> getCourseByTutorId(@PathVariable String tutorId) {
+        return ResponseEntity.ok(courseService.getCoursesByUserId(tutorId));
     }
 }

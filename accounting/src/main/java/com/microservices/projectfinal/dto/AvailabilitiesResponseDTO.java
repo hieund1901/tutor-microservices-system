@@ -16,7 +16,7 @@ public class AvailabilitiesResponseDTO {
     @Getter
     public static class AvailabilityResponseDTO {
         private Long id;
-        private String tutorId;
+        private TutorResponseDTO tutor;
         private TimeDTO time;
     }
 }

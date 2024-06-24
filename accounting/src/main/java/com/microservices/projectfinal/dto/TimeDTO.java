@@ -21,6 +21,8 @@ public class TimeDTO {
     private String dayName;
     @JsonProperty("day_of_week")
     private Integer dayOfWeek;
+    @JsonProperty("day_of_month")
+    private Integer dayOfMonth;
     @JsonProperty("week_of_year")
     private Integer weekOfYear;
     @JsonProperty("_month")

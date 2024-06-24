@@ -25,7 +25,7 @@ public class BookingService implements IBookingService {
     @Override
     public Long createBookingAndTakeTransactionId(String studentId, List<Long> availabilityIds) {
         var bookingExists = bookingRepository.findByStudentIdAndAvailabilityIdIn(studentId, availabilityIds);
-        if (bookingExists.isPresent()) {
+        if (!bookingExists.isEmpty()) {
             throw new ResponseException("Booking already exists", HttpStatus.BAD_REQUEST);
         }
         var bookingEntities = availabilityIds.stream().map(availabilityId -> BookingEntity.builder()

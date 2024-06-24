@@ -21,5 +21,6 @@ public class TutorResponse {
     private long timePerOnePurchase;
     private BigDecimal teachFee;
     private long accountId;
+    private String userId;
     private Date joinedAt;
 }
