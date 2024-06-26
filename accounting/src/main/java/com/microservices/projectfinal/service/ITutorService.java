@@ -10,6 +10,6 @@ public interface ITutorService {
     TutorResponseDTO getTutor(long id);
     void deleteTutor(long id);
     TutorResponseDTO getTutorByUserId(String userId);
-    TutorListResponseDTO getListTutor(int page);
+    TutorListResponseDTO getListTutor(int page, int size);
 
 }

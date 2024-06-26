@@ -33,6 +33,12 @@ public class AvailabilityEntity {
     @Column(name = "is_available")
     private boolean available = true;
 
+    @Setter
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status = Status.ACTIVE;
+
     @CreatedDate
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
@@ -40,4 +46,8 @@ public class AvailabilityEntity {
     @LastModifiedDate
     @Column(name = "modified_at", nullable = false)
     private Instant modifiedAt;
+
+    public enum Status {
+        ACTIVE, INACTIVE, BOOKED
+    }
 }

@@ -12,5 +12,6 @@ public interface AvailabilityRepository extends JpaRepository<AvailabilityEntity
     Optional<AvailabilityEntity> findByTutorIdAndDimTimeKey(String tutorId, Long dimTimeKey);
     List<AvailabilityEntity> findByDimTimeKeyInAndTutorId(List<Long> timeKeys, String tutorId);
     List<AvailabilityEntity> findByIdInAndDimTimeKeyGreaterThanEqual(List<Long> ids, Long timeKey);
-    List<AvailabilityEntity> findByTutorIdAndDimTimeKeyBetweenAndAvailableIsTrue(String tutorId, Long start, Long end);
+    List<AvailabilityEntity> findByTutorIdAndDimTimeKeyBetween(String tutorId, Long start, Long end);
+    List<AvailabilityEntity> findByIdIn(List<Long> ids);
 }

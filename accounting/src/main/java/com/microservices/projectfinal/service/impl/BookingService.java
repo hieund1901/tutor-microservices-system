@@ -1,8 +1,10 @@
 package com.microservices.projectfinal.service.impl;
 
+import com.microservices.projectfinal.entity.AvailabilityEntity;
 import com.microservices.projectfinal.entity.BookingEntity;
 import com.microservices.projectfinal.entity.PaymentTransactionEntity;
 import com.microservices.projectfinal.exception.ResponseException;
+import com.microservices.projectfinal.repository.AvailabilityRepository;
 import com.microservices.projectfinal.repository.BookingRepository;
 import com.microservices.projectfinal.repository.PaymentTransactionRepository;
 import com.microservices.projectfinal.service.IBookingService;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 public class BookingService implements IBookingService {
     private final BookingRepository bookingRepository;
     private final PaymentTransactionRepository paymentTransactionRepository;
+    private final AvailabilityRepository availabilityRepository;
 
     @Transactional
     @Override
@@ -47,6 +50,7 @@ public class BookingService implements IBookingService {
         return transactionSaved.getId();
     }
 
+    @Transactional
     @Override
     public void activeBooking(Long transactionId, String userId) {
         var transaction = paymentTransactionRepository.findByIdAndUserId(transactionId, userId)
@@ -57,8 +61,19 @@ public class BookingService implements IBookingService {
             paymentTransactionRepository.save(transaction);
         }
 
+
+
         var referenceIds = Arrays.stream(transaction.getReferenceIds().split(", ")).map(Long::parseLong).collect(Collectors.toList());
         var bookingEntities = bookingRepository.findByIdIn(referenceIds);
+        var availabilityIds = bookingEntities.stream().map(BookingEntity::getAvailabilityId).collect(Collectors.toList());
+        var availabilities = availabilityRepository.findByIdIn(availabilityIds);
+
+        var makeNotAvailable = availabilities.stream().peek(item -> {
+            item.setAvailable(false);
+            item.setStatus(AvailabilityEntity.Status.BOOKED);
+        }).toList();
+
+        availabilityRepository.saveAll(makeNotAvailable);
         bookingEntities.forEach(bookingEntity -> bookingEntity.setStatus(BookingEntity.BookingStatus.CONFIRMED));
         bookingRepository.saveAll(bookingEntities);
     }

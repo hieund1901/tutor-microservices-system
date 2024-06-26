@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 @ConditionalOnProperty(
         value = "kafka.consumer.enabled",
-        havingValue = "true"
+        havingValue = "true",
+        matchIfMissing = true
 )
 public class PaymentConsumer {
 

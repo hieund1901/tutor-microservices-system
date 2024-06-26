@@ -91,8 +91,8 @@ public class TutorService implements ITutorService {
     }
 
     @Override
-    public TutorListResponseDTO getListTutor(int page) {
-        Page<TutorEntity> tutorEntities = tutorRepository.findAll(PageRequest.of(page - 1, 10));
+    public TutorListResponseDTO getListTutor(int page, int size) {
+        Page<TutorEntity> tutorEntities = tutorRepository.findAll(PageRequest.of(page - 1, size));
         var tutors = tutorEntities.get().map((item) -> {
             AccountEntity account = item.getAccount();
             return TutorResponseDTO.builder()

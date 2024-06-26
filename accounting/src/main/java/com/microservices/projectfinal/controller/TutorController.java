@@ -21,8 +21,8 @@ public class TutorController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getTutors(@RequestParam int page) {
-        return ResponseEntity.ok(tutorService.getListTutor(page));
+    public ResponseEntity<?> getTutors(@RequestParam int page, @RequestParam int size) {
+        return ResponseEntity.ok(tutorService.getListTutor(page, size));
     }
 
     @GetMapping("{userId}")

@@ -57,6 +57,11 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
                 item -> {
                     var availabilityEntity = checkAvailabilitySchedule(tutorId, item.getTimeKey());
                     availabilityEntity.setAvailable(item.isAvailable());
+                    if (availabilityEntity.getStatus() == AvailabilityEntity.Status.BOOKED) return availabilityEntity;
+                    if (item.isAvailable() ) {
+                        availabilityEntity.setStatus(AvailabilityEntity.Status.ACTIVE);
+                    } else
+                        availabilityEntity.setStatus(AvailabilityEntity.Status.INACTIVE);
                     return availabilityEntity;
                 }
         ).toList();
@@ -94,12 +99,10 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
             throw new ResponseException(message, HttpStatus.BAD_REQUEST);
         }
 
-        var makeNotAvailable = availabilities.stream().peek(item -> item.setAvailable(false)).toList();
-        var availabilitiesSaved = availabilityRepository.saveAll(makeNotAvailable);
-        var transactionId = bookingService.createBookingAndTakeTransactionId(studentId, availabilitiesSaved.stream().map(AvailabilityEntity::getId).toList());
+        var transactionId = bookingService.createBookingAndTakeTransactionId(studentId, availabilities.stream().map(AvailabilityEntity::getId).toList());
         return AvailabilitiesRegisterResponseDTO.builder()
                 .transactionId(transactionId)
-                .availabilities(availabilitiesSaved.stream().map(this::mapToAvailabilityResponseDTO).toList())
+                .availabilities(availabilities.stream().map(this::mapToAvailabilityResponseDTO).toList())
                 .build();
     }
 
@@ -117,7 +120,7 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
     public AvailabilitiesResponseDTO getAvailabilityScheduleByUserIdAndTimeKey(String userId, Long timeKey) {
         var startTimeKey = TimeKeyUtils.startTimeKey(timeKey);
         var endTimeKey = TimeKeyUtils.endTimeKey(timeKey);
-        var availabilities = availabilityRepository.findByTutorIdAndDimTimeKeyBetweenAndAvailableIsTrue(userId, startTimeKey, endTimeKey);
+        var availabilities = availabilityRepository.findByTutorIdAndDimTimeKeyBetween(userId, startTimeKey, endTimeKey);
         if (CollectionUtil.isEmpty(availabilities)) {
             throw new ResponseException("No availability found", HttpStatus.BAD_REQUEST);
         }
@@ -178,6 +181,8 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
         var tutor = getTutorByUserId(availabilityEntity.getTutorId());
         return AvailabilitiesResponseDTO.AvailabilityResponseDTO.builder()
                 .id(availabilityEntity.getId())
+                .isAvailable(availabilityEntity.isAvailable())
+                .status(availabilityEntity.getStatus())
                 .tutor(tutor)
                 .time(timeDTO)
                 .build();
