@@ -12,14 +12,14 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
-//@Component
+@Component
 public class PaymentConsumer {
     private final ICourseEnrollmentService courseEnrollmentService;
 
 
     @KafkaListener(
             topics = "${kafka.course.topic.payment-log}",
-            groupId = "${kafka.course.group.payment-processor}"
+            groupId = "${kafka.course.group.course-payment-processor}"
     )
     public void listening(@Payload String message) throws JsonProcessingException {
         KafkaCDCModel kafkaCDCModel = JsonUtils.kafkaConnectUnmarshall(message);

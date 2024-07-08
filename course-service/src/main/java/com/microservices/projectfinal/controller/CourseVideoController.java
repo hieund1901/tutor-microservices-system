@@ -6,15 +6,11 @@ import com.microservices.projectfinal.dto.CourseVideoUpdateDTO;
 import com.microservices.projectfinal.service.ICourseVideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.io.InputStream;
 
@@ -27,7 +23,7 @@ public class CourseVideoController {
 
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<?> createCourseVideo(@UserId String userId, @ModelAttribute CourseVideoCreateDTO courseVideoCreateDTO) {
-        return ResponseEntity.ok(courseVideoService.createCourseVideo(userId,courseVideoCreateDTO));
+        return ResponseEntity.ok(courseVideoService.createCourseVideo(userId, courseVideoCreateDTO));
     }
 
     @GetMapping(value = "/stream/{courseId}/{courseVideoId}")

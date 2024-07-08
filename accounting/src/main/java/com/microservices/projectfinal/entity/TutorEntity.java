@@ -37,8 +37,6 @@ public class TutorEntity {
     @Column(name = "teach_fee", nullable = false)
     private BigDecimal teachFee;
 
-    @Column(name = "time_per_one_purchase", nullable = false)
-    private Long timePerOnePurchase;
 
     @CreatedDate
     @Column(name = "joined_at", nullable = false)

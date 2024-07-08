@@ -92,7 +92,7 @@ public class AvailabilityScheduleService implements IAvailabilityScheduleService
             throw new ResponseException("No availability found", HttpStatus.BAD_REQUEST);
         }
 
-        var availabilitiesNotAvailable = availabilities.stream().filter(item -> !item.isAvailable()).toList();
+        var availabilitiesNotAvailable = availabilities.stream().filter(item -> !item.isAvailable() && item.getStatus() == AvailabilityEntity.Status.BOOKED).toList();
         if (CollectionUtil.isNotEmpty(availabilitiesNotAvailable)) {
             var timeKeys = availabilitiesNotAvailable.stream().map(AvailabilityEntity::getDimTimeKey).toList();
             String message = String.format("Some availabilities not available: %s", timeKeys);

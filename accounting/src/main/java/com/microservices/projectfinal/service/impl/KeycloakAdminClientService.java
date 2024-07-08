@@ -99,6 +99,14 @@ public class KeycloakAdminClientService {
         userResource.roles().realmLevel().add(Collections.singletonList(roleRepresentation));
     }
 
+    public void removeRoleFromUser(String userId, String roleName) {
+        Keycloak keycloak = keycloakProvider.getInstance();
+        RealmResource realmResource = keycloak.realm(keyCloakConfigData.getRealm());
+        RoleRepresentation roleRepresentation = realmResource.roles().get(roleName).toRepresentation();
+        UserResource userResource = realmResource.users().get(userId);
+        userResource.roles().realmLevel().remove(Collections.singletonList(roleRepresentation));
+    }
+
     public String getRole(String userId) {
         Keycloak keycloak = keycloakProvider.getInstance();
         RealmResource realmResource = keycloak.realm(keyCloakConfigData.getRealm());

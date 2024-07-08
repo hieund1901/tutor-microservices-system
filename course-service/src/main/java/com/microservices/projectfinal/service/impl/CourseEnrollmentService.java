@@ -35,7 +35,23 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
     public CourseEnrollmentDTO enrollCourse(Long courseId, String userId) {
         var courseEnrollmentEntityOptional = courseEnrollmentRepository.findByCourseIdAndStudentId(courseId, userId);
         if (courseEnrollmentEntityOptional.isPresent()) {
-            throw new ResponseException("Already enrolled", HttpStatus.BAD_REQUEST);
+            if (courseEnrollmentEntityOptional.get().getStatus() == CourseEnrollmentEntity.EnrollmentStatus.ACTIVE) {
+                throw new ResponseException("You have already enrolled in this course", HttpStatus.BAD_REQUEST);
+            } else {
+                var courseEnroll = courseEnrollmentEntityOptional.get();
+                var transaction = paymentTransactionRepository.findByReferenceIdsAndReferenceTypeAndUserId(String.valueOf(courseEnroll.getId()), PaymentTransactionEntity.ReferenceType.COURSE, userId)
+                        .orElseThrow(() -> new ResponseException("Transaction not found", HttpStatus.NOT_FOUND));
+                return CourseEnrollmentDTO.builder()
+                        .id(courseEnroll.getId())
+                        .courseId(courseEnroll.getCourse().getId())
+                        .studentId(courseEnroll.getStudentId())
+                        .transactionId(transaction.getId())
+                        .enrollmentDate(courseEnroll.getEnrollmentDate())
+                        .status(courseEnroll.getStatus().name())
+                        .createdAt(courseEnroll.getCreatedAt())
+                        .modifiedAt(courseEnroll.getModifiedAt())
+                        .build();
+            }
         }
 
         CourseEntity courseEntity = courseRepository.findById(courseId)
@@ -85,7 +101,7 @@ public class CourseEnrollmentService implements ICourseEnrollmentService {
     @Transactional
     @Override
     public void activateCourse(Long transactionId, String userId) {
-        var coursePaymentTransaction = paymentTransactionRepository.findByReferenceIdsAndReferenceTypeAndUserId(String.valueOf(transactionId), PaymentTransactionEntity.ReferenceType.COURSE, userId)
+        var coursePaymentTransaction = paymentTransactionRepository.findByIdAndReferenceTypeAndUserId(transactionId, PaymentTransactionEntity.ReferenceType.COURSE, userId)
                 .orElse(null);
         if (coursePaymentTransaction == null) {
             log.error("Transaction not found");

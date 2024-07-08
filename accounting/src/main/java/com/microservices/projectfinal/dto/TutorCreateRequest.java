@@ -12,5 +12,5 @@ import java.math.BigDecimal;
 public class TutorCreateRequest {
     private String subject;
     private BigDecimal teachFee;
-    private Long timePerSession;
+    private String resume;
 }

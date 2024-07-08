@@ -1,14 +1,15 @@
 package com.microservices.projectfinal.handler;
 
 import com.microservices.projectfinal.constant.CommonConstant;
-import com.microservices.projectfinal.dto.*;
+import com.microservices.projectfinal.dto.CallAcceptRequest;
+import com.microservices.projectfinal.dto.CallRequest;
+import com.microservices.projectfinal.dto.IncomingCallRequest;
+import com.microservices.projectfinal.dto.Register;
 import com.microservices.projectfinal.service.IUserRedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.messaging.simp.SimpMessageType;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
@@ -25,7 +26,7 @@ public class SignalingHandler {
 
     @MessageMapping("/register")
     public void handleRegister(Register register, @Header("simpSessionId") String sessionId) {
-        userSessionMap.put(register.getUserId(), sessionId);
+        userSessionMap.put(register.getUserId(), register.getUserId());
         userService.setUserStatus(register.getUserId(), CommonConstant.UserStatus.ONLINE.name());
     }
 
@@ -45,15 +46,10 @@ public class SignalingHandler {
             log.error("User is not online: {}", callRequest.getToUserId());
             return;
         }
-        log.info(onlineUserSessionId);
-        SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
-                .create(SimpMessageType.MESSAGE);
-        headerAccessor.setSessionId(onlineUserSessionId);
-        headerAccessor.setLeaveMutable(true);
-        simpleMessageTemplate.convertAndSendToUser(onlineUserSessionId,
-                "/queue/incoming-call",
-                new IncomingCallRequest(onlineUserSessionId, callRequest.getFromUserId(), callRequest.getToUserId(), callRequest.getSdpOffer()),
-                headerAccessor.getMessageHeaders());
+        simpleMessageTemplate.convertAndSend(
+                "/queue/incoming-call/" + onlineUserSessionId,
+                new IncomingCallRequest(onlineUserSessionId, callRequest.getFromUserId(), callRequest.getToUserId(), callRequest.getSdpOffer())
+        );
     }
 
     @MessageMapping("/call-accept")
@@ -71,13 +67,28 @@ public class SignalingHandler {
             return;
         }
 
-        SimpMessageHeaderAccessor headerAccessor = SimpMessageHeaderAccessor
-                .create(SimpMessageType.MESSAGE);
-        headerAccessor.setSessionId(onlineUserSessionId);
-        headerAccessor.setLeaveMutable(true);
-
-        simpleMessageTemplate.convertAndSendToUser(onlineUserSessionId,
-                "/queue/call-accepted",
-                request, headerAccessor.getMessageHeaders());
+        simpleMessageTemplate.convertAndSend(
+                "/queue/call-accepted/" + onlineUserSessionId,
+                request);
     }
+
+//    @MessageMapping("ice-candidate")
+//    public void handleIceCandidate(IceCandidateRequest request) {
+//        var toUserStatus = userService.getUserStatus(request.getToUserId());
+//
+//        if (toUserStatus.equals(CommonConstant.UserStatus.BUSY.name())) {
+//            log.error("User is busy: {}", request.getToUserId());
+//            return;
+//        }
+//
+//        var onlineUserSessionId = userSessionMap.get(request.getToUserId());
+//        if (onlineUserSessionId == null || toUserStatus.equals(CommonConstant.UserStatus.OFFLINE.name())) {
+//            log.error("User is not online: {}", request.getToUserId());
+//            return;
+//        }
+//
+//        simpleMessageTemplate.convertAndSend(
+//                "/queue/ice-candidate/" + onlineUserSessionId,
+//                request);
+//    }
 }

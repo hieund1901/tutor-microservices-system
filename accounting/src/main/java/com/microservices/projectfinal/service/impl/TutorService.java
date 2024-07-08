@@ -41,10 +41,11 @@ public class TutorService implements ITutorService {
                 .subject(tutorCreateRequest.getSubject())
                 .teachFee(tutorCreateRequest.getTeachFee())
                 .account(account)
-                .timePerOnePurchase(tutorCreateRequest.getTimePerSession())
+                .resume(tutorCreateRequest.getResume())
                 .build();
         var tutorCreated = tutorRepository.save(tutorEntity);
         keycloakAdminClientService.assignRoleToUser(account.getUserId(), PermissionType.TUTOR.getType());
+        keycloakAdminClientService.removeRoleFromUser(account.getUserId(), PermissionType.STUDENT.getType())    ;
         return buildTutorResponse(tutorCreated);
     }
 
